@@ -1,9 +1,7 @@
 package view;
 
 import controller.ApplicationController;
-import controller.RegisterMenuController;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
+import controller.ProfileMenuController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,25 +9,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.net.URL;
 
-public class RegisterMenuViewController extends Application {
+public class ProfileMenuViewController {
     @FXML
     private TextField usernameField;
     @FXML
     private TextField passwordField;
     public static Scene scene;
 
-    public static void run(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) {
-        ApplicationController.setStage(stage);
-        URL url = Main.class.getResource("/FXML/RegisterMenu.fxml");
+    public static void start() {
+        URL url = Main.class.getResource("/FXML/ProfileMenu.fxml");
         assert url != null;
         Pane root;
         try {
@@ -41,20 +32,27 @@ public class RegisterMenuViewController extends Application {
         ApplicationController.setScene(scene);
     }
 
-    public void register() {
+    public void saveUsername() {
         String username = usernameField.getText();
-        String password = passwordField.getText();
-        RegisterMenuController.register(username, password);
+        ProfileMenuController.saveUsername(username);
     }
 
-    public void signIn() {
-        String username = usernameField.getText();
+    public void savePassword() {
         String password = passwordField.getText();
-        RegisterMenuController.signIn(username, password);
+        ProfileMenuController.savePassword(password);
     }
 
-    public void enterAsGuest() {
-        RegisterMenuController.enterAsGuest();
+    public void removeAccount() {
+        ProfileMenuController.removeAccount();
+        signOut();
+    }
+
+    public void signOut() {
+        ProfileMenuController.signOut();
+        ApplicationController.setScene(RegisterMenuViewController.scene);
+    }
+
+    public void avatarMenu(MouseEvent mouseEvent) {
     }
 
     public static void makeAlert(String title, String header, String content, String type) {
@@ -68,6 +66,6 @@ public class RegisterMenuViewController extends Application {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
-        alert.showAndWait();
+        alert.show();
     }
 }
