@@ -7,10 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class ProfileMenuViewController {
     @FXML
@@ -18,8 +18,9 @@ public class ProfileMenuViewController {
     @FXML
     private TextField passwordField;
     public static Scene scene;
+    private ProfileMenuController profileMenuController = new ProfileMenuController();
 
-    public static void start() {
+    public void start() {
         URL url = Main.class.getResource("/FXML/ProfileMenu.fxml");
         assert url != null;
         Pane root;
@@ -30,29 +31,29 @@ public class ProfileMenuViewController {
         }
         scene = new Scene(root);
         ApplicationController.setScene(scene);
+        profileMenuController = new ProfileMenuController();
     }
 
     public void saveUsername() {
         String username = usernameField.getText();
-        ProfileMenuController.saveUsername(username);
+        profileMenuController.saveUsername(username);
     }
 
     public void savePassword() {
         String password = passwordField.getText();
-        ProfileMenuController.savePassword(password);
+        profileMenuController.savePassword(password);
     }
 
     public void removeAccount() {
-        ProfileMenuController.removeAccount();
-        signOut();
+        profileMenuController.removeAccount();
     }
 
     public void signOut() {
-        ProfileMenuController.signOut();
-        ApplicationController.setScene(RegisterMenuViewController.scene);
+        profileMenuController.signOut();
     }
 
-    public void avatarMenu(MouseEvent mouseEvent) {
+    public void avatarMenu() {
+        profileMenuController.avatarMenu();
     }
 
     public static void makeAlert(String title, String header, String content, String type) {

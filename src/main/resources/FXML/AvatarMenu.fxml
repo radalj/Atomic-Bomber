@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AvatarMenuViewController">
+   <children>
+      <ImageView fx:id="avatarImage" fitHeight="220.0" fitWidth="220.0" layoutX="52.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/avatars/man1.jpg" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="avatarChoiceBox" layoutX="352.0" layoutY="78.0" prefWidth="150.0" styleClass="choice-box" />
+      <Button fx:id="fileChooser" layoutX="367.0" layoutY="128.0" prefWidth="120" text="Choose File" textAlignment="CENTER"/>
+      <Pane layoutX="327.0" layoutY="170.0" prefHeight="200.0" prefWidth="200.0" styleClass="drag-pane" fx:id="dragPane">
+         <children>
+            <Text layoutX="11.0" layoutY="109.0" opacity="0.38" text="Drag and Drop" textAlignment="CENTER">
+               <font>
+                  <Font name="Serif Bold" size="24.0" />
+               </font></Text>
+         </children>
+      </Pane>
+
+   </children>
+</Pane>

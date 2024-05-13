@@ -1,0 +1,9 @@
+.choice-box {
+    -fx-alignment: center;
+}
+.drag-pane {
+    -fx-background-color: rgba(220, 240, 240, 0.56);
+    -fx-border-color: rgba(83, 83, 83, 0.25);
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}

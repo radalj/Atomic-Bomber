@@ -1,10 +1,13 @@
 package controller;
 
 import model.User;
+import view.AvatarMenuViewController;
 import view.ProfileMenuViewController;
+import view.RegisterMenuViewController;
 
 public class ProfileMenuController {
-    public static void saveUsername(String username) {
+    private AvatarMenuViewController avatarMenuViewController = new AvatarMenuViewController();
+    public void saveUsername(String username) {
         if (User.getUser(username) != null) {
             ProfileMenuViewController.makeAlert("Username Already Exists", "Username Already Exists", "Username" + username + " already exists.", "WARNING");
             return;
@@ -12,18 +15,19 @@ public class ProfileMenuController {
         User.getCurrentUser().setUsername(username);
         ProfileMenuViewController.makeAlert("Username Changed", "Username Changed", "Username changed successfully.", "INFORMATION");
     }
-    public static void savePassword(String password) {
+    public void savePassword(String password) {
         User.getCurrentUser().setPassword(password);
         ProfileMenuViewController.makeAlert("Password Changed", "Password Changed", "Password changed successfully.", "INFORMATION");
     }
-    public static void removeAccount() {
+    public void removeAccount() {
         User.getUsers().remove(User.getCurrentUser());
-        User.setCurrentUser(null);
+        signOut();
     }
-    public static void signOut() {
+    public void signOut() {
         User.setCurrentUser(null);
+        ApplicationController.setScene(RegisterMenuViewController.scene);
     }
-    public static void avatarMenu() {
-        //TODO : change scene
+    public void avatarMenu() {
+        avatarMenuViewController.start();
     }
 }

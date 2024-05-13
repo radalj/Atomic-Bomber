@@ -21,7 +21,7 @@ public class RegisterMenuViewController extends Application {
     @FXML
     private TextField passwordField;
     public static Scene scene;
-
+    private RegisterMenuController registerMenuController = new RegisterMenuController();
     public static void run(String[] args) {
         launch(args);
     }
@@ -44,17 +44,17 @@ public class RegisterMenuViewController extends Application {
     public void register() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        RegisterMenuController.register(username, password);
+        registerMenuController.register(username, password);
     }
 
     public void signIn() {
         String username = usernameField.getText();
         String password = passwordField.getText();
-        RegisterMenuController.signIn(username, password);
+        registerMenuController.signIn(username, password);
     }
 
     public void enterAsGuest() {
-        RegisterMenuController.enterAsGuest();
+        registerMenuController.enterAsGuest();
     }
 
     public static void makeAlert(String title, String header, String content, String type) {

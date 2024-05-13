@@ -7,6 +7,7 @@ public class ApplicationController {
     private static Stage stage;
     public static void setStage(Stage stage) {
         ApplicationController.stage = stage;
+        stage.setAlwaysOnTop(true);
     }
     public static Stage getStage() {
         return stage;
