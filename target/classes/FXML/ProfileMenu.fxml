@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileMenuViewController">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileMenuViewController">
+    <left>
+         <Button text="Back" textAlignment="CENTER" onAction="#back" prefHeight="30" prefWidth="80.0"/>
+    </left>
     <center>
         <VBox alignment="CENTER" layoutX="200.0" layoutY="150" spacing="20">
             <HBox alignment="CENTER" spacing="20">
-                <TextField fx:id="usernameField" promptText="New Username"/>
-                <Button text="Save" onMouseClicked="#saveUsername"/>
-            </HBox>
-            <HBox alignment="CENTER" spacing="20" >
-                <TextField fx:id="passwordField" promptText="New Password"/>
-                <Button text="Save" onMouseClicked="#savePassword"/>
+                <TextField fx:id="usernameField" promptText="New Username" />
+                <Button onMouseClicked="#saveUsername" text="Save" />
             </HBox>
             <HBox alignment="CENTER" spacing="20">
-                <Button text="Remove Account" onMouseClicked="#removeAccount"/>
-                <Button text="Sign Out" onMouseClicked="#signOut"/>
-                <Button text="Avatar Manu" onMouseClicked="#avatarMenu"/>
+                <TextField fx:id="passwordField" promptText="New Password" />
+                <Button onMouseClicked="#savePassword" text="Save" />
+            </HBox>
+            <HBox alignment="CENTER" spacing="20">
+                <Button onMouseClicked="#removeAccount" text="Remove Account" />
+                <Button onMouseClicked="#signOut" text="Sign Out" />
+                <Button onMouseClicked="#avatarMenu" text="Avatar Manu" />
             </HBox>
         </VBox>
     </center>
-
 </BorderPane>

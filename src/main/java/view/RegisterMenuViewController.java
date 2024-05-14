@@ -38,6 +38,7 @@ public class RegisterMenuViewController extends Application {
             return;
         }
         scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
         ApplicationController.setScene(scene);
     }
 
@@ -68,6 +69,12 @@ public class RegisterMenuViewController extends Application {
         alert.setTitle(title);
         alert.setHeaderText(header);
         alert.setContentText(content);
+
+        Stage mainStage = ApplicationController.getStage();
+        mainStage.setAlwaysOnTop(false);
+        Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+        alertStage.setAlwaysOnTop(true);
         alert.showAndWait();
+        mainStage.setAlwaysOnTop(true);
     }
 }

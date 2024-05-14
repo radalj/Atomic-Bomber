@@ -5,16 +5,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AvatarMenuViewController">
+<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AvatarMenuViewController">
    <children>
-      <ImageView fx:id="avatarImage" fitHeight="220.0" fitWidth="220.0" layoutX="52.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="avatarImage" fitHeight="261.0" fitWidth="256.0" layoutX="309.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/avatars/man1.jpg" />
          </image>
       </ImageView>
-      <ChoiceBox fx:id="avatarChoiceBox" layoutX="352.0" layoutY="78.0" prefWidth="150.0" styleClass="choice-box" />
-      <Button fx:id="fileChooser" layoutX="367.0" layoutY="128.0" onAction="#chooseFile" prefWidth="120" text="Choose File" textAlignment="CENTER" />
-      <Pane fx:id="dragPane" layoutX="327.0" layoutY="170.0" onDragDropped="#dragDropped" onDragOver="#dragOver" prefHeight="200.0" prefWidth="200.0" styleClass="drag-pane">
+      <ChoiceBox fx:id="avatarChoiceBox" layoutX="635.0" layoutY="230.0" prefWidth="150.0" styleClass="choice-box" />
+      <Button fx:id="fileChooser" layoutX="650.0" layoutY="280.0" onAction="#chooseFile" prefWidth="120" text="Choose File" textAlignment="CENTER" />
+      <Pane fx:id="dragPane" layoutX="610.0" layoutY="330.0" onDragDropped="#dragDropped" onDragOver="#dragOver" prefHeight="200.0" prefWidth="200.0" styleClass="drag-pane">
          <children>
             <Text layoutX="11.0" layoutY="109.0" opacity="0.38" text="Drag and Drop" textAlignment="CENTER">
                <font>

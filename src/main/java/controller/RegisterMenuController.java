@@ -1,11 +1,12 @@
 package controller;
 
 import model.User;
+import view.MainMenuViewController;
 import view.ProfileMenuViewController;
 import view.RegisterMenuViewController;
 
 public class RegisterMenuController {
-    ProfileMenuViewController profileMenuViewController = new ProfileMenuViewController();
+    MainMenuViewController mainMenuViewController = new MainMenuViewController();
     public void register(String username, String password) {
         if (User.getUser(username) != null) {
             RegisterMenuViewController.makeAlert("User Already Exists", "User Already Exists", "User with username " + username + " already exists.", "WARNING");
@@ -29,11 +30,11 @@ public class RegisterMenuController {
             return;
         }
         User.setCurrentUser(user);
-        profileMenuViewController.start();
+        mainMenuViewController.start();
     }
     public void enterAsGuest() {
-        User.setCurrentUser(new User("Guest" + User.getGuestNumber(), "password"));
+        User.setCurrentUser(new User("Guest_" + User.getGuestNumber(), "password"));
         User.increaseGuestNumber();
-        profileMenuViewController.start();
+        mainMenuViewController.start();
     }
 }

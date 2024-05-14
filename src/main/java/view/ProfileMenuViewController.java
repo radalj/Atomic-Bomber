@@ -2,6 +2,7 @@ package view;
 
 import controller.ApplicationController;
 import controller.ProfileMenuController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,6 +31,7 @@ public class ProfileMenuViewController {
             return;
         }
         scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
         ApplicationController.setScene(scene);
         profileMenuController = new ProfileMenuController();
     }
@@ -68,5 +70,9 @@ public class ProfileMenuViewController {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.show();
+    }
+
+    public void back(ActionEvent actionEvent) {
+        ApplicationController.setScene(MainMenuViewController.scene);
     }
 }

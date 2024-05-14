@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RankingViewController">
+
+    <VBox alignment="CENTER" layoutX="150" layoutY="20.0" spacing="20">
+        <Label text="Ranking" textFill="WHITE">
+         <font>
+            <Font name="DejaVu Serif Bold" size="18.0" />
+         </font></Label>
+        <TableView fx:id="rankingTable" prefHeight="560.0" prefWidth="900.0">
+            <columns>
+                <TableColumn fx:id="rankColumn" prefWidth="100.0" text="Rank" />
+                <TableColumn fx:id="usernameColumn" prefWidth="200.0" text="Username" />
+                <TableColumn fx:id="scoreColumn" prefWidth="120.0" text="Score" />
+                <TableColumn fx:id="killsColumn" prefWidth="120.0" text="Kills" />
+                <TableColumn fx:id="difficultyKillsColumn" prefWidth="120.0" text="Difficut Kills" />
+                <TableColumn fx:id="accuracyColumn" prefWidth="120.0" text="Accuracy" />
+                <TableColumn fx:id="waveColumn" prefWidth="120.0" text="Wave" />
+            </columns>
+        </TableView>
+        <ChoiceBox fx:id="sortType" prefWidth="200.0" styleClass="choice-box" />
+    </VBox>
+    <Button fx:id="backButton" layoutX="10.0" layoutY="10.0" onAction="#back" prefHeight="30 " prefWidth="80" text="Back" />
+</Pane>
