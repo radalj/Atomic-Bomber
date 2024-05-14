@@ -20,7 +20,8 @@ public class RankingViewController {
 
     RankingController rankingController;
 
-    public void initialize() {
+    public void initialize(){
+        ApplicationController.playMusic();
         rankingController = new RankingController();
         rankingController.buildRanking(rankingTable);
 

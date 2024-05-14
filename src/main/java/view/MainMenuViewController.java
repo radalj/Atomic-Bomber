@@ -35,7 +35,8 @@ public class MainMenuViewController {
         scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
         ApplicationController.setScene(scene);
     }
-    public void initialize() {
+    public void initialize(){
+        ApplicationController.playMusic();
         avatar.setImage(User.getCurrentUser().getImage());
         usernameText.setText(User.getCurrentUser().getUsername());
         profileMenuViewController = new ProfileMenuViewController();

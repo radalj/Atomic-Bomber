@@ -20,7 +20,9 @@ public class ProfileMenuViewController {
     private TextField passwordField;
     public static Scene scene;
     private ProfileMenuController profileMenuController = new ProfileMenuController();
-
+    public void initialize(){
+        ApplicationController.playMusic();
+    }
     public void start() {
         URL url = Main.class.getResource("/FXML/ProfileMenu.fxml");
         assert url != null;

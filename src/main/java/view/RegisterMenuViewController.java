@@ -28,6 +28,7 @@ public class RegisterMenuViewController extends Application {
 
     @Override
     public void start(Stage stage) {
+        ApplicationController.playMusic();
         ApplicationController.setStage(stage);
         URL url = Main.class.getResource("/FXML/RegisterMenu.fxml");
         assert url != null;

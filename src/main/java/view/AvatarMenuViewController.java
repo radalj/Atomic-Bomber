@@ -33,7 +33,8 @@ public class AvatarMenuViewController {
         avatarImage.setImage(image);
     }
 
-    public void initialize() {
+    public void initialize(){
+        ApplicationController.playMusic();
         avatarMenuController = new AvatarMenuController();
         Image image = User.getCurrentUser().getImage();
         avatarImage.setImage(image);
