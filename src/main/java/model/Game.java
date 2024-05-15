@@ -23,12 +23,15 @@ public class Game {
     public void addComponents() {
         gameViewController.addChild(plane);
     }
-
     public void update() {
         plane.move();
     }
 
     public GameViewController getGameViewController() {
         return gameViewController;
+    }
+
+    public Plane getPlane() {
+        return plane;
     }
 }
