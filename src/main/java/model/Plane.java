@@ -6,14 +6,14 @@ import javafx.scene.shape.Rectangle;
 
 public class Plane extends Rectangle {
     public static final double MAXSPEED = 2.5;
-    private final double width = 150;
-    private final double height = 150;
+    private final double width = 120;
+    private final double height = 120;
     private double vx, vy;
     private final double rotationSpeed = 2;
     private Game game;
 
     public Plane(Game game) {
-        super(150, 150);
+        super(120, 120);
         this.game = game;
         setX(0);
         setY(30);

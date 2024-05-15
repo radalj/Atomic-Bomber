@@ -9,7 +9,7 @@ public class Vehicle extends Rectangle {
     protected Game game;
 
     public Vehicle(Game game, boolean enterFromLeft) {
-        super(100, 100);
+        super(70, 70);
         this.game = game;
         if (enterFromLeft) {
             vx = BasicSpeed * game.getDifficulty();
@@ -20,7 +20,7 @@ public class Vehicle extends Rectangle {
             setX(game.getGameViewController().scene.getWidth());
             setScaleX(1);
         }
-        setY(game.getGameViewController().scene.getHeight() - height - 100);
+        setY(game.getGameViewController().scene.getHeight() - 180);
         vy = 0;
     }
 

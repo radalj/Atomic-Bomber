@@ -4,20 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Plane rotation completed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Tank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Truck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Vehicle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/tank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/truck.png" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Tank and Trucks added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/StaticObjects.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Stronghold.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Tree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/building.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/stronghold.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/treefrozen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Plane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Vehicle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Vehicle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -128,7 +133,7 @@
       <workItem from="1715707437815" duration="7673000" />
       <workItem from="1715763199317" duration="3625000" />
       <workItem from="1715768422864" duration="4447000" />
-      <workItem from="1715799317461" duration="5179000" />
+      <workItem from="1715799317461" duration="10790000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -170,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715771316931</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Tank and Trucks added">
+      <option name="closed" value="true" />
+      <created>1715804578211</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715804578211</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +207,8 @@
     <MESSAGE value="Setting menu added" />
     <MESSAGE value="Basic movement of plane added" />
     <MESSAGE value="Plane rotation completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Plane rotation completed" />
+    <MESSAGE value="Tank and Trucks added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tank and Trucks added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

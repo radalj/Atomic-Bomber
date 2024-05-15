@@ -16,8 +16,8 @@ public class GameController {
     private Random random = new Random();
     public void start() {
         gameViewController = new GameViewController();
-        game = new Game(User.getCurrentUser().getDifficulty(), gameViewController);
         gameViewController.start();
+        game = new Game(User.getCurrentUser().getDifficulty(), gameViewController);
         timeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
         tankTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(4), e -> {
