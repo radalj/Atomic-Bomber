@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -74,7 +73,7 @@ public class SettingsMenuController {
             return;
         }
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/CSS/Styles.css").toExternalForm());
         ApplicationController.setScene(scene);
     }
 

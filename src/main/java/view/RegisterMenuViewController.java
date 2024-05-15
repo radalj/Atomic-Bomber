@@ -3,13 +3,9 @@ package view;
 import controller.ApplicationController;
 import controller.RegisterMenuController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -35,7 +31,7 @@ public class RegisterMenuViewController extends Application {
             return;
         }
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/CSS/Styles.css").toExternalForm());
         ApplicationController.setScene(scene);
     }
 

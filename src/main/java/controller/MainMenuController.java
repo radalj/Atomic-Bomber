@@ -22,6 +22,14 @@ public class MainMenuController {
     private ProfileMenuController profileMenuController;
     private RankingController rankingController;
 
+    public void initialize() {
+        ApplicationController.playMusic();
+        avatar.setImage(User.getCurrentUser().getImage());
+        usernameText.setText(User.getCurrentUser().getUsername());
+        profileMenuController = new ProfileMenuController();
+        rankingController = new RankingController();
+    }
+
     public void start() {
         URL url = Main.class.getResource("/FXML/MainMenu.fxml");
         assert url != null;
@@ -32,19 +40,13 @@ public class MainMenuController {
             return;
         }
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/CSS/Styles.css").toExternalForm());
         ApplicationController.setScene(scene);
     }
 
-    public void initialize() {
-        ApplicationController.playMusic();
-        avatar.setImage(User.getCurrentUser().getImage());
-        usernameText.setText(User.getCurrentUser().getUsername());
-        profileMenuController = new ProfileMenuController();
-        rankingController = new RankingController();
-    }
-
-    public void newGame(ActionEvent actionEvent) {
+    public void newGame() {
+        GameController gameController = new GameController();
+        gameController.start();
     }
 
     public void resumeGame(ActionEvent actionEvent) {

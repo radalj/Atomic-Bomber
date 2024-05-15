@@ -74,7 +74,7 @@ public class RankingController {
             return;
         }
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/CSS/Styles.css").toExternalForm());
         ApplicationController.setScene(scene);
     }
 
