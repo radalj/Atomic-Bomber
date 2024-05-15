@@ -4,44 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Ranking added">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/MainMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/SettingsMenuViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/FXML/SettingsMenu.fxml" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="View Controllers and controllers merged">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/plane.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AvatarMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AvatarMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SettingsMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AvatarMenuViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenuViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ProfileMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ProfileMenuViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RankingViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegisterMenuViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/AvatarMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/AvatarMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/ProfileMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/Ranking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/Ranking.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/RegisterMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/RegisterMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FXML/AvatarMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/AvatarMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FXML/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FXML/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/ProfileMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FXML/Ranking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/Ranking.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/FXML/RegisterMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/RegisterMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/AvatarMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/AvatarMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/SettingsMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/SettingsMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ApplicationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ApplicationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/MainMenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/ProfileMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ProfileMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/RankingController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/RankingController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/RankingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/RankingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/RegisterMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/AvatarMenuViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/MainMenuViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ProfileMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ProfileMenuViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/RankingViewController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/RankingViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/RegisterMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/RegisterMenuViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +106,7 @@
       <workItem from="1715697731727" duration="1641000" />
       <workItem from="1715699379530" duration="313000" />
       <workItem from="1715699870082" duration="673000" />
-      <workItem from="1715707437815" duration="4396000" />
+      <workItem from="1715707437815" duration="7673000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -138,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715697283803</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="View Controllers and controllers merged">
+      <option name="closed" value="true" />
+      <created>1715755657941</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715755657941</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +133,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Ranking added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ranking added" />
+    <MESSAGE value="View Controllers and controllers merged" />
+    <option name="LAST_COMMIT_MESSAGE" value="View Controllers and controllers merged" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

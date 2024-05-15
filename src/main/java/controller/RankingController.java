@@ -2,6 +2,7 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
@@ -19,8 +20,10 @@ import java.util.ArrayList;
 public class RankingController {
     private int sortTypeInt = 0; // 0 for score, 1 for kills, 2 for difficultKills, 3 for accuracy
     public static Scene scene;
-    public TableView<User> rankingTable;
-    public ChoiceBox<String> sortType;
+    @FXML
+    private TableView<User> rankingTable;
+    @FXML
+    private ChoiceBox<String> sortType;
 
     public void initialize() {
         ApplicationController.playMusic();
@@ -63,7 +66,6 @@ public class RankingController {
     public void start() {
         URL url = Main.class.getResource("/FXML/Ranking.fxml");
         assert url != null;
-        System.err.println("RankingController start");
         Pane root;
         try {
             root = FXMLLoader.load(url);

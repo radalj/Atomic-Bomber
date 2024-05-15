@@ -13,7 +13,6 @@ import view.RegisterMenuViewController;
 import java.net.URL;
 
 public class ProfileMenuController {
-    private AvatarMenuController avatarMenuController;
     @FXML
     private TextField usernameField;
     @FXML
@@ -25,7 +24,6 @@ public class ProfileMenuController {
     }
 
     public void start() {
-        avatarMenuController = new AvatarMenuController();
         URL url = Main.class.getResource("/FXML/ProfileMenu.fxml");
         assert url != null;
         Pane root;
@@ -66,6 +64,7 @@ public class ProfileMenuController {
     }
 
     public void avatarMenu() {
+        AvatarMenuController avatarMenuController = new AvatarMenuController();
         avatarMenuController.start();
     }
 

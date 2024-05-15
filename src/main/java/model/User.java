@@ -15,9 +15,9 @@ public class User {
     private static int guestNumber = 0;
     private int score, kills, difficultyKills, wave, rank;
     private double accuracy;
+    private int difficulty;
 
     public User(String username, String password) {
-
         this.username = username;
         this.password = password;
         String path = "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/woman1.jpg";
@@ -27,6 +27,7 @@ public class User {
         difficultyKills = 0;
         accuracy = 0;
         wave = 0;
+        difficulty = 1;
         addUser(this);
     }
     public static ArrayList<User> getUsers() {
@@ -34,7 +35,6 @@ public class User {
     }
 
     public static void addUser(User user) {
-        System.err.println("User added: " + user.getUsername());
         users.add(user);
     }
     public static User getUser(String username) {
@@ -136,5 +136,11 @@ public class User {
 
     public void setWave(int wave) {
         this.wave = wave;
+    }
+    public int getDifficulty() {
+        return difficulty;
+    }
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
     }
 }

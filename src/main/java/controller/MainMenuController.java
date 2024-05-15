@@ -55,15 +55,12 @@ public class MainMenuController {
     }
 
     public void leaderboard(ActionEvent actionEvent) {
-        try {
-            rankingController.start();
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            System.err.println("fad");
-        }
+        rankingController.start();
     }
 
-    public void settings(ActionEvent actionEvent) {
+    public void settings() {
+        SettingsMenuController settingsMenuController = new SettingsMenuController();
+        settingsMenuController.start();
     }
 
     public void exit(ActionEvent actionEvent) {
