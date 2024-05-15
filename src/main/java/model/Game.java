@@ -1,5 +1,8 @@
 package model;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import view.GameViewController;
 
 import java.util.ArrayList;
@@ -16,7 +19,8 @@ public class Game {
     private  ArrayList<Tank> tanks;
     private ArrayList<Truck> trucks;
     private ArrayList<Tree> trees;
-    private final Building building;
+    private ArrayList<Bomb> bombs;
+    private Building building;
     private Stronghold stronghold;
     private int numberOfTanks, numberOfTrucks;
 
@@ -44,6 +48,7 @@ public class Game {
             int treeX = random.nextInt((int) (gameViewController.scene.getWidth() - 90)) + 20;
             trees.add(new Tree(this, treeX));
         }
+        bombs = new ArrayList<>();
     }
 
     public void addComponents() {
@@ -88,12 +93,62 @@ public class Game {
         gameViewController.addChild(truck);
         numberOfTrucks--;
     }
-
     public int getNumberOfTanks() {
         return numberOfTanks;
     }
 
     public int getNumberOfTrucks() {
         return numberOfTrucks;
+    }
+
+    public void addBomb(Bomb bomb) {
+        bombs.add(bomb);
+        gameViewController.addChild(bomb);
+        Timeline bombTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> bomb.move()));
+        bombTimeline.setCycleCount(Timeline.INDEFINITE);
+        bombTimeline.play();
+        bomb.setTimeline(bombTimeline);
+    }
+    public ArrayList<Tank> getTanks() {
+        return tanks;
+    }
+    public ArrayList<Truck> getTrucks() {
+        return trucks;
+    }
+    public ArrayList<Tree> getTrees() {
+        return trees;
+    }
+    public Building getBuilding() {
+        return building;
+    }
+    public Stronghold getStronghold() {
+        return stronghold;
+    }
+    public void removeTank(Tank tank) {
+        tanks.remove(tank);
+        gameViewController.removeChild(tank);
+    }
+    public void removeTruck(Truck truck) {
+        trucks.remove(truck);
+        gameViewController.removeChild(truck);
+    }
+    public void removeTree(Tree tree) {
+        trees.remove(tree);
+        gameViewController.removeChild(tree);
+    }
+    public void removeBuilding() {
+        gameViewController.removeChild(building);
+        building = null;
+    }
+    public void removeStronghold() {
+        gameViewController.removeChild(stronghold);
+        stronghold = null;
+    }
+    public void removeBomb(Bomb bomb) {
+        bombs.remove(bomb);
+        gameViewController.removeChild(bomb);
+    }
+    public int getScore() {
+        return score;
     }
 }

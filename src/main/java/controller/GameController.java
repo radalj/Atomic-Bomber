@@ -12,13 +12,16 @@ import java.util.Random;
 public class GameController {
     private Game game;
     private GameViewController gameViewController;
-    private Timeline timeline, tankTimeline;
+    private Timeline planeTimeline, tankTimeline;
     private Random random = new Random();
     public void start() {
         gameViewController = new GameViewController();
         gameViewController.start();
         game = new Game(User.getCurrentUser().getDifficulty(), gameViewController);
-        timeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
+
+        planeTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
+        planeTimeline.setCycleCount(Timeline.INDEFINITE);
+        planeTimeline.play();
         tankTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(4), e -> {
                     boolean tankOrTruck = random.nextBoolean();
@@ -31,11 +34,9 @@ public class GameController {
                         game.addTruck(truck);
                     }
                 }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
         tankTimeline.setCycleCount(Timeline.INDEFINITE);
-        game.addComponents();
-        timeline.play();
         tankTimeline.play();
+        game.addComponents();
         boolean arrowKeys = ApplicationController.getArrowKeys();
 
         gameViewController.scene.setOnKeyPressed(e -> {
@@ -50,6 +51,10 @@ public class GameController {
             }
             if ((e.getCode() == KeyCode.RIGHT && arrowKeys) || (e.getCode() == KeyCode.D && !arrowKeys)) {
                 game.getPlane().changeDirRight();
+            }
+            if (e.getCode() == KeyCode.SPACE) {
+                Bomb bomb = new Bomb(game, (int) game.getPlane().getX(), (int) game.getPlane().getY() , game.getPlane().getVx(), game.getPlane().getVy() , 40, 20);
+                game.addBomb(bomb);
             }
         });
     }

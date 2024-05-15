@@ -5,7 +5,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class Plane extends Rectangle {
-    public static final double MAXSPEED = 2.5;
+    public static final double MAXSPEED = 2.2;
     private final double width = 120;
     private final double height = 120;
     private double vx, vy;
@@ -85,5 +85,13 @@ public class Plane extends Rectangle {
         } else {
             setScaleY(1);
         }
+    }
+
+    public double getVx() {
+        return vx;
+    }
+
+    public double getVy() {
+        return vy;
     }
 }
