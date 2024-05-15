@@ -16,10 +16,6 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 public class RegisterMenuViewController extends Application {
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private TextField passwordField;
     public static Scene scene;
     private RegisterMenuController registerMenuController = new RegisterMenuController();
     public static void run(String[] args) {
@@ -41,22 +37,6 @@ public class RegisterMenuViewController extends Application {
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
         ApplicationController.setScene(scene);
-    }
-
-    public void register() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        registerMenuController.register(username, password);
-    }
-
-    public void signIn() {
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        registerMenuController.signIn(username, password);
-    }
-
-    public void enterAsGuest() {
-        registerMenuController.enterAsGuest();
     }
 
     public static void makeAlert(String title, String header, String content, String type) {

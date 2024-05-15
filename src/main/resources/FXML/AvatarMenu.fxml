@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AvatarMenuViewController">
+<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AvatarMenuController">
    <children>
       <ImageView fx:id="avatarImage" fitHeight="261.0" fitWidth="256.0" layoutX="309.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>

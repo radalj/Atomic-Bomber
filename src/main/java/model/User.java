@@ -17,6 +17,7 @@ public class User {
     private double accuracy;
 
     public User(String username, String password) {
+
         this.username = username;
         this.password = password;
         String path = "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/woman1.jpg";
@@ -26,12 +27,14 @@ public class User {
         difficultyKills = 0;
         accuracy = 0;
         wave = 0;
+        addUser(this);
     }
     public static ArrayList<User> getUsers() {
         return users;
     }
 
     public static void addUser(User user) {
+        System.err.println("User added: " + user.getUsername());
         users.add(user);
     }
     public static User getUser(String username) {

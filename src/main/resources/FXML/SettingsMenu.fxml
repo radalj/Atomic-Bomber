@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsMenuController">
+    <Button layoutX="5" layoutY="5" alignment="CENTER" prefWidth="75" text="Back" onAction="#Back" />
+    <VBox alignment="CENTER" layoutX="400" layoutY="250" prefWidth="400" spacing="30">
+        <HBox alignment="CENTER" spacing="20">
+            <ChoiceBox fx:id="Difficulty" prefWidth="200.0" />
+            <Label contentDisplay="CENTER" text="Difficulty" textAlignment="CENTER" textFill="#e4e4e4" textOverrun="CLIP">
+                <font>
+                    <Font name="DejaVu Serif Bold" size="16.0" />
+                </font>
+            </Label>
+        </HBox>
+        <Pane>
+            <CheckBox fx:id="Sound" alignment="CENTER" layoutX="142.0" layoutY="1.0" textAlignment="CENTER" />
+            <Label contentDisplay="CENTER" layoutX="279.0" layoutY="-1.0" text="Sound" textAlignment="CENTER" textFill="#e4e4e4" textOverrun="CLIP">
+                <font>
+                    <Font name="DejaVu Serif Bold" size="16.0" />
+                </font>
+            </Label>
+        </Pane>
+        <Pane>
+            <CheckBox fx:id="GrayScale" alignment="CENTER" layoutX="142.0" layoutY="1.0" textAlignment="CENTER" />
+            <Label contentDisplay="CENTER" layoutX="262.0" text="GrayScale" textAlignment="CENTER" textFill="#e4e4e4" textOverrun="CLIP">
+                <font>
+                    <Font name="DejaVu Serif Bold" size="16.0" />
+                </font>
+            </Label>
+        </Pane>
+        <Pane>
+            <CheckBox fx:id="controls" alignment="CENTER" layoutX="142.0" layoutY="1.0" textAlignment="CENTER" />
+            <Label contentDisplay="CENTER" layoutX="255.0" text="Arrow Keys" textAlignment="CENTER" textFill="#e4e4e4" textOverrun="CLIP">
+                <font>
+                    <Font name="DejaVu Serif Bold" size="16.0" />
+                </font>
+            </Label>
+        </Pane>
+    </VBox>
+</Pane>

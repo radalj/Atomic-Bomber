@@ -1,13 +1,20 @@
 package controller;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import model.User;
-import view.MainMenuViewController;
-import view.ProfileMenuViewController;
 import view.RegisterMenuViewController;
 
 public class RegisterMenuController {
-    MainMenuViewController mainMenuViewController = new MainMenuViewController();
-    public void register(String username, String password) {
+    MainMenuController mainMenuController = new MainMenuController();
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField passwordField;
+
+    public void register() {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
         if (User.getUser(username) != null) {
             RegisterMenuViewController.makeAlert("User Already Exists", "User Already Exists", "User with username " + username + " already exists.", "WARNING");
             return;
@@ -16,10 +23,13 @@ public class RegisterMenuController {
             RegisterMenuViewController.makeAlert("Password Empty", "Password Empty", "Password cannot be empty.", "WARNING");
             return;
         }
-        User.addUser(new User(username, password));
+        new User(username, password);
         RegisterMenuViewController.makeAlert("User Registered", "User Registered", "User with username " + username + " registered successfully.", "INFORMATION");
     }
-    public void signIn(String username, String password) {
+
+    public void signIn() {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
         User user = User.getUser(username);
         if (user == null) {
             RegisterMenuViewController.makeAlert("User Not Found", "User Not Found", "User with username " + username + " not found.", "WARNING");
@@ -30,11 +40,12 @@ public class RegisterMenuController {
             return;
         }
         User.setCurrentUser(user);
-        mainMenuViewController.start();
+        mainMenuController.start();
     }
+
     public void enterAsGuest() {
         User.setCurrentUser(new User("Guest_" + User.getGuestNumber(), "password"));
         User.increaseGuestNumber();
-        mainMenuViewController.start();
+        mainMenuController.start();
     }
 }

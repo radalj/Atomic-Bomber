@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuViewController">
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<Pane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainMenuController">
     <children>
         <ImageView fx:id="avatar" fitHeight="200" fitWidth="200" layoutX="265.0" layoutY="250.0">
             <image>
-                <Image url="@../images/avatars/man1.jpg" />
+                <Image url="@../images/avatars/man1.jpg"/>
             </image>
         </ImageView>
-        <Label fx:id="usernameText" alignment="CENTER" layoutX="291.0" layoutY="472.0" prefHeight="21.0" prefWidth="148.0" text="Username" textAlignment="CENTER" textFill="WHITE">
+        <Label fx:id="usernameText" alignment="CENTER" layoutX="291.0" layoutY="472.0" prefHeight="21.0"
+               prefWidth="148.0" text="Username" textAlignment="CENTER" textFill="WHITE">
             <font>
-                <Font name="DejaVu Serif Bold" size="18.0" />
+                <Font name="DejaVu Serif Bold" size="18.0"/>
             </font>
         </Label>
         <VBox alignment="CENTER" layoutX="600.0" layoutY="210.0" spacing="10">
-            <Button fx:id="newGame" onAction="#newGame" prefHeight="40" prefWidth="250.0" text="New Game" />
-            <Button fx:id="resumeGame" onAction="#resumeGame" prefHeight="40" prefWidth="250" text="Resume Game" />
-            <Button fx:id="profile" onAction="#profile" prefHeight="40" prefWidth="250" text="Profile" />
-            <Button fx:id="leaderboard" onAction="#leaderboard" prefHeight="40" prefWidth="250" text="Leaderboard" />
-            <Button fx:id="settings" onAction="#settings" prefHeight="40" prefWidth="250" text="Settings" />
-            <Button fx:id="exit" onAction="#exit" prefHeight="40" prefWidth="250" text="Exit" />
+            <Button fx:id="newGame" onAction="#newGame" prefHeight="40" prefWidth="250.0" text="New Game"/>
+            <Button fx:id="resumeGame" onAction="#resumeGame" prefHeight="40" prefWidth="250" text="Resume Game"/>
+            <Button fx:id="profile" onAction="#profile" prefHeight="40" prefWidth="250" text="Profile"/>
+            <Button fx:id="leaderboard" onAction="#leaderboard" prefHeight="40" prefWidth="250" text="Leaderboard"/>
+            <Button fx:id="settings" onAction="#settings" prefHeight="40" prefWidth="250" text="Settings"/>
+            <Button fx:id="exit" onAction="#exit" prefHeight="40" prefWidth="250" text="Exit"/>
         </VBox>
     </children>
 </Pane>

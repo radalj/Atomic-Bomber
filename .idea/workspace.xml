@@ -5,20 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Ranking added">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/game.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sounds/game2.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/SettingsMenuViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/FXML/SettingsMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/AvatarMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/AvatarMenuViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenuViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AvatarMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AvatarMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RegisterMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RegisterMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/AvatarMenuViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenuViewController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/ProfileMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ProfileMenuViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/RankingViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RankingViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ApplicationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ApplicationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/AvatarMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/AvatarMenuViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/MainMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/MainMenuViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/RankingViewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegisterMenuViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/AvatarMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/AvatarMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/MainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/ProfileMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/Ranking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/Ranking.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/RegisterMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/RegisterMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FXML/AvatarMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/AvatarMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FXML/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/MainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FXML/ProfileMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/ProfileMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FXML/Ranking.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/Ranking.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/FXML/RegisterMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/FXML/RegisterMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/AvatarMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/AvatarMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ProfileMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ProfileMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/RankingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/RankingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/RegisterMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/RegisterMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/AvatarMenuViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/MainMenuViewController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/ProfileMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ProfileMenuViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/RankingViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/RankingViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/RankingViewController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/RankingViewController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/RegisterMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/RegisterMenuViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,25 +72,26 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.Main" />
@@ -104,6 +128,7 @@
       <workItem from="1715697731727" duration="1641000" />
       <workItem from="1715699379530" duration="313000" />
       <workItem from="1715699870082" duration="673000" />
+      <workItem from="1715707437815" duration="4396000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />

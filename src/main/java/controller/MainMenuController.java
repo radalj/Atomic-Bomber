@@ -1,6 +1,5 @@
-package view;
+package controller;
 
-import controller.ApplicationController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,19 +8,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import model.User;
+import view.Main;
 
 import java.net.URL;
 
-public class MainMenuViewController {
+public class MainMenuController {
     public static Scene scene;
     @FXML
     private ImageView avatar;
     @FXML
     private Label usernameText;
-    private ProfileMenuViewController profileMenuViewController;
-    private RankingViewController rankingViewController;
+    private ProfileMenuController profileMenuController;
+    private RankingController rankingController;
+
     public void start() {
         URL url = Main.class.getResource("/FXML/MainMenu.fxml");
         assert url != null;
@@ -35,13 +35,15 @@ public class MainMenuViewController {
         scene.getStylesheets().add(getClass().getResource("/CSS/styles.css").toExternalForm());
         ApplicationController.setScene(scene);
     }
-    public void initialize(){
+
+    public void initialize() {
         ApplicationController.playMusic();
         avatar.setImage(User.getCurrentUser().getImage());
         usernameText.setText(User.getCurrentUser().getUsername());
-        profileMenuViewController = new ProfileMenuViewController();
-        rankingViewController = new RankingViewController();
+        profileMenuController = new ProfileMenuController();
+        rankingController = new RankingController();
     }
+
     public void newGame(ActionEvent actionEvent) {
     }
 
@@ -49,12 +51,12 @@ public class MainMenuViewController {
     }
 
     public void profile(ActionEvent actionEvent) {
-        profileMenuViewController.start();
+        profileMenuController.start();
     }
 
     public void leaderboard(ActionEvent actionEvent) {
         try {
-            rankingViewController.start();
+            rankingController.start();
         } catch (Exception e) {
             System.err.println(e.getMessage());
             System.err.println("fad");
