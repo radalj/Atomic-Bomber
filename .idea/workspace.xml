@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Static Object added">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/bomb.png" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Simple Bomb added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/AtomicBomb.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/AtomicIcon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/atomic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/atomicicon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bomb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Game/Bomb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bomb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Plane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +129,11 @@
       <workItem from="1715707437815" duration="7673000" />
       <workItem from="1715763199317" duration="3625000" />
       <workItem from="1715768422864" duration="4447000" />
-      <workItem from="1715799317461" duration="14751000" />
+      <workItem from="1715799317461" duration="14972000" />
+      <workItem from="1715897168365" duration="1261000" />
+      <workItem from="1715898439261" duration="740000" />
+      <workItem from="1715899186634" duration="446000" />
+      <workItem from="1715973174496" duration="3487000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -184,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715811991932</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Simple Bomb added">
+      <option name="closed" value="true" />
+      <created>1715815658271</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715815658271</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +225,8 @@
     <MESSAGE value="Plane rotation completed" />
     <MESSAGE value="Tank and Trucks added" />
     <MESSAGE value="Static Object added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Static Object added" />
+    <MESSAGE value="Simple Bomb added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple Bomb added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

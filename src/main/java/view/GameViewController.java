@@ -3,10 +3,7 @@ package view;
 import controller.ApplicationController;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import model.Bomb;
-import model.Plane;
-import model.StaticObjects;
-import model.Vehicle;
+import model.*;
 
 public class GameViewController {
     private Pane root;
@@ -44,16 +41,28 @@ public class GameViewController {
         refreshScene();
     }
 
+    public void addChild(AtomicIcon atomicIcon) {
+        root.getChildren().add(atomicIcon);
+        refreshScene();
+    }
+
     public void removeChild(Vehicle vehicle) {
         root.getChildren().remove(vehicle);
         refreshScene();
     }
+
     public void removeChild(StaticObjects staticObject) {
         root.getChildren().remove(staticObject);
         refreshScene();
     }
+
     public void removeChild(Bomb bomb) {
         root.getChildren().remove(bomb);
+        refreshScene();
+    }
+
+    public void removeChild(AtomicIcon atomicIcon) {
+        root.getChildren().remove(atomicIcon);
         refreshScene();
     }
 

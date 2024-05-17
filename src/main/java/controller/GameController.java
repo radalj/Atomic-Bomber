@@ -14,6 +14,7 @@ public class GameController {
     private GameViewController gameViewController;
     private Timeline planeTimeline, tankTimeline;
     private Random random = new Random();
+
     public void start() {
         gameViewController = new GameViewController();
         gameViewController.start();
@@ -28,8 +29,7 @@ public class GameController {
                     if (game.getNumberOfTanks() > 0 && (tankOrTruck || game.getNumberOfTrucks() == 0)) {
                         Tank tank = new Tank(game, random.nextBoolean());
                         game.addTank(tank);
-                    }
-                    else if (game.getNumberOfTrucks() > 0) {
+                    } else if (game.getNumberOfTrucks() > 0) {
                         Truck truck = new Truck(game, random.nextBoolean());
                         game.addTruck(truck);
                     }
@@ -53,8 +53,13 @@ public class GameController {
                 game.getPlane().changeDirRight();
             }
             if (e.getCode() == KeyCode.SPACE) {
-                Bomb bomb = new Bomb(game, (int) game.getPlane().getX(), (int) game.getPlane().getY() , game.getPlane().getVx(), game.getPlane().getVy() , 40, 20);
+                Bomb bomb = new Bomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
                 game.addBomb(bomb);
+            }
+            if (e.getCode() == KeyCode.R && User.getCurrentUser().getRadioActiveBombs() > 0) {
+                AtomicBomb atomicBomb = new AtomicBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
+                game.addAtomicBomb(atomicBomb);
+                User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() - 1);
             }
         });
     }

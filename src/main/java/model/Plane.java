@@ -35,6 +35,14 @@ public class Plane extends Rectangle {
         }
         setX(getX() + vx);
         setY(getY() + vy);
+        checkIntersection();
+    }
+
+    private void checkIntersection() {
+        if (game.getAtomicIcon() != null && game.getAtomicIcon().getBoundsInParent().intersects(getBoundsInParent())) {
+            game.removeAtomicIcon();
+            User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() + 1);
+        }
     }
 
     public void changeDirUp() {

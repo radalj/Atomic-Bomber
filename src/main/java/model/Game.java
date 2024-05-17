@@ -1,8 +1,5 @@
 package model;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 import view.GameViewController;
 
 import java.util.ArrayList;
@@ -16,12 +13,14 @@ public class Game {
     private final int kills;
     private final int wave;
     private final Plane plane;
-    private  ArrayList<Tank> tanks;
+    private ArrayList<Tank> tanks;
     private ArrayList<Truck> trucks;
     private ArrayList<Tree> trees;
     private ArrayList<Bomb> bombs;
+    private ArrayList<AtomicBomb> atomicBombs;
     private Building building;
     private Stronghold stronghold;
+    private AtomicIcon atomicIcon;
     private int numberOfTanks, numberOfTrucks;
 
     public Game(int difficulty, GameViewController gameViewController) {
@@ -49,6 +48,8 @@ public class Game {
             trees.add(new Tree(this, treeX));
         }
         bombs = new ArrayList<>();
+        atomicBombs = new ArrayList<>();
+        atomicIcon = null;
     }
 
     public void addComponents() {
@@ -67,6 +68,17 @@ public class Game {
         }
         for (Truck truck : trucks) {
             truck.move();
+        }
+        for (int i = 0; i < bombs.size(); i++) {
+            Bomb bomb = bombs.get(i);
+            if (!bomb.move()) i--;
+        }
+        for (int i = 0; i < atomicBombs.size(); i++) {
+            AtomicBomb atomicBomb = atomicBombs.get(i);
+            if (!atomicBomb.move()) i--;
+        }
+        if (atomicIcon != null) {
+            atomicIcon.move();
         }
     }
 
@@ -93,6 +105,7 @@ public class Game {
         gameViewController.addChild(truck);
         numberOfTrucks--;
     }
+
     public int getNumberOfTanks() {
         return numberOfTanks;
     }
@@ -104,51 +117,79 @@ public class Game {
     public void addBomb(Bomb bomb) {
         bombs.add(bomb);
         gameViewController.addChild(bomb);
-        Timeline bombTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> bomb.move()));
-        bombTimeline.setCycleCount(Timeline.INDEFINITE);
-        bombTimeline.play();
-        bomb.setTimeline(bombTimeline);
     }
+
+    public void addAtomicIcon(double x, double y) {
+        atomicIcon = new AtomicIcon(x, y);
+        gameViewController.addChild(atomicIcon);
+    }
+
+    public void addAtomicBomb(AtomicBomb atomicBomb) {
+        atomicBombs.add(atomicBomb);
+        gameViewController.addChild(atomicBomb);
+    }
+
     public ArrayList<Tank> getTanks() {
         return tanks;
     }
+
     public ArrayList<Truck> getTrucks() {
         return trucks;
     }
+
     public ArrayList<Tree> getTrees() {
         return trees;
     }
+
     public Building getBuilding() {
         return building;
     }
+
     public Stronghold getStronghold() {
         return stronghold;
     }
+
     public void removeTank(Tank tank) {
         tanks.remove(tank);
         gameViewController.removeChild(tank);
     }
+
     public void removeTruck(Truck truck) {
         trucks.remove(truck);
         gameViewController.removeChild(truck);
     }
+
     public void removeTree(Tree tree) {
         trees.remove(tree);
         gameViewController.removeChild(tree);
     }
+
     public void removeBuilding() {
         gameViewController.removeChild(building);
         building = null;
     }
+
     public void removeStronghold() {
         gameViewController.removeChild(stronghold);
         stronghold = null;
     }
+
     public void removeBomb(Bomb bomb) {
         bombs.remove(bomb);
+        atomicBombs.remove(bomb);
         gameViewController.removeChild(bomb);
     }
+
+    public void removeAtomicIcon() {
+        gameViewController.removeChild(atomicIcon);
+        atomicIcon = null;
+    }
+
     public int getScore() {
         return score;
+    }
+
+    public AtomicIcon getAtomicIcon() {
+        return atomicIcon;
     }
 }
