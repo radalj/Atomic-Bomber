@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import model.*;
 
 public class GameViewController {
@@ -89,6 +91,14 @@ public class GameViewController {
         root.getChildren().add(clusterIcon);
         refreshScene();
     }
+    public void addChild(Circle circle) {
+        root.getChildren().add(circle);
+        refreshScene();
+    }
+    public void addChild(Rectangle rectangle) {
+        root.getChildren().add(rectangle);
+        refreshScene();
+    }
 
     public void removeChild(Vehicle vehicle) {
         root.getChildren().remove(vehicle);
@@ -113,7 +123,14 @@ public class GameViewController {
         root.getChildren().remove(clusterIcon);
         refreshScene();
     }
-
+    public void removeChild(Circle circle) {
+        root.getChildren().remove(circle);
+        refreshScene();
+    }
+    public void removeChild(Rectangle rectangle) {
+        root.getChildren().remove(rectangle);
+        refreshScene();
+    }
     private void refreshScene() {
         scene.setRoot(root);
     }

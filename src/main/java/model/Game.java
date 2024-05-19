@@ -4,6 +4,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
+import javafx.scene.shape.Circle;
 import view.GameViewController;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Game {
     private final int difficulty;
     private final int score;
     private final int kills;
-    private final int wave;
+    private int wave;
     private final Plane plane;
     private ArrayList<Tank> tanks;
     private ArrayList<Truck> trucks;
@@ -24,11 +25,13 @@ public class Game {
     private ArrayList<AtomicBomb> atomicBombs;
     private ArrayList<ClusterBomb> clusterBombs;
     private ArrayList<ClusterBullet> clusterBullets;
+    private ArrayList<Circle> circles;
+    private ArrayList<TankBullet> tankBullets;
     private Building building;
     private Stronghold stronghold;
     private AtomicIcon atomicIcon;
     private ClusterIcon clusterIcon;
-    private int numberOfTanks, numberOfTrucks;
+    private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
     private int freezeLeft;
 
@@ -42,7 +45,22 @@ public class Game {
         wave = 1;
         numberOfTanks = 3;
         numberOfTrucks = 2;
+        numberOfShooterTanks = 0;
         plane = new Plane(this);
+        initiateWave();
+        bombs = new ArrayList<>();
+        atomicBombs = new ArrayList<>();
+        clusterBombs = new ArrayList<>();
+        clusterBullets = new ArrayList<>();
+        circles = new ArrayList<>();
+        tankBullets = new ArrayList<>();
+        atomicIcon = null;
+        clusterIcon = null;
+        freezePercentage = new SimpleDoubleProperty(0);
+        freezeLeft = 0;
+    }
+
+    private void initiateWave() {
         int buildingX = random.nextInt((int) (gameViewController.scene.getWidth() - 90)) + 20;
         building = new Building(this, buildingX);
         int strongholdX;
@@ -56,18 +74,11 @@ public class Game {
             int treeX = random.nextInt((int) (gameViewController.scene.getWidth() - 90)) + 20;
             trees.add(new Tree(this, treeX));
         }
-        bombs = new ArrayList<>();
-        atomicBombs = new ArrayList<>();
-        clusterBombs = new ArrayList<>();
-        clusterBullets = new ArrayList<>();
-        atomicIcon = null;
-        clusterIcon = null;
-        freezePercentage = new SimpleDoubleProperty(0);
-        freezeLeft = 0;
+        addComponents();
     }
 
     public void addComponents() {
-        gameViewController.addChild(plane);
+        if (wave == 1) gameViewController.addChild(plane);
         gameViewController.addChild(building);
         gameViewController.addChild(stronghold);
         for (Tree tree : trees) {
@@ -77,6 +88,14 @@ public class Game {
 
     public void update() {
         plane.move();
+        if (waveFinished()) {
+            wave++;
+            gameViewController.updateWave(wave);
+            numberOfTanks = 3 * wave;
+            numberOfTrucks = 2 * wave;
+            numberOfShooterTanks = 2;
+            initiateWave();
+        }
         for (int i = 0; i < bombs.size(); i++) {
             Bomb bomb = bombs.get(i);
             if (!bomb.move()) i--;
@@ -102,6 +121,10 @@ public class Game {
         }
         for (Truck truck : trucks) {
             truck.move();
+        }
+        for (int i = 0; i < tankBullets.size(); i++) {
+            TankBullet tankBullet = tankBullets.get(i);
+            if (!tankBullet.move()) i--;
         }
         if (atomicIcon != null) {
             if (!atomicIcon.move()) {
@@ -150,6 +173,10 @@ public class Game {
         return numberOfTrucks;
     }
 
+    public int getNumberOfShooterTanks() {
+        return numberOfShooterTanks;
+    }
+
     public void addBomb(Bomb bomb) {
         bombs.add(bomb);
         gameViewController.addChild(bomb);
@@ -159,7 +186,6 @@ public class Game {
         atomicIcon = new AtomicIcon(x, y);
         gameViewController.addChild(atomicIcon);
     }
-
     public void addAtomicBomb(AtomicBomb atomicBomb) {
         atomicBombs.add(atomicBomb);
         gameViewController.addChild(atomicBomb);
@@ -168,6 +194,7 @@ public class Game {
         clusterIcon = new ClusterIcon(x, y);
         gameViewController.addChild(clusterIcon);
     }
+
     public void addClusterBomb(ClusterBomb clusterBomb) {
         clusterBombs.add(clusterBomb);
         gameViewController.addChild(clusterBomb);
@@ -176,6 +203,22 @@ public class Game {
     public void addBullet(ClusterBullet clusterBullet) {
         gameViewController.addChild(clusterBullet);
         clusterBullets.add(clusterBullet);
+    }
+
+    public void addShooterTank(ShooterTank shooterTank) {
+        tanks.add(shooterTank);
+        gameViewController.addChild(shooterTank);
+        numberOfShooterTanks--;
+    }
+
+    public void addCircle(Circle circle) {
+        circles.add(circle);
+        gameViewController.addChild(circle);
+    }
+
+    public void addTankBullet(TankBullet bullet) {
+        tankBullets.add(bullet);
+        gameViewController.addChild(bullet);
     }
 
     public ArrayList<Tank> getTanks() {
@@ -201,8 +244,12 @@ public class Game {
     public void removeTank(Tank tank) {
         tanks.remove(tank);
         gameViewController.removeChild(tank);
+        if (tank instanceof ShooterTank) {
+            Circle circle = ((ShooterTank) tank).getCircle();
+            circles.remove(circle);
+            gameViewController.removeChild(circle);
+        }
     }
-
     public void removeTruck(Truck truck) {
         trucks.remove(truck);
         gameViewController.removeChild(truck);
@@ -222,6 +269,7 @@ public class Game {
         gameViewController.removeChild(stronghold);
         stronghold = null;
     }
+
     public void removeBomb(Bomb bomb) {
         bombs.remove(bomb);
         atomicBombs.remove(bomb);
@@ -239,7 +287,6 @@ public class Game {
         gameViewController.removeChild(clusterIcon);
         clusterIcon = null;
     }
-
     public int getScore() {
         return score;
     }
@@ -251,10 +298,10 @@ public class Game {
     public ClusterIcon getClusterIcon() {
         return clusterIcon;
     }
-
     public  DoubleProperty getFreezePercentageProperty() {
         return freezePercentage;
     }
+
     public void incrementFreezePercentage() {
         if (freezePercentage.get() + 0.2 <= 1.0)
             freezePercentage.set(freezePercentage.get() + 0.2);
@@ -265,5 +312,14 @@ public class Game {
     public void freeze() {
         freezePercentage.set(0.0);
         freezeLeft = 500;
+    }
+
+    public boolean waveFinished() {
+        return tanks.isEmpty() && trucks.isEmpty() && atomicBombs.isEmpty() && clusterBombs.isEmpty() && clusterBullets.isEmpty() && freezeLeft == 0 && building == null && stronghold == null;
+    }
+
+    public void removeTankBullet(TankBullet tankBullet) {
+        tankBullets.remove(tankBullet);
+        gameViewController.removeChild(tankBullet);
     }
 }
