@@ -1,5 +1,8 @@
 package model;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
 import view.GameViewController;
 
@@ -26,6 +29,8 @@ public class Game {
     private AtomicIcon atomicIcon;
     private ClusterIcon clusterIcon;
     private int numberOfTanks, numberOfTrucks;
+    private DoubleProperty freezePercentage;
+    private int freezeLeft;
 
     public Game(int difficulty, GameViewController gameViewController) {
         this.difficulty = difficulty;
@@ -57,6 +62,8 @@ public class Game {
         clusterBullets = new ArrayList<>();
         atomicIcon = null;
         clusterIcon = null;
+        freezePercentage = new SimpleDoubleProperty(0);
+        freezeLeft = 0;
     }
 
     public void addComponents() {
@@ -70,12 +77,6 @@ public class Game {
 
     public void update() {
         plane.move();
-        for (Tank tank : tanks) {
-            tank.move();
-        }
-        for (Truck truck : trucks) {
-            truck.move();
-        }
         for (int i = 0; i < bombs.size(); i++) {
             Bomb bomb = bombs.get(i);
             if (!bomb.move()) i--;
@@ -91,6 +92,16 @@ public class Game {
         for (int i = 0; i < clusterBullets.size(); i++) {
             ClusterBullet clusterBullet = clusterBullets.get(i);
             if (!clusterBullet.move()) i--;
+        }
+        if (freezeLeft > 0) {
+            freezeLeft--;
+            return;
+        }
+        for (Tank tank : tanks) {
+            tank.move();
+        }
+        for (Truck truck : trucks) {
+            truck.move();
         }
         if (atomicIcon != null) {
             if (!atomicIcon.move()) {
@@ -239,5 +250,20 @@ public class Game {
 
     public ClusterIcon getClusterIcon() {
         return clusterIcon;
+    }
+
+    public  DoubleProperty getFreezePercentageProperty() {
+        return freezePercentage;
+    }
+    public void incrementFreezePercentage() {
+        if (freezePercentage.get() + 0.2 <= 1.0)
+            freezePercentage.set(freezePercentage.get() + 0.2);
+        else
+            freezePercentage.set(1.0);
+    }
+
+    public void freeze() {
+        freezePercentage.set(0.0);
+        freezeLeft = 500;
     }
 }

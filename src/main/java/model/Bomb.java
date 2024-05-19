@@ -75,7 +75,8 @@ public class Bomb extends Rectangle {
         if (checkIntersection(building)) {
             game.addAtomicIcon(building.getX(), building.getY());
             game.removeBuilding();
-            User.getCurrentUser().setKills(User.getCurrentUser().getKills() + 1);
+            increaseKills(1);
+            game.incrementFreezePercentage();
         }
     }
 
@@ -86,7 +87,8 @@ public class Bomb extends Rectangle {
         if (checkIntersection(stronghold)) {
             game.addClusterIcon(stronghold.getX(), stronghold.getY());
             game.removeStronghold();
-            User.getCurrentUser().setKills(User.getCurrentUser().getKills() + 2);
+            increaseKills(2);
+            game.incrementFreezePercentage();
         }
     }
 
@@ -98,7 +100,8 @@ public class Bomb extends Rectangle {
             if (checkIntersection(tank)) {
                 game.removeTank(tank);
                 flag = true;
-                User.getCurrentUser().setKills(User.getCurrentUser().getKills() + 4);
+                increaseKills(4);
+                game.incrementFreezePercentage();
                 break;
             }
         }
@@ -114,7 +117,8 @@ public class Bomb extends Rectangle {
             if (checkIntersection(truck)) {
                 game.removeTruck(truck);
                 flag = true;
-                User.getCurrentUser().setKills(User.getCurrentUser().getKills() + 3);
+                increaseKills(3);
+                game.incrementFreezePercentage();
                 break;
             }
         }
@@ -150,5 +154,9 @@ public class Bomb extends Rectangle {
 
     public double getRadius() {
         return radius;
+    }
+    private void increaseKills (int num) {
+        User.getCurrentUser().setKills(User.getCurrentUser().getKills() + num);
+        game.getGameViewController().updateKillNumber(User.getCurrentUser().getKills());
     }
 }

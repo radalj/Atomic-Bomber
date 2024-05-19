@@ -2,6 +2,7 @@ package controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 import model.*;
@@ -19,6 +20,8 @@ public class GameController {
         gameViewController = new GameViewController();
         gameViewController.start();
         game = new Game(User.getCurrentUser().getDifficulty(), gameViewController);
+        User.getCurrentUser().setGame(game);
+        gameViewController.setUpFreezeProgressBar(game.getFreezePercentageProperty());
 
         planeTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
         planeTimeline.setCycleCount(Timeline.INDEFINITE);
@@ -65,6 +68,15 @@ public class GameController {
                 ClusterBomb clusterBomb = new ClusterBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
                 game.addClusterBomb(clusterBomb);
                 User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() - 1);
+            }
+            if (e.getCode() == KeyCode.TAB && game.getFreezePercentageProperty().get() == 1) {
+                game.freeze();
+            }
+            if (e.getCode() == KeyCode.G) {
+                User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() + 1);
+            }
+            if (e.getCode() == KeyCode.CONTROL) {
+                User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
             }
         });
     }
