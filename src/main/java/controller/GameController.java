@@ -30,8 +30,15 @@ public class GameController {
                 new KeyFrame(Duration.seconds(4), e -> {
                     boolean tankOrTruck = random.nextBoolean();
                     if (game.getNumberOfTanks() > 0 && (tankOrTruck || game.getNumberOfTrucks() == 0)) {
-                        Tank tank = new Tank(game, random.nextBoolean());
-                        game.addTank(tank);
+                        boolean shooter = random.nextBoolean();
+                        if (game.getNumberOfTanks() > 0 && (!shooter || game.getNumberOfShooterTanks() == 0)) {
+                            Tank tank = new Tank(game, random.nextBoolean());
+                            game.addTank(tank);
+                        }
+                        else if (game.getNumberOfShooterTanks() > 0) {
+                            ShooterTank shooterTank = new ShooterTank(game, random.nextBoolean());
+                            game.addShooterTank(shooterTank);
+                        }
                     } else if (game.getNumberOfTrucks() > 0) {
                         Truck truck = new Truck(game, random.nextBoolean());
                         game.addTruck(truck);
@@ -39,7 +46,7 @@ public class GameController {
                 }));
         tankTimeline.setCycleCount(Timeline.INDEFINITE);
         tankTimeline.play();
-        game.addComponents();
+        //game.addComponents();
         boolean arrowKeys = ApplicationController.getArrowKeys();
 
         gameViewController.scene.setOnKeyPressed(e -> {
