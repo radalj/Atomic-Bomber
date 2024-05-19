@@ -16,6 +16,7 @@ public class User {
     private double accuracy;
     private int difficulty;
     private int radioActiveBombs, clusterBombs;
+    private Game game;
 
     public User(String username, String password) {
         this.username = username;
@@ -30,6 +31,7 @@ public class User {
         difficulty = 1;
         radioActiveBombs = 0;
         clusterBombs = 0;
+        game = null;
         addUser(this);
     }
 
@@ -184,5 +186,6 @@ public class User {
 
     public void setClusterBombs(int clusterBombs) {
         this.clusterBombs = clusterBombs;
+
     }
 }

@@ -42,10 +42,12 @@ public class Plane extends Rectangle {
         if (game.getAtomicIcon() != null && game.getAtomicIcon().getBoundsInParent().intersects(getBoundsInParent())) {
             game.removeAtomicIcon();
             User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() + 1);
+            game.getGameViewController().updateAtomicNumber(User.getCurrentUser().getRadioActiveBombs());
         }
         if (game.getClusterIcon() != null && game.getClusterIcon().getBoundsInParent().intersects(getBoundsInParent())) {
             game.removeClusterIcon();
             User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
+            game.getGameViewController().updateClusterNumber(User.getCurrentUser().getClusterBombs());
         }
     }
 

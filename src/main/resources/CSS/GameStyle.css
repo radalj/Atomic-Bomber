@@ -2,3 +2,8 @@
     -fx-background-image: url('../../../src/main/resources/images/backgrounds/background_normal.jpg');
     -fx-background-size: cover;
 }
+.text-in-game {
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(255, 255, 255, 0.5);
+}

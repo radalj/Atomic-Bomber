@@ -2,6 +2,7 @@ package controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 import model.*;
@@ -19,6 +20,7 @@ public class GameController {
         gameViewController = new GameViewController();
         gameViewController.start();
         game = new Game(User.getCurrentUser().getDifficulty(), gameViewController);
+        gameViewController.setUpFreezeProgressBar(game.getFreezePercentageProperty());
 
         planeTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
         planeTimeline.setCycleCount(Timeline.INDEFINITE);
@@ -60,11 +62,16 @@ public class GameController {
                 AtomicBomb atomicBomb = new AtomicBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
                 game.addAtomicBomb(atomicBomb);
                 User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() - 1);
+                gameViewController.updateAtomicNumber(User.getCurrentUser().getRadioActiveBombs());
             }
             if (e.getCode() == KeyCode.C && User.getCurrentUser().getClusterBombs() > 0) {
                 ClusterBomb clusterBomb = new ClusterBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
                 game.addClusterBomb(clusterBomb);
                 User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() - 1);
+                gameViewController.updateClusterNumber(User.getCurrentUser().getClusterBombs());
+            }
+            if (e.getCode() == KeyCode.TAB && game.getFreezePercentageProperty().get() == 1) {
+                game.freeze();
             }
         });
     }
