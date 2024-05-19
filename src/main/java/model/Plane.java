@@ -43,6 +43,10 @@ public class Plane extends Rectangle {
             game.removeAtomicIcon();
             User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() + 1);
         }
+        if (game.getClusterIcon() != null && game.getClusterIcon().getBoundsInParent().intersects(getBoundsInParent())) {
+            game.removeClusterIcon();
+            User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
+        }
     }
 
     public void changeDirUp() {

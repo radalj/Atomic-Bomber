@@ -61,6 +61,11 @@ public class GameController {
                 game.addAtomicBomb(atomicBomb);
                 User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() - 1);
             }
+            if (e.getCode() == KeyCode.C && User.getCurrentUser().getClusterBombs() > 0) {
+                ClusterBomb clusterBomb = new ClusterBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
+                game.addClusterBomb(clusterBomb);
+                User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() - 1);
+            }
         });
     }
 }

@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Simple Bomb added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/AtomicBomb.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/AtomicIcon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/atomic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/atomicicon.png" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Atomic Bomb added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ClusterBomb.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ClusterBullet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ClusterIcon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/clusterbullet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/clustericon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bomb.java" afterDir="false" />
@@ -16,8 +17,12 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Plane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/AtomicBomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/AtomicBomb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/AtomicIcon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/AtomicIcon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bomb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Plane.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
@@ -133,7 +138,10 @@
       <workItem from="1715897168365" duration="1261000" />
       <workItem from="1715898439261" duration="740000" />
       <workItem from="1715899186634" duration="446000" />
-      <workItem from="1715973174496" duration="3487000" />
+      <workItem from="1715973174496" duration="6495000" />
+      <workItem from="1716027846082" duration="604000" />
+      <workItem from="1716108802647" duration="847000" />
+      <workItem from="1716117816986" duration="1165000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -199,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715815658271</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Atomic Bomb added">
+      <option name="closed" value="true" />
+      <created>1715976894675</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715976894675</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +242,8 @@
     <MESSAGE value="Tank and Trucks added" />
     <MESSAGE value="Static Object added" />
     <MESSAGE value="Simple Bomb added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simple Bomb added" />
+    <MESSAGE value="Atomic Bomb added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atomic Bomb added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -15,7 +15,7 @@ public class User {
     private int score, kills, difficultyKills, wave, rank;
     private double accuracy;
     private int difficulty;
-    private int radioActiveBombs;
+    private int radioActiveBombs, clusterBombs;
 
     public User(String username, String password) {
         this.username = username;
@@ -29,6 +29,7 @@ public class User {
         wave = 0;
         difficulty = 1;
         radioActiveBombs = 0;
+        clusterBombs = 0;
         addUser(this);
     }
 
@@ -175,5 +176,13 @@ public class User {
 
     public void setRadioActiveBombs(int radioActiveBombs) {
         this.radioActiveBombs = radioActiveBombs;
+    }
+
+    public int getClusterBombs() {
+        return clusterBombs;
+    }
+
+    public void setClusterBombs(int clusterBombs) {
+        this.clusterBombs = clusterBombs;
     }
 }

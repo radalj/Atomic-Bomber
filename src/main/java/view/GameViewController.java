@@ -45,6 +45,10 @@ public class GameViewController {
         root.getChildren().add(atomicIcon);
         refreshScene();
     }
+    public void addChild(ClusterIcon clusterIcon) {
+        root.getChildren().add(clusterIcon);
+        refreshScene();
+    }
 
     public void removeChild(Vehicle vehicle) {
         root.getChildren().remove(vehicle);
@@ -63,6 +67,10 @@ public class GameViewController {
 
     public void removeChild(AtomicIcon atomicIcon) {
         root.getChildren().remove(atomicIcon);
+        refreshScene();
+    }
+    public void removeChild(ClusterIcon clusterIcon) {
+        root.getChildren().remove(clusterIcon);
         refreshScene();
     }
 

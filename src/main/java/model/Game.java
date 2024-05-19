@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.Node;
 import view.GameViewController;
 
 import java.util.ArrayList;
@@ -18,9 +19,12 @@ public class Game {
     private ArrayList<Tree> trees;
     private ArrayList<Bomb> bombs;
     private ArrayList<AtomicBomb> atomicBombs;
+    private ArrayList<ClusterBomb> clusterBombs;
+    private ArrayList<ClusterBullet> clusterBullets;
     private Building building;
     private Stronghold stronghold;
     private AtomicIcon atomicIcon;
+    private ClusterIcon clusterIcon;
     private int numberOfTanks, numberOfTrucks;
 
     public Game(int difficulty, GameViewController gameViewController) {
@@ -49,7 +53,10 @@ public class Game {
         }
         bombs = new ArrayList<>();
         atomicBombs = new ArrayList<>();
+        clusterBombs = new ArrayList<>();
+        clusterBullets = new ArrayList<>();
         atomicIcon = null;
+        clusterIcon = null;
     }
 
     public void addComponents() {
@@ -77,8 +84,26 @@ public class Game {
             AtomicBomb atomicBomb = atomicBombs.get(i);
             if (!atomicBomb.move()) i--;
         }
+        for (int i = 0; i < clusterBombs.size(); i++) {
+            ClusterBomb clusterBomb = clusterBombs.get(i);
+            if (!clusterBomb.move()) i--;
+        }
+        for (int i = 0; i < clusterBullets.size(); i++) {
+            ClusterBullet clusterBullet = clusterBullets.get(i);
+            if (!clusterBullet.move()) i--;
+        }
         if (atomicIcon != null) {
-            atomicIcon.move();
+            if (!atomicIcon.move()) {
+                gameViewController.removeChild(atomicIcon);
+                atomicIcon = null;
+            }
+        }
+        if (clusterIcon != null) {
+            if (!clusterIcon.move()) {
+                System.err.println("Cluster bomb exploded");
+                gameViewController.removeChild(clusterIcon);
+                clusterIcon = null;
+            }
         }
     }
 
@@ -128,6 +153,19 @@ public class Game {
         atomicBombs.add(atomicBomb);
         gameViewController.addChild(atomicBomb);
     }
+    public void addClusterIcon(double x, double y) {
+        clusterIcon = new ClusterIcon(x, y);
+        gameViewController.addChild(clusterIcon);
+    }
+    public void addClusterBomb(ClusterBomb clusterBomb) {
+        clusterBombs.add(clusterBomb);
+        gameViewController.addChild(clusterBomb);
+    }
+
+    public void addBullet(ClusterBullet clusterBullet) {
+        gameViewController.addChild(clusterBullet);
+        clusterBullets.add(clusterBullet);
+    }
 
     public ArrayList<Tank> getTanks() {
         return tanks;
@@ -173,10 +211,11 @@ public class Game {
         gameViewController.removeChild(stronghold);
         stronghold = null;
     }
-
     public void removeBomb(Bomb bomb) {
         bombs.remove(bomb);
         atomicBombs.remove(bomb);
+        clusterBombs.remove(bomb);
+        clusterBullets.remove(bomb);
         gameViewController.removeChild(bomb);
     }
 
@@ -185,11 +224,20 @@ public class Game {
         atomicIcon = null;
     }
 
+    public void removeClusterIcon() {
+        gameViewController.removeChild(clusterIcon);
+        clusterIcon = null;
+    }
+
     public int getScore() {
         return score;
     }
 
     public AtomicIcon getAtomicIcon() {
         return atomicIcon;
+    }
+
+    public ClusterIcon getClusterIcon() {
+        return clusterIcon;
     }
 }

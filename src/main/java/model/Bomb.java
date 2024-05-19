@@ -84,6 +84,7 @@ public class Bomb extends Rectangle {
         if (stronghold == null)
             return;
         if (checkIntersection(stronghold)) {
+            game.addClusterIcon(stronghold.getX(), stronghold.getY());
             game.removeStronghold();
             User.getCurrentUser().setKills(User.getCurrentUser().getKills() + 2);
         }
