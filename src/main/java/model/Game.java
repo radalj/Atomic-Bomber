@@ -13,53 +13,39 @@ import java.util.Random;
 public class Game {
     private final GameViewController gameViewController;
     private final Random random = new Random();
-    private final int difficulty, score, kills;
-    private int wave;
+    private final int difficulty, score = 0, kills = 0;
+    private int wave = 1;
     private int timeLeftToMig = 0;
-    private final Plane plane;
-    private ArrayList<Tank> tanks;
-    private ArrayList<Truck> trucks;
-    private ArrayList<Tree> trees;
-    private ArrayList<Bomb> bombs;
-    private ArrayList<AtomicBomb> atomicBombs;
-    private ArrayList<ClusterBomb> clusterBombs;
-    private ArrayList<ClusterBullet> clusterBullets;
-    private ArrayList<Circle> circles;
-    private ArrayList<TankBullet> tankBullets;
+    private final Plane plane = new Plane(this);
+    private ArrayList<Tank> tanks = new ArrayList<>();
+    private ArrayList<BurningTank> burningTanks = new ArrayList<>();
+    private ArrayList<Truck> trucks = new ArrayList<>();
+    private ArrayList<BurningTruck> burningTrucks = new ArrayList<>();
+    private ArrayList<Tree> trees = new ArrayList<>();
+    private ArrayList<Bomb> bombs = new ArrayList<>();
+    private ArrayList<AtomicBomb> atomicBombs = new ArrayList<>();
+    private ArrayList<ClusterBomb> clusterBombs = new ArrayList<>();
+    private ArrayList<ClusterBullet> clusterBullets = new ArrayList<>();
+    private ArrayList<Circle> circles = new ArrayList<>();
+    private ArrayList<TankBullet> tankBullets = new ArrayList<>();
     private Building building;
     private Stronghold stronghold;
-    private AtomicIcon atomicIcon;
-    private ClusterIcon clusterIcon;
-    private Mig mig;
+    private AtomicIcon atomicIcon = null;
+    private ClusterIcon clusterIcon = null;
+    private Mig mig = null;
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
-    private int freezeLeft;
+    private int freezeLeft = 0;
     private ImageView frozenImage;
 
     public Game(int difficulty, GameViewController gameViewController) {
         this.difficulty = difficulty;
         this.gameViewController = gameViewController;
-        tanks = new ArrayList<>();
-        trucks = new ArrayList<>();
-        score = 0;
-        kills = 0;
-        wave = 1;
         numberOfTanks = 3;
         numberOfTrucks = 2;
         numberOfShooterTanks = 0;
-        plane = new Plane(this);
         initiateWave();
-        bombs = new ArrayList<>();
-        atomicBombs = new ArrayList<>();
-        clusterBombs = new ArrayList<>();
-        clusterBullets = new ArrayList<>();
-        circles = new ArrayList<>();
-        tankBullets = new ArrayList<>();
-        atomicIcon = null;
-        clusterIcon = null;
-        mig = null;
         freezePercentage = new SimpleDoubleProperty(0);
-        freezeLeft = 0;
         frozenImage = new ImageView(new Image(getClass().getResourceAsStream("/images/backgrounds/frozen.png")));
         gameViewController.setFrozenImage(frozenImage);
     }
@@ -127,6 +113,22 @@ public class Game {
         if (freezeLeft > 0) {
             freezeLeft--;
             return;
+        }
+        for (int i = 0; i < burningTanks.size(); i++) {
+            BurningTank burningTank = burningTanks.get(i);
+            if (burningTank.burn()) {
+                gameViewController.removeChild(burningTank);
+                burningTanks.remove(burningTank);
+                i--;
+            }
+        }
+        for (int i = 0; i < burningTrucks.size(); i++) {
+            BurningTruck burningTruck = burningTrucks.get(i);
+            if (burningTruck.burn()) {
+                gameViewController.removeChild(burningTruck);
+                burningTrucks.remove(burningTruck);
+                i--;
+            }
         }
         if (timeLeftToMig > 0 && mig == null) timeLeftToMig--;
         for (Tank tank : tanks) {
@@ -240,6 +242,15 @@ public class Game {
         gameViewController.addChild(bullet);
     }
 
+    public void addBurningTank(BurningTank burningTank) {
+        burningTanks.add(burningTank);
+        gameViewController.addChild(burningTank);
+    }
+    public void addBurningTruck(BurningTruck burningTruck) {
+        burningTrucks.add(burningTruck);
+        gameViewController.addChild(burningTruck);
+    }
+
     public ArrayList<Tank> getTanks() {
         return tanks;
     }
@@ -317,11 +328,11 @@ public class Game {
         gameViewController.removeChild(mig);
         this.mig = null;
     }
-
     public void removeCircle(Circle circle) {
         circles.remove(circle);
         gameViewController.removeChild(circle);
     }
+
     public int getScore() {
         return score;
     }
@@ -364,13 +375,14 @@ public class Game {
         freezeLeft = 500;
         gameViewController.showFrozenImage();
     }
-
     private void unFreeze() {
         gameViewController.disableFrozenImage();
     }
+
     public boolean waveFinished() {
         return tanks.isEmpty() && trucks.isEmpty() && atomicBombs.isEmpty() && clusterBombs.isEmpty() && clusterBullets.isEmpty()
-                && tankBullets.isEmpty() && freezeLeft == 0 && building == null && stronghold == null && atomicIcon == null && clusterIcon == null && mig == null && circles.isEmpty() && numberOfTanks == 0 && numberOfTrucks == 0 && numberOfShooterTanks == 0;
+                && tankBullets.isEmpty() && freezeLeft == 0 && building == null && stronghold == null && atomicIcon == null && clusterIcon == null && mig == null
+                && circles.isEmpty() && burningTanks.isEmpty() && burningTrucks.isEmpty() && numberOfTanks == 0 && numberOfTrucks == 0 && numberOfShooterTanks == 0;
     }
 
     public int getTimeLeftToMig() {

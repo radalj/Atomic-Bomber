@@ -99,6 +99,9 @@ public class Bomb extends Rectangle {
         for (Tank tank : tanks) {
             if (checkIntersection(tank)) {
                 game.removeTank(tank);
+                BurningTank burningTank = new BurningTank (tank.getX(), tank.getY());
+                burningTank.setScaleX(tank.getScaleX());
+                game.addBurningTank(burningTank);
                 flag = true;
                 increaseKills(4);
                 game.incrementFreezePercentage();
@@ -116,6 +119,9 @@ public class Bomb extends Rectangle {
         for (Truck truck : trucks) {
             if (checkIntersection(truck)) {
                 game.removeTruck(truck);
+                BurningTruck burningTruck = new BurningTruck(truck.getX(), truck.getY());
+                burningTruck.setScaleX(truck.getScaleX());
+                game.addBurningTruck(burningTruck);
                 flag = true;
                 increaseKills(3);
                 game.incrementFreezePercentage();

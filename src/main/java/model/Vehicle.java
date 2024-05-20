@@ -4,7 +4,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Vehicle extends Rectangle {
     protected final double BasicSpeed = 0.5;
-    protected final double width = 100, height = 100;
+    protected final double width = 70, height = 70;
     protected double vx, vy;
     protected Game game;
 
