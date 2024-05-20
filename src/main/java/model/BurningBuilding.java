@@ -4,12 +4,12 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
-public class BurningTruck extends Rectangle {
+public class BurningBuilding extends Rectangle {
     private int timeLeftToBurn = 100;
 
-    public BurningTruck(double x, double y) {
-        super(x, y, 70, 70);
-        setFill(new ImagePattern(new Image(BurningTruck.class.getResource("/images/Game/burningtruck.png").toExternalForm())));
+    public BurningBuilding(double x, double y) {
+        super(x, y, 100, 180);
+        setFill(new ImagePattern(new Image(BurningBuilding.class.getResource("/images/Game/burningbuilding.png").toExternalForm())));
     }
 
     public boolean burn() {

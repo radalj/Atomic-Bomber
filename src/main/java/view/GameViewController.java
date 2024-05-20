@@ -6,7 +6,6 @@ import javafx.beans.property.DoubleProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -49,21 +48,26 @@ public class GameViewController {
     private void setPaneSize() {
         root.setPrefSize(ApplicationController.getStage().getWidth(), ApplicationController.getStage().getHeight());
     }
+
     public void setUpFreezeProgressBar(DoubleProperty freezePercentage) {
         freezeProgressBar = new ProgressBar();
         freezeProgressBar.progressProperty().bind(freezePercentage);
         freezeProgressBar.setPrefSize(200, 20);
         root.getChildren().add(freezeProgressBar);
     }
+
     public void updateKillNumber(int kills) {
         killNumber.setText("Kills : " + kills);
     }
+
     public void updateAtomicNumber(int atomic) {
         Atomics.setText("Atomic Bombs : " + atomic);
     }
+
     public void updateClusterNumber(int cluster) {
         Clusters.setText("Cluster Bombs : " + cluster);
     }
+
     public void updateWave(int wave) {
         Wave.setText("Wave : " + wave);
     }
@@ -92,18 +96,22 @@ public class GameViewController {
         root.getChildren().add(atomicIcon);
         refreshScene();
     }
+
     public void addChild(ClusterIcon clusterIcon) {
         root.getChildren().add(clusterIcon);
         refreshScene();
     }
+
     public void addChild(Circle circle) {
         root.getChildren().add(circle);
         refreshScene();
     }
+
     public void addChild(Rectangle rectangle) {
         root.getChildren().add(rectangle);
         refreshScene();
     }
+
     public void addChild(ImageView imageView) {
         root.getChildren().add(imageView);
         refreshScene();
@@ -128,21 +136,26 @@ public class GameViewController {
         root.getChildren().remove(atomicIcon);
         refreshScene();
     }
+
     public void removeChild(ClusterIcon clusterIcon) {
         root.getChildren().remove(clusterIcon);
         refreshScene();
     }
+
     public void removeChild(Circle circle) {
         root.getChildren().remove(circle);
         refreshScene();
     }
+
     public void removeChild(Rectangle rectangle) {
         root.getChildren().remove(rectangle);
         refreshScene();
     }
+
     private void refreshScene() {
         scene.setRoot(root);
     }
+
     public void setFrozenImage(ImageView frozenImage) {
         this.frozenImage = frozenImage;
         frozenImage.setFitWidth(ApplicationController.getStage().getWidth());
@@ -150,6 +163,7 @@ public class GameViewController {
         frozenImage.setOpacity(0);
         root.getChildren().add(frozenImage);
     }
+
     public void showFrozenImage() {
         //frozenImage.setVisible(true);
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(1000), frozenImage);

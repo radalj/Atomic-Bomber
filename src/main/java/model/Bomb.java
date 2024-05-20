@@ -66,6 +66,8 @@ public class Bomb extends Rectangle {
         collisionWithTruck();
         collisionWithTree();
         game.removeBomb(this);
+        Explosion explosion = new Explosion(getX(), getY());
+        game.addExplosion(explosion);
     }
 
     protected void collisionWithBuilding() {
@@ -75,6 +77,8 @@ public class Bomb extends Rectangle {
         if (checkIntersection(building)) {
             game.addAtomicIcon(building.getX(), building.getY());
             game.removeBuilding();
+            BurningBuilding burningBuilding = new BurningBuilding(building.getX(), building.getY());
+            game.addBurningBuilding(burningBuilding);
             increaseKills(1);
             game.incrementFreezePercentage();
         }
@@ -87,6 +91,8 @@ public class Bomb extends Rectangle {
         if (checkIntersection(stronghold)) {
             game.addClusterIcon(stronghold.getX(), stronghold.getY());
             game.removeStronghold();
+            BurningStronghold burningStronghold = new BurningStronghold(stronghold.getX(), stronghold.getY());
+            game.addBurningStronghold(burningStronghold);
             increaseKills(2);
             game.incrementFreezePercentage();
         }
@@ -99,7 +105,7 @@ public class Bomb extends Rectangle {
         for (Tank tank : tanks) {
             if (checkIntersection(tank)) {
                 game.removeTank(tank);
-                BurningTank burningTank = new BurningTank (tank.getX(), tank.getY());
+                BurningTank burningTank = new BurningTank(tank.getX(), tank.getY());
                 burningTank.setScaleX(tank.getScaleX());
                 game.addBurningTank(burningTank);
                 flag = true;
@@ -161,7 +167,8 @@ public class Bomb extends Rectangle {
     public double getRadius() {
         return radius;
     }
-    private void increaseKills (int num) {
+
+    private void increaseKills(int num) {
         User.getCurrentUser().setKills(User.getCurrentUser().getKills() + num);
         game.getGameViewController().updateKillNumber(User.getCurrentUser().getKills());
     }

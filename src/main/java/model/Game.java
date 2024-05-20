@@ -28,10 +28,13 @@ public class Game {
     private ArrayList<ClusterBullet> clusterBullets = new ArrayList<>();
     private ArrayList<Circle> circles = new ArrayList<>();
     private ArrayList<TankBullet> tankBullets = new ArrayList<>();
+    private ArrayList<Explosion> explosions = new ArrayList<>();
     private Building building;
     private Stronghold stronghold;
     private AtomicIcon atomicIcon = null;
     private ClusterIcon clusterIcon = null;
+    private BurningBuilding burningBuilding = null;
+    private BurningStronghold burningStronghold = null;
     private Mig mig = null;
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
@@ -105,6 +108,14 @@ public class Game {
             ClusterBullet clusterBullet = clusterBullets.get(i);
             if (!clusterBullet.move()) i--;
         }
+        for (int i = 0; i < explosions.size(); i++) {
+            Explosion explosion = explosions.get(i);
+            if (explosion.disappear()) {
+                gameViewController.removeChild(explosion);
+                explosions.remove(explosion);
+                i--;
+            }
+        }
         if (freezeLeft == 100) {
             unFreeze();
             freezeLeft--;
@@ -128,6 +139,18 @@ public class Game {
                 gameViewController.removeChild(burningTruck);
                 burningTrucks.remove(burningTruck);
                 i--;
+            }
+        }
+        if (burningBuilding != null) {
+            if (burningBuilding.burn()) {
+                gameViewController.removeChild(burningBuilding);
+                burningBuilding = null;
+            }
+        }
+        if (burningStronghold != null) {
+            if (burningStronghold.burn()) {
+                gameViewController.removeChild(burningStronghold);
+                burningStronghold = null;
             }
         }
         if (timeLeftToMig > 0 && mig == null) timeLeftToMig--;
@@ -246,9 +269,25 @@ public class Game {
         burningTanks.add(burningTank);
         gameViewController.addChild(burningTank);
     }
+
     public void addBurningTruck(BurningTruck burningTruck) {
         burningTrucks.add(burningTruck);
         gameViewController.addChild(burningTruck);
+    }
+
+    public void addExplosion(Explosion explosion) {
+        explosions.add(explosion);
+        gameViewController.addChild(explosion);
+    }
+
+    public void addBurningBuilding(BurningBuilding burningBuilding) {
+        this.burningBuilding = burningBuilding;
+        gameViewController.addChild(burningBuilding);
+    }
+
+    public void addBurningStronghold(BurningStronghold burningStronghold) {
+        this.burningStronghold = burningStronghold;
+        gameViewController.addChild(burningStronghold);
     }
 
     public ArrayList<Tank> getTanks() {
@@ -328,6 +367,7 @@ public class Game {
         gameViewController.removeChild(mig);
         this.mig = null;
     }
+
     public void removeCircle(Circle circle) {
         circles.remove(circle);
         gameViewController.removeChild(circle);
@@ -375,6 +415,7 @@ public class Game {
         freezeLeft = 500;
         gameViewController.showFrozenImage();
     }
+
     private void unFreeze() {
         gameViewController.disableFrozenImage();
     }

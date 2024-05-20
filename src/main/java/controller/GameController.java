@@ -2,7 +2,6 @@ package controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 import model.*;
@@ -38,8 +37,7 @@ public class GameController {
                         if (game.getNumberOfTanks() > 0 && (!shooter || game.getNumberOfShooterTanks() == 0)) {
                             Tank tank = new Tank(game, random.nextBoolean());
                             game.addTank(tank);
-                        }
-                        else if (game.getNumberOfShooterTanks() > 0) {
+                        } else if (game.getNumberOfShooterTanks() > 0) {
                             ShooterTank shooterTank = new ShooterTank(game, random.nextBoolean());
                             game.addShooterTank(shooterTank);
                         }
