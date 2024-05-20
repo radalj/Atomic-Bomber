@@ -29,6 +29,10 @@ public class GameController {
         tankTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(4), e -> {
                     boolean tankOrTruck = random.nextBoolean();
+                    if (game.getTimeLeftToMig() == 0 && game.getWave() == 3 && game.getMig() == null) {
+                        Mig mig = new Mig(game, random.nextBoolean());
+                        game.setMig(mig);
+                    }
                     if (game.getNumberOfTanks() > 0 && (tankOrTruck || game.getNumberOfTrucks() == 0)) {
                         boolean shooter = random.nextBoolean();
                         if (game.getNumberOfTanks() > 0 && (!shooter || game.getNumberOfShooterTanks() == 0)) {
@@ -46,7 +50,6 @@ public class GameController {
                 }));
         tankTimeline.setCycleCount(Timeline.INDEFINITE);
         tankTimeline.play();
-        //game.addComponents();
         boolean arrowKeys = ApplicationController.getArrowKeys();
 
         gameViewController.scene.setOnKeyPressed(e -> {

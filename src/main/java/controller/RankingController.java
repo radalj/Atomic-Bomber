@@ -70,7 +70,6 @@ public class RankingController {
         try {
             root = FXMLLoader.load(url);
         } catch (Exception e) {
-            System.err.println(e.getMessage());
             return;
         }
         scene = new Scene(root);

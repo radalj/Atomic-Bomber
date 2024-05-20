@@ -2,8 +2,6 @@ package model;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.Node;
 import javafx.scene.shape.Circle;
 import view.GameViewController;
 
@@ -13,10 +11,9 @@ import java.util.Random;
 public class Game {
     private final GameViewController gameViewController;
     private final Random random = new Random();
-    private final int difficulty;
-    private final int score;
-    private final int kills;
+    private final int difficulty, score, kills;
     private int wave;
+    private int timeLeftToMig = 0;
     private final Plane plane;
     private ArrayList<Tank> tanks;
     private ArrayList<Truck> trucks;
@@ -31,6 +28,7 @@ public class Game {
     private Stronghold stronghold;
     private AtomicIcon atomicIcon;
     private ClusterIcon clusterIcon;
+    private Mig mig;
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
     private int freezeLeft;
@@ -56,11 +54,15 @@ public class Game {
         tankBullets = new ArrayList<>();
         atomicIcon = null;
         clusterIcon = null;
+        mig = null;
         freezePercentage = new SimpleDoubleProperty(0);
         freezeLeft = 0;
     }
 
     private void initiateWave() {
+        if (wave == 3) {
+            timeLeftToMig = 100;
+        }
         int buildingX = random.nextInt((int) (gameViewController.scene.getWidth() - 90)) + 20;
         building = new Building(this, buildingX);
         int strongholdX;
@@ -116,6 +118,7 @@ public class Game {
             freezeLeft--;
             return;
         }
+        if (timeLeftToMig > 0 && mig == null) timeLeftToMig--;
         for (Tank tank : tanks) {
             tank.move();
         }
@@ -126,6 +129,9 @@ public class Game {
             TankBullet tankBullet = tankBullets.get(i);
             if (!tankBullet.move()) i--;
         }
+        if (mig != null) {
+            mig.move();
+        }
         if (atomicIcon != null) {
             if (!atomicIcon.move()) {
                 gameViewController.removeChild(atomicIcon);
@@ -134,7 +140,6 @@ public class Game {
         }
         if (clusterIcon != null) {
             if (!clusterIcon.move()) {
-                System.err.println("Cluster bomb exploded");
                 gameViewController.removeChild(clusterIcon);
                 clusterIcon = null;
             }
@@ -186,10 +191,12 @@ public class Game {
         atomicIcon = new AtomicIcon(x, y);
         gameViewController.addChild(atomicIcon);
     }
+
     public void addAtomicBomb(AtomicBomb atomicBomb) {
         atomicBombs.add(atomicBomb);
         gameViewController.addChild(atomicBomb);
     }
+
     public void addClusterIcon(double x, double y) {
         clusterIcon = new ClusterIcon(x, y);
         gameViewController.addChild(clusterIcon);
@@ -207,7 +214,9 @@ public class Game {
 
     public void addShooterTank(ShooterTank shooterTank) {
         tanks.add(shooterTank);
+        circles.add(shooterTank.getCircle());
         gameViewController.addChild(shooterTank);
+        gameViewController.addChild(shooterTank.getCircle());
         numberOfShooterTanks--;
     }
 
@@ -250,6 +259,7 @@ public class Game {
             gameViewController.removeChild(circle);
         }
     }
+
     public void removeTruck(Truck truck) {
         trucks.remove(truck);
         gameViewController.removeChild(truck);
@@ -287,6 +297,21 @@ public class Game {
         gameViewController.removeChild(clusterIcon);
         clusterIcon = null;
     }
+
+    public void removeTankBullet(TankBullet tankBullet) {
+        tankBullets.remove(tankBullet);
+        gameViewController.removeChild(tankBullet);
+    }
+
+    public void removeMig(Mig mig) {
+        gameViewController.removeChild(mig);
+        this.mig = null;
+    }
+    public void removeCircle(Circle circle) {
+        circles.remove(circle);
+        gameViewController.removeChild(circle);
+    }
+
     public int getScore() {
         return score;
     }
@@ -298,7 +323,22 @@ public class Game {
     public ClusterIcon getClusterIcon() {
         return clusterIcon;
     }
-    public  DoubleProperty getFreezePercentageProperty() {
+
+    public int getWave() {
+        return wave;
+    }
+
+    public Mig getMig() {
+        return mig;
+    }
+
+    public void setMig(Mig mig) {
+        this.mig = mig;
+        gameViewController.addChild(mig);
+        timeLeftToMig = 400 - 100 * (difficulty - 1);
+    }
+
+    public DoubleProperty getFreezePercentageProperty() {
         return freezePercentage;
     }
 
@@ -313,13 +353,12 @@ public class Game {
         freezePercentage.set(0.0);
         freezeLeft = 500;
     }
-
     public boolean waveFinished() {
-        return tanks.isEmpty() && trucks.isEmpty() && atomicBombs.isEmpty() && clusterBombs.isEmpty() && clusterBullets.isEmpty() && freezeLeft == 0 && building == null && stronghold == null;
+        return tanks.isEmpty() && trucks.isEmpty() && atomicBombs.isEmpty() && clusterBombs.isEmpty() && clusterBullets.isEmpty()
+                && tankBullets.isEmpty() && freezeLeft == 0 && building == null && stronghold == null && atomicIcon == null && clusterIcon == null && mig == null && circles.isEmpty() && numberOfTanks == 0 && numberOfTrucks == 0 && numberOfShooterTanks == 0;
     }
 
-    public void removeTankBullet(TankBullet tankBullet) {
-        tankBullets.remove(tankBullet);
-        gameViewController.removeChild(tankBullet);
+    public int getTimeLeftToMig() {
+        return timeLeftToMig;
     }
 }

@@ -6,13 +6,15 @@ import javafx.scene.shape.Rectangle;
 
 public class TankBullet extends Rectangle {
     private double vx, vy;
+    private double normalSpeed = 1.00;
     private int lifeTime = 120;
     private Game game;
     public TankBullet (Game game, double x, double y, double vx, double vy) {
-        super(x, y, 30, 15);
+        super(x, y, 30, 10);
         double magnitude = Math.sqrt(vx * vx + vy * vy);
-        vx *= 2 / magnitude;
-        vy *= 2 / magnitude;
+        normalSpeed *= game.getDifficulty();
+        vx *= normalSpeed / magnitude;
+        vy *= normalSpeed / magnitude;
         this.vx = vx;
         this.vy = vy;
         this.game = game;

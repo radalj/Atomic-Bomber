@@ -4,14 +4,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class ShooterTank extends Tank{
+    private double radius = 110;
     private Circle circle;
     private int reloadTime = 0;
     public ShooterTank(Game game, boolean enterFromLeft) {
         super(game, enterFromLeft);
-        circle = new Circle(getX() + this.getWidth() / 2 + 20, getY() + this.getHeight() / 2, 250);
+        radius *= game.getDifficulty();
+        circle = new Circle(getX() + this.getWidth() / 2 + 20, getY() + this.getHeight() / 2, radius);
         circle.setStroke(new Color(1, 1, 1, 0.5));
         circle.setFill(Color.TRANSPARENT);
-        game.addCircle(circle);
     }
     @Override
     public void move() {
