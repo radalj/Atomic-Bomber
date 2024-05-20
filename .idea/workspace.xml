@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Shooter Tank added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Mig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/mig.png" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="mig added">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/backgrounds/frozen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ShooterTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ShooterTank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/TankBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/TankBullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/RankingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/RankingController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/ShooterTank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/ShooterTank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +131,7 @@
       <workItem from="1716108802647" duration="847000" />
       <workItem from="1716117816986" duration="12467000" />
       <workItem from="1716140832948" duration="4389000" />
-      <workItem from="1716174518194" duration="2434000" />
+      <workItem from="1716174518194" duration="8340000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -248,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716140980491</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="mig added">
+      <option name="closed" value="true" />
+      <created>1716178690353</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1716178690353</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +287,8 @@
     <MESSAGE value="Shooter Tank andded" />
     <MESSAGE value="Shooter Tank added" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="mig added" />
+    <option name="LAST_COMMIT_MESSAGE" value="mig added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

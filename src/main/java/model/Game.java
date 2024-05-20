@@ -2,6 +2,8 @@ package model;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import view.GameViewController;
 
@@ -32,6 +34,7 @@ public class Game {
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
     private int freezeLeft;
+    private ImageView frozenImage;
 
     public Game(int difficulty, GameViewController gameViewController) {
         this.difficulty = difficulty;
@@ -57,6 +60,8 @@ public class Game {
         mig = null;
         freezePercentage = new SimpleDoubleProperty(0);
         freezeLeft = 0;
+        frozenImage = new ImageView(new Image(getClass().getResourceAsStream("/images/backgrounds/frozen.png")));
+        gameViewController.setFrozenImage(frozenImage);
     }
 
     private void initiateWave() {
@@ -113,6 +118,11 @@ public class Game {
         for (int i = 0; i < clusterBullets.size(); i++) {
             ClusterBullet clusterBullet = clusterBullets.get(i);
             if (!clusterBullet.move()) i--;
+        }
+        if (freezeLeft == 100) {
+            unFreeze();
+            freezeLeft--;
+            return;
         }
         if (freezeLeft > 0) {
             freezeLeft--;
@@ -307,11 +317,11 @@ public class Game {
         gameViewController.removeChild(mig);
         this.mig = null;
     }
+
     public void removeCircle(Circle circle) {
         circles.remove(circle);
         gameViewController.removeChild(circle);
     }
-
     public int getScore() {
         return score;
     }
@@ -352,6 +362,11 @@ public class Game {
     public void freeze() {
         freezePercentage.set(0.0);
         freezeLeft = 500;
+        gameViewController.showFrozenImage();
+    }
+
+    private void unFreeze() {
+        gameViewController.disableFrozenImage();
     }
     public boolean waveFinished() {
         return tanks.isEmpty() && trucks.isEmpty() && atomicBombs.isEmpty() && clusterBombs.isEmpty() && clusterBullets.isEmpty()

@@ -1,19 +1,24 @@
 package view;
 
 import controller.ApplicationController;
+import javafx.animation.FadeTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import model.*;
 
 public class GameViewController {
     private Pane root;
     public Scene scene;
     private ProgressBar freezeProgressBar;
+    private ImageView frozenImage;
     private Label killNumber, Atomics, Clusters, Wave;
 
     public void start() {
@@ -99,6 +104,10 @@ public class GameViewController {
         root.getChildren().add(rectangle);
         refreshScene();
     }
+    public void addChild(ImageView imageView) {
+        root.getChildren().add(imageView);
+        refreshScene();
+    }
 
     public void removeChild(Vehicle vehicle) {
         root.getChildren().remove(vehicle);
@@ -133,5 +142,26 @@ public class GameViewController {
     }
     private void refreshScene() {
         scene.setRoot(root);
+    }
+    public void setFrozenImage(ImageView frozenImage) {
+        this.frozenImage = frozenImage;
+        frozenImage.setFitWidth(ApplicationController.getStage().getWidth());
+        frozenImage.setFitHeight(ApplicationController.getStage().getHeight());
+        frozenImage.setOpacity(0);
+        root.getChildren().add(frozenImage);
+    }
+    public void showFrozenImage() {
+        //frozenImage.setVisible(true);
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(1000), frozenImage);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(0.5);
+        fadeTransition.play();
+    }
+
+    public void disableFrozenImage() {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(1000), frozenImage);
+        fadeTransition.setFromValue(0.5);
+        fadeTransition.setToValue(0);
+        fadeTransition.play();
     }
 }
