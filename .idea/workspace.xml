@@ -4,24 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Burning tank and truck added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BurningBuilding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/BurningStronghold.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Explosion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/burningbuilding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/burningstronghold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/explosion.png" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Explosion effect and burning building and stronghold added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/AtomicExplosion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/atomicexplosion.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/BurningTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BurningTank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/BurningTruck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/BurningTruck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bomb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +130,7 @@
       <workItem from="1716108802647" duration="847000" />
       <workItem from="1716117816986" duration="12467000" />
       <workItem from="1716140832948" duration="4389000" />
-      <workItem from="1716174518194" duration="14343000" />
+      <workItem from="1716174518194" duration="19730000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -278,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716195253912</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Explosion effect and burning building and stronghold added">
+      <option name="closed" value="true" />
+      <created>1716203352056</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716203352056</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +313,8 @@
     <MESSAGE value="mig added" />
     <MESSAGE value="frozen screen added" />
     <MESSAGE value="Burning tank and truck added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Burning tank and truck added" />
+    <MESSAGE value="Explosion effect and burning building and stronghold added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Explosion effect and burning building and stronghold added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

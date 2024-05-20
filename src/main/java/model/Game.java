@@ -29,6 +29,7 @@ public class Game {
     private ArrayList<Circle> circles = new ArrayList<>();
     private ArrayList<TankBullet> tankBullets = new ArrayList<>();
     private ArrayList<Explosion> explosions = new ArrayList<>();
+    private ArrayList<AtomicExplosion> atomicExplosions = new ArrayList<>();
     private Building building;
     private Stronghold stronghold;
     private AtomicIcon atomicIcon = null;
@@ -138,6 +139,14 @@ public class Game {
             if (burningTruck.burn()) {
                 gameViewController.removeChild(burningTruck);
                 burningTrucks.remove(burningTruck);
+                i--;
+            }
+        }
+        for (int i = 0; i < atomicExplosions.size(); i++) {
+            AtomicExplosion atomicExplosion = atomicExplosions.get(i);
+            if (atomicExplosion.disappear()) {
+                gameViewController.removeChild(atomicExplosion);
+                atomicExplosions.remove(atomicExplosion);
                 i--;
             }
         }
@@ -288,6 +297,11 @@ public class Game {
     public void addBurningStronghold(BurningStronghold burningStronghold) {
         this.burningStronghold = burningStronghold;
         gameViewController.addChild(burningStronghold);
+    }
+
+    public void addAtomicExplosion(AtomicExplosion atomicExplosion) {
+        atomicExplosions.add(atomicExplosion);
+        gameViewController.addChild(atomicExplosion);
     }
 
     public ArrayList<Tank> getTanks() {

@@ -66,6 +66,11 @@ public class Bomb extends Rectangle {
         collisionWithTruck();
         collisionWithTree();
         game.removeBomb(this);
+        if (this instanceof AtomicBomb){
+            AtomicExplosion atomicExplosion = new AtomicExplosion(getX(), getY() - 40);
+            game.addAtomicExplosion(atomicExplosion);
+            return;
+        }
         Explosion explosion = new Explosion(getX(), getY());
         game.addExplosion(explosion);
     }
