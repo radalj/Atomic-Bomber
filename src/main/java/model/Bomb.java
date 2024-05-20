@@ -71,6 +71,12 @@ public class Bomb extends Rectangle {
             game.addAtomicExplosion(atomicExplosion);
             return;
         }
+        if (this instanceof ClusterBullet) {
+            ClusterExplosion clusterExplosion = new ClusterExplosion(getX(), getY());
+            game.addClusterExplosion(clusterExplosion);
+            return;
+
+        }
         Explosion explosion = new Explosion(getX(), getY());
         game.addExplosion(explosion);
     }

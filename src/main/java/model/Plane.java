@@ -9,7 +9,7 @@ public class Plane extends Rectangle {
     private final double width = 120;
     private final double height = 120;
     private double vx, vy;
-    private final double rotationSpeed = 2;
+    private final double rotationSpeed = 0.5;
     private Game game;
 
     public Plane(Game game) {

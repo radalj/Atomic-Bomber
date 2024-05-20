@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Explosion effect and burning building and stronghold added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/AtomicExplosion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/atomicexplosion.png" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Atomic explosion added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ClusterExplosion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Game/clusterexplosion.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bomb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Plane.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +80,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="model" />
       <recent name="controller" />
     </key>
   </component>
@@ -130,7 +132,7 @@
       <workItem from="1716108802647" duration="847000" />
       <workItem from="1716117816986" duration="12467000" />
       <workItem from="1716140832948" duration="4389000" />
-      <workItem from="1716174518194" duration="19730000" />
+      <workItem from="1716174518194" duration="21135000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -276,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716203352056</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Atomic explosion added">
+      <option name="closed" value="true" />
+      <created>1716212119102</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716212119103</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +324,8 @@
     <MESSAGE value="frozen screen added" />
     <MESSAGE value="Burning tank and truck added" />
     <MESSAGE value="Explosion effect and burning building and stronghold added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Explosion effect and burning building and stronghold added" />
+    <MESSAGE value="Atomic explosion added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Atomic explosion added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

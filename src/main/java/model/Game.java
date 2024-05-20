@@ -30,6 +30,7 @@ public class Game {
     private ArrayList<TankBullet> tankBullets = new ArrayList<>();
     private ArrayList<Explosion> explosions = new ArrayList<>();
     private ArrayList<AtomicExplosion> atomicExplosions = new ArrayList<>();
+    private ArrayList<ClusterExplosion> clusterExplosions = new ArrayList<>();
     private Building building;
     private Stronghold stronghold;
     private AtomicIcon atomicIcon = null;
@@ -117,6 +118,22 @@ public class Game {
                 i--;
             }
         }
+        for (int i = 0; i < atomicExplosions.size(); i++) {
+            AtomicExplosion atomicExplosion = atomicExplosions.get(i);
+            if (atomicExplosion.disappear()) {
+                gameViewController.removeChild(atomicExplosion);
+                atomicExplosions.remove(atomicExplosion);
+                i--;
+            }
+        }
+        for (int i = 0; i < clusterExplosions.size(); i++) {
+            ClusterExplosion clusterExplosion = clusterExplosions.get(i);
+            if (clusterExplosion.disappear()) {
+                gameViewController.removeChild(clusterExplosion);
+                clusterExplosions.remove(clusterExplosion);
+                i--;
+            }
+        }
         if (freezeLeft == 100) {
             unFreeze();
             freezeLeft--;
@@ -139,14 +156,6 @@ public class Game {
             if (burningTruck.burn()) {
                 gameViewController.removeChild(burningTruck);
                 burningTrucks.remove(burningTruck);
-                i--;
-            }
-        }
-        for (int i = 0; i < atomicExplosions.size(); i++) {
-            AtomicExplosion atomicExplosion = atomicExplosions.get(i);
-            if (atomicExplosion.disappear()) {
-                gameViewController.removeChild(atomicExplosion);
-                atomicExplosions.remove(atomicExplosion);
                 i--;
             }
         }
@@ -302,6 +311,11 @@ public class Game {
     public void addAtomicExplosion(AtomicExplosion atomicExplosion) {
         atomicExplosions.add(atomicExplosion);
         gameViewController.addChild(atomicExplosion);
+    }
+
+    public void addClusterExplosion(ClusterExplosion clusterExplosion) {
+        clusterExplosions.add(clusterExplosion);
+        gameViewController.addChild(clusterExplosion);
     }
 
     public ArrayList<Tank> getTanks() {

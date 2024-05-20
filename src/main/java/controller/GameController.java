@@ -86,6 +86,9 @@ public class GameController {
             if (e.getCode() == KeyCode.CONTROL) {
                 User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
             }
+            if (e.getCode() == KeyCode.T) {
+                game.addTank(new Tank(game, random.nextBoolean()));
+            }
         });
     }
 }
