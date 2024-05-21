@@ -86,6 +86,8 @@ public class Bomb extends Rectangle {
         if (building == null)
             return;
         if (checkIntersection(building)) {
+            User.getCurrentUser().increaseNumberOfHits();
+            game.increaseWaveHits();
             game.addAtomicIcon(building.getX(), building.getY());
             game.removeBuilding();
             BurningBuilding burningBuilding = new BurningBuilding(building.getX(), building.getY());
@@ -100,6 +102,8 @@ public class Bomb extends Rectangle {
         if (stronghold == null)
             return;
         if (checkIntersection(stronghold)) {
+            User.getCurrentUser().increaseNumberOfHits();
+            game.increaseWaveHits();
             game.addClusterIcon(stronghold.getX(), stronghold.getY());
             game.removeStronghold();
             BurningStronghold burningStronghold = new BurningStronghold(stronghold.getX(), stronghold.getY());
@@ -115,6 +119,8 @@ public class Bomb extends Rectangle {
         boolean flag = false;
         for (Tank tank : tanks) {
             if (checkIntersection(tank)) {
+                User.getCurrentUser().increaseNumberOfHits();
+                game.increaseWaveHits();
                 game.removeTank(tank);
                 BurningTank burningTank = new BurningTank(tank.getX(), tank.getY());
                 burningTank.setScaleX(tank.getScaleX());
@@ -135,6 +141,8 @@ public class Bomb extends Rectangle {
         boolean flag = false;
         for (Truck truck : trucks) {
             if (checkIntersection(truck)) {
+                User.getCurrentUser().increaseNumberOfHits();
+                game.increaseWaveHits();
                 game.removeTruck(truck);
                 BurningTruck burningTruck = new BurningTruck(truck.getX(), truck.getY());
                 burningTruck.setScaleX(truck.getScaleX());

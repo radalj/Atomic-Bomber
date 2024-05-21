@@ -70,16 +70,22 @@ public class GameController {
             }
             if (e.getCode() == KeyCode.SPACE) {
                 Bomb bomb = new Bomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
+                User.getCurrentUser().increaseNumberOfShots();
+                game.increaseWaveShots();
                 game.addBomb(bomb);
             }
             if (e.getCode() == KeyCode.R && User.getCurrentUser().getRadioActiveBombs() > 0) {
                 AtomicBomb atomicBomb = new AtomicBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
                 game.addAtomicBomb(atomicBomb);
+                User.getCurrentUser().increaseNumberOfShots();
+                game.increaseWaveShots();
                 User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() - 1);
             }
             if (e.getCode() == KeyCode.C && User.getCurrentUser().getClusterBombs() > 0) {
                 ClusterBomb clusterBomb = new ClusterBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
                 game.addClusterBomb(clusterBomb);
+                User.getCurrentUser().increaseNumberOfShots();
+                game.increaseWaveShots();
                 User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() - 1);
             }
             if (e.getCode() == KeyCode.TAB && game.getFreezePercentageProperty().get() == 1) {
@@ -151,7 +157,7 @@ public class GameController {
     }
 
     public void startBetweenWaves() {
-        gameViewController.startBetweenWaves(game.getWave(), User.getCurrentUser().getAccuracy());
+        gameViewController.startBetweenWaves(game.getWave(), game.getWaveAccuracy());
     }
 
     public void endBetweenWaves() {

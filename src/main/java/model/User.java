@@ -150,10 +150,10 @@ public class User {
         this.difficultyKills = difficultKills;
     }
 
-    public double getAccuracy() {
+    public int getAccuracy() {
         if (numberOfShots == 0)
             return 0;
-        return (double) numberOfHits / numberOfShots;
+        return (int) (numberOfHits / numberOfShots * 100);
     }
 
     public void increaseNumberOfShots() {

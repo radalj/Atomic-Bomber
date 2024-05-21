@@ -38,6 +38,7 @@ public class Game {
     private BurningBuilding burningBuilding = null;
     private BurningStronghold burningStronghold = null;
     private Mig mig = null;
+    private int waveHits, waveShots;
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
     private int freezeLeft = 0;
@@ -83,6 +84,7 @@ public class Game {
     }
 
     public void update() {
+        if (isPauseTransitionRunning) return;
         plane.move();
         if (waveFinished()) {
             goToNextWave();
@@ -466,6 +468,8 @@ public class Game {
             initiateWave();
             isPauseTransitionRunning = false;
             gameController.endBetweenWaves();
+            waveHits = 0;
+            waveShots = 0;
         });
         isPauseTransitionRunning = true;
         pause.play();
@@ -573,5 +577,15 @@ public class Game {
         numberOfTanks = 0;
         numberOfTrucks = 0;
         numberOfShooterTanks = 0;
+    }
+    public void increaseWaveHits() {
+        waveHits++;
+    }
+    public void increaseWaveShots() {
+        waveShots++;
+    }
+    public int getWaveAccuracy() {
+        if (waveShots == 0) return 0;
+        return waveHits * 100 / waveShots;
     }
 }
