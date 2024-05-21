@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
 
 public class User {
     private static final ArrayList<User> users = new ArrayList<>();
@@ -20,7 +21,10 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        String path = "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/woman1.jpg";
+        String allImageNames[] = {"man1.jpg", "man2.jpg", "woman1.jpg", "woman2.jpg"};
+        Random random = new Random();
+        int index = random.nextInt(allImageNames.length);
+        String path = "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/" + allImageNames[index];
         image = new Image(path);
         score = 0;
         kills = 0;
