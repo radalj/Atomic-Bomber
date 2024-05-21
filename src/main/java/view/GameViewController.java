@@ -6,12 +6,12 @@ import javafx.beans.property.DoubleProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import model.*;
 
 public class GameViewController {
     private Pane root;
@@ -43,6 +43,7 @@ public class GameViewController {
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/CSS/GameStyle.css").toExternalForm());
         ApplicationController.setScene(scene);
+        this.setFrozenImage(new ImageView(new Image(getClass().getResource("/images/backgrounds/frozen.png").toExternalForm())));
     }
 
     private void setPaneSize() {
@@ -72,36 +73,6 @@ public class GameViewController {
         Wave.setText("Wave : " + wave);
     }
 
-    public void addChild(Plane plane) {
-        root.getChildren().add(plane);
-        refreshScene();
-    }
-
-    public void addChild(Vehicle vehicle) {
-        root.getChildren().add(vehicle);
-        refreshScene();
-    }
-
-    public void addChild(StaticObjects staticObject) {
-        root.getChildren().add(staticObject);
-        refreshScene();
-    }
-
-    public void addChild(Bomb bomb) {
-        root.getChildren().add(bomb);
-        refreshScene();
-    }
-
-    public void addChild(AtomicIcon atomicIcon) {
-        root.getChildren().add(atomicIcon);
-        refreshScene();
-    }
-
-    public void addChild(ClusterIcon clusterIcon) {
-        root.getChildren().add(clusterIcon);
-        refreshScene();
-    }
-
     public void addChild(Circle circle) {
         root.getChildren().add(circle);
         refreshScene();
@@ -109,36 +80,6 @@ public class GameViewController {
 
     public void addChild(Rectangle rectangle) {
         root.getChildren().add(rectangle);
-        refreshScene();
-    }
-
-    public void addChild(ImageView imageView) {
-        root.getChildren().add(imageView);
-        refreshScene();
-    }
-
-    public void removeChild(Vehicle vehicle) {
-        root.getChildren().remove(vehicle);
-        refreshScene();
-    }
-
-    public void removeChild(StaticObjects staticObject) {
-        root.getChildren().remove(staticObject);
-        refreshScene();
-    }
-
-    public void removeChild(Bomb bomb) {
-        root.getChildren().remove(bomb);
-        refreshScene();
-    }
-
-    public void removeChild(AtomicIcon atomicIcon) {
-        root.getChildren().remove(atomicIcon);
-        refreshScene();
-    }
-
-    public void removeChild(ClusterIcon clusterIcon) {
-        root.getChildren().remove(clusterIcon);
         refreshScene();
     }
 
@@ -165,7 +106,6 @@ public class GameViewController {
     }
 
     public void showFrozenImage() {
-        //frozenImage.setVisible(true);
         FadeTransition fadeTransition = new FadeTransition(Duration.millis(1000), frozenImage);
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(0.5);

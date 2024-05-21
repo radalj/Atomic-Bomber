@@ -10,7 +10,7 @@ public class StaticObjects extends Rectangle {
         super(width, height);
         this.game = game;
         setX(x);
-        setY(game.getGameViewController().scene.getHeight() - 300);
+        setY(game.getGameController().getHeight() - 300);
         this.width = width;
         this.height = height;
     }

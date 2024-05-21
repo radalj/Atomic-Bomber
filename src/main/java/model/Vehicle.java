@@ -17,10 +17,10 @@ public class Vehicle extends Rectangle {
             setScaleX(-1);
         } else {
             vx = -BasicSpeed * game.getDifficulty();
-            setX(game.getGameViewController().scene.getWidth());
+            setX(game.getGameController().getWidth());
             setScaleX(1);
         }
-        setY(game.getGameViewController().scene.getHeight() - 180);
+        setY(game.getGameController().getHeight() - 180);
         vy = 0;
     }
 
@@ -29,11 +29,11 @@ public class Vehicle extends Rectangle {
             vx = -vx;
             setScaleX(-1);
         }
-        if (getX() + vx > game.getGameViewController().scene.getWidth()) {
+        if (getX() + vx > game.getGameController().getWidth()) {
             vx = -vx;
             setScaleX(1);
         }
-        if (getY() + vy < 0 || getY() + vy > game.getGameViewController().scene.getHeight() - height) {
+        if (getY() + vy < 0 || getY() + vy > game.getGameController().getHeight() - height) {
             vy = -vy;
         }
         setX(getX() + vx);

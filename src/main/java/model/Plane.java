@@ -24,12 +24,12 @@ public class Plane extends Rectangle {
 
     public void move() {
         if (getX() + vx < -width) {
-            setX(game.getGameViewController().scene.getWidth() - 1);
+            setX(game.getGameController().getWidth() - 1);
         }
-        if (getX() + vx > game.getGameViewController().scene.getWidth()) {
+        if (getX() + vx > game.getGameController().getWidth()) {
             setX(-width + 1);
         }
-        if (getY() + vy < 0 || getY() + vy > game.getGameViewController().scene.getHeight() - height - 100) {
+        if (getY() + vy < 0 || getY() + vy > game.getGameController().getHeight() - height - 100) {
             vy = -vy;
             updateRotation();
         }
@@ -42,12 +42,12 @@ public class Plane extends Rectangle {
         if (game.getAtomicIcon() != null && game.getAtomicIcon().getBoundsInParent().intersects(getBoundsInParent())) {
             game.removeAtomicIcon();
             User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() + 1);
-            game.getGameViewController().updateAtomicNumber(User.getCurrentUser().getRadioActiveBombs());
+            game.getGameController().updateAtomicNumber(User.getCurrentUser().getRadioActiveBombs());
         }
         if (game.getClusterIcon() != null && game.getClusterIcon().getBoundsInParent().intersects(getBoundsInParent())) {
             game.removeClusterIcon();
             User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
-            game.getGameViewController().updateClusterNumber(User.getCurrentUser().getClusterBombs());
+            game.getGameController().updateClusterNumber(User.getCurrentUser().getClusterBombs());
         }
     }
 

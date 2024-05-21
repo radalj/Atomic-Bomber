@@ -22,7 +22,7 @@ public class Mig extends Rectangle {
             setX(0);
             setY(20);
         } else {
-            setX(game.getGameViewController().scene.getWidth() - 1);
+            setX(game.getGameController().getWidth() - 1);
             setY(20);
             setScaleX(-1);
             vx = -vx;
@@ -37,7 +37,7 @@ public class Mig extends Rectangle {
     public void move() {
         if (reloadTime > 0)
             reloadTime--;
-        if (getX() + vx < -getWidth() - circle.getRadius() || getX() + vx > game.getGameViewController().scene.getWidth() + circle.getRadius()) {
+        if (getX() + vx < -getWidth() - circle.getRadius() || getX() + vx > game.getGameController().getWidth() + circle.getRadius()) {
             game.removeMig(this);
             game.removeCircle(circle);
         }

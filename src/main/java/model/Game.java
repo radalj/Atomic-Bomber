@@ -1,17 +1,15 @@
 package model;
 
+import controller.GameController;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
-import view.GameViewController;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
-    private final GameViewController gameViewController;
+    private final GameController gameController;
     private final Random random = new Random();
     private final int difficulty, score = 0, kills = 0;
     private int wave = 1;
@@ -41,46 +39,43 @@ public class Game {
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
     private int freezeLeft = 0;
-    private ImageView frozenImage;
 
-    public Game(int difficulty, GameViewController gameViewController) {
+    public Game(int difficulty, GameController gameController) {
         this.difficulty = difficulty;
-        this.gameViewController = gameViewController;
+        this.gameController = gameController;
         numberOfTanks = 3;
         numberOfTrucks = 2;
         numberOfShooterTanks = 0;
         initiateWave();
         freezePercentage = new SimpleDoubleProperty(0);
-        frozenImage = new ImageView(new Image(getClass().getResourceAsStream("/images/backgrounds/frozen.png")));
-        gameViewController.setFrozenImage(frozenImage);
     }
 
     private void initiateWave() {
         if (wave == 3) {
             timeLeftToMig = 100;
         }
-        int buildingX = random.nextInt((int) (gameViewController.scene.getWidth() - 90)) + 20;
+        int buildingX = random.nextInt((int) (gameController.getWidth() - 90)) + 20;
         building = new Building(this, buildingX);
         int strongholdX;
         do {
-            strongholdX = random.nextInt((int) (gameViewController.scene.getWidth() - 90)) + 20;
+            strongholdX = random.nextInt((int) (gameController.getWidth() - 90)) + 20;
         } while ((strongholdX >= buildingX - 50 && strongholdX <= buildingX + 50 + building.getWidth()) || (buildingX >= strongholdX - 50 && buildingX <= strongholdX + 150));
         stronghold = new Stronghold(this, strongholdX);
         int numberOfTrees = random.nextInt(3) + 1;
         trees = new ArrayList<>();
         for (int i = 0; i < numberOfTrees; i++) {
-            int treeX = random.nextInt((int) (gameViewController.scene.getWidth() - 90)) + 20;
+            int treeX = random.nextInt((int) (gameController.getWidth() - 90)) + 20;
             trees.add(new Tree(this, treeX));
         }
         addComponents();
     }
 
     public void addComponents() {
-        if (wave == 1) gameViewController.addChild(plane);
-        gameViewController.addChild(building);
-        gameViewController.addChild(stronghold);
+        if (wave == 1) gameController.addRectangle(plane);
+        gameController.addRectangle(building);
+        gameController.addRectangle(stronghold);
         for (Tree tree : trees) {
-            gameViewController.addChild(tree);
+            gameController.addRectangle(tree);
         }
     }
 
@@ -88,7 +83,7 @@ public class Game {
         plane.move();
         if (waveFinished()) {
             wave++;
-            gameViewController.updateWave(wave);
+            gameController.updateWave(wave);
             numberOfTanks = 3 * wave;
             numberOfTrucks = 2 * wave;
             numberOfShooterTanks = 2;
@@ -113,7 +108,7 @@ public class Game {
         for (int i = 0; i < explosions.size(); i++) {
             Explosion explosion = explosions.get(i);
             if (explosion.disappear()) {
-                gameViewController.removeChild(explosion);
+                gameController.removeRectangle(explosion);
                 explosions.remove(explosion);
                 i--;
             }
@@ -121,7 +116,7 @@ public class Game {
         for (int i = 0; i < atomicExplosions.size(); i++) {
             AtomicExplosion atomicExplosion = atomicExplosions.get(i);
             if (atomicExplosion.disappear()) {
-                gameViewController.removeChild(atomicExplosion);
+                gameController.removeRectangle(atomicExplosion);
                 atomicExplosions.remove(atomicExplosion);
                 i--;
             }
@@ -129,7 +124,7 @@ public class Game {
         for (int i = 0; i < clusterExplosions.size(); i++) {
             ClusterExplosion clusterExplosion = clusterExplosions.get(i);
             if (clusterExplosion.disappear()) {
-                gameViewController.removeChild(clusterExplosion);
+                gameController.removeRectangle(clusterExplosion);
                 clusterExplosions.remove(clusterExplosion);
                 i--;
             }
@@ -146,7 +141,7 @@ public class Game {
         for (int i = 0; i < burningTanks.size(); i++) {
             BurningTank burningTank = burningTanks.get(i);
             if (burningTank.burn()) {
-                gameViewController.removeChild(burningTank);
+                gameController.removeRectangle(burningTank);
                 burningTanks.remove(burningTank);
                 i--;
             }
@@ -154,20 +149,20 @@ public class Game {
         for (int i = 0; i < burningTrucks.size(); i++) {
             BurningTruck burningTruck = burningTrucks.get(i);
             if (burningTruck.burn()) {
-                gameViewController.removeChild(burningTruck);
+                gameController.removeRectangle(burningTruck);
                 burningTrucks.remove(burningTruck);
                 i--;
             }
         }
         if (burningBuilding != null) {
             if (burningBuilding.burn()) {
-                gameViewController.removeChild(burningBuilding);
+                gameController.removeRectangle(burningBuilding);
                 burningBuilding = null;
             }
         }
         if (burningStronghold != null) {
             if (burningStronghold.burn()) {
-                gameViewController.removeChild(burningStronghold);
+                gameController.removeRectangle(burningStronghold);
                 burningStronghold = null;
             }
         }
@@ -187,20 +182,20 @@ public class Game {
         }
         if (atomicIcon != null) {
             if (!atomicIcon.move()) {
-                gameViewController.removeChild(atomicIcon);
+                gameController.removeRectangle(atomicIcon);
                 atomicIcon = null;
             }
         }
         if (clusterIcon != null) {
             if (!clusterIcon.move()) {
-                gameViewController.removeChild(clusterIcon);
+                gameController.removeRectangle(clusterIcon);
                 clusterIcon = null;
             }
         }
     }
 
-    public GameViewController getGameViewController() {
-        return gameViewController;
+    public GameController getGameController() {
+        return gameController;
     }
 
     public Plane getPlane() {
@@ -213,13 +208,13 @@ public class Game {
 
     public void addTank(Tank tank) {
         tanks.add(tank);
-        gameViewController.addChild(tank);
+        gameController.addRectangle(tank);
         numberOfTanks--;
     }
 
     public void addTruck(Truck truck) {
         trucks.add(truck);
-        gameViewController.addChild(truck);
+        gameController.addRectangle(truck);
         numberOfTrucks--;
     }
 
@@ -237,85 +232,85 @@ public class Game {
 
     public void addBomb(Bomb bomb) {
         bombs.add(bomb);
-        gameViewController.addChild(bomb);
+        gameController.addRectangle(bomb);
     }
 
     public void addAtomicIcon(double x, double y) {
         atomicIcon = new AtomicIcon(x, y);
-        gameViewController.addChild(atomicIcon);
+        gameController.addRectangle(atomicIcon);
     }
 
     public void addAtomicBomb(AtomicBomb atomicBomb) {
         atomicBombs.add(atomicBomb);
-        gameViewController.addChild(atomicBomb);
+        gameController.addRectangle(atomicBomb);
     }
 
     public void addClusterIcon(double x, double y) {
         clusterIcon = new ClusterIcon(x, y);
-        gameViewController.addChild(clusterIcon);
+        gameController.addRectangle(clusterIcon);
     }
 
     public void addClusterBomb(ClusterBomb clusterBomb) {
         clusterBombs.add(clusterBomb);
-        gameViewController.addChild(clusterBomb);
+        gameController.addRectangle(clusterBomb);
     }
 
     public void addBullet(ClusterBullet clusterBullet) {
-        gameViewController.addChild(clusterBullet);
+        gameController.addRectangle(clusterBullet);
         clusterBullets.add(clusterBullet);
     }
 
     public void addShooterTank(ShooterTank shooterTank) {
         tanks.add(shooterTank);
         circles.add(shooterTank.getCircle());
-        gameViewController.addChild(shooterTank);
-        gameViewController.addChild(shooterTank.getCircle());
+        gameController.addRectangle(shooterTank);
+        gameController.addCircle(shooterTank.getCircle());
         numberOfShooterTanks--;
     }
 
     public void addCircle(Circle circle) {
         circles.add(circle);
-        gameViewController.addChild(circle);
+        gameController.addCircle(circle);
     }
 
     public void addTankBullet(TankBullet bullet) {
         tankBullets.add(bullet);
-        gameViewController.addChild(bullet);
+        gameController.addRectangle(bullet);
     }
 
     public void addBurningTank(BurningTank burningTank) {
         burningTanks.add(burningTank);
-        gameViewController.addChild(burningTank);
+        gameController.addRectangle(burningTank);
     }
 
     public void addBurningTruck(BurningTruck burningTruck) {
         burningTrucks.add(burningTruck);
-        gameViewController.addChild(burningTruck);
+        gameController.addRectangle(burningTruck);
     }
 
     public void addExplosion(Explosion explosion) {
         explosions.add(explosion);
-        gameViewController.addChild(explosion);
+        gameController.addRectangle(explosion);
     }
 
     public void addBurningBuilding(BurningBuilding burningBuilding) {
         this.burningBuilding = burningBuilding;
-        gameViewController.addChild(burningBuilding);
+        gameController.addRectangle(burningBuilding);
     }
 
     public void addBurningStronghold(BurningStronghold burningStronghold) {
         this.burningStronghold = burningStronghold;
-        gameViewController.addChild(burningStronghold);
+        gameController.addRectangle(burningStronghold);
     }
 
     public void addAtomicExplosion(AtomicExplosion atomicExplosion) {
         atomicExplosions.add(atomicExplosion);
-        gameViewController.addChild(atomicExplosion);
+        gameController.addRectangle(atomicExplosion);
     }
 
     public void addClusterExplosion(ClusterExplosion clusterExplosion) {
         clusterExplosions.add(clusterExplosion);
-        gameViewController.addChild(clusterExplosion);
+        gameController.addRectangle(clusterExplosion);
     }
 
     public ArrayList<Tank> getTanks() {
@@ -340,31 +335,31 @@ public class Game {
 
     public void removeTank(Tank tank) {
         tanks.remove(tank);
-        gameViewController.removeChild(tank);
+        gameController.removeRectangle(tank);
         if (tank instanceof ShooterTank) {
             Circle circle = ((ShooterTank) tank).getCircle();
             circles.remove(circle);
-            gameViewController.removeChild(circle);
+            gameController.removeCircle(circle);
         }
     }
 
     public void removeTruck(Truck truck) {
         trucks.remove(truck);
-        gameViewController.removeChild(truck);
+        gameController.removeRectangle(truck);
     }
 
     public void removeTree(Tree tree) {
         trees.remove(tree);
-        gameViewController.removeChild(tree);
+        gameController.removeRectangle(tree);
     }
 
     public void removeBuilding() {
-        gameViewController.removeChild(building);
+        gameController.removeRectangle(building);
         building = null;
     }
 
     public void removeStronghold() {
-        gameViewController.removeChild(stronghold);
+        gameController.removeRectangle(stronghold);
         stronghold = null;
     }
 
@@ -373,32 +368,32 @@ public class Game {
         atomicBombs.remove(bomb);
         clusterBombs.remove(bomb);
         clusterBullets.remove(bomb);
-        gameViewController.removeChild(bomb);
+        gameController.removeRectangle(bomb);
     }
 
     public void removeAtomicIcon() {
-        gameViewController.removeChild(atomicIcon);
+        gameController.removeRectangle(atomicIcon);
         atomicIcon = null;
     }
 
     public void removeClusterIcon() {
-        gameViewController.removeChild(clusterIcon);
+        gameController.removeRectangle(clusterIcon);
         clusterIcon = null;
     }
 
     public void removeTankBullet(TankBullet tankBullet) {
         tankBullets.remove(tankBullet);
-        gameViewController.removeChild(tankBullet);
+        gameController.removeRectangle(tankBullet);
     }
 
     public void removeMig(Mig mig) {
-        gameViewController.removeChild(mig);
+        gameController.removeRectangle(mig);
         this.mig = null;
     }
 
     public void removeCircle(Circle circle) {
         circles.remove(circle);
-        gameViewController.removeChild(circle);
+        gameController.removeCircle(circle);
     }
 
     public int getScore() {
@@ -423,7 +418,7 @@ public class Game {
 
     public void setMig(Mig mig) {
         this.mig = mig;
-        gameViewController.addChild(mig);
+        gameController.addRectangle(mig);
         timeLeftToMig = 400 - 100 * (difficulty - 1);
     }
 
@@ -441,11 +436,11 @@ public class Game {
     public void freeze() {
         freezePercentage.set(0.0);
         freezeLeft = 500;
-        gameViewController.showFrozenImage();
+        gameController.freeze();
     }
 
     private void unFreeze() {
-        gameViewController.disableFrozenImage();
+        gameController.unFreeze();
     }
 
     public boolean waveFinished() {

@@ -180,7 +180,7 @@ public class User {
 
     public void setRadioActiveBombs(int radioActiveBombs) {
         this.radioActiveBombs = radioActiveBombs;
-        game.getGameViewController().updateAtomicNumber(radioActiveBombs);
+        game.getGameController().updateAtomicNumber(radioActiveBombs);
     }
 
     public int getClusterBombs() {
@@ -189,8 +189,9 @@ public class User {
 
     public void setClusterBombs(int clusterBombs) {
         this.clusterBombs = clusterBombs;
-        game.getGameViewController().updateClusterNumber(clusterBombs);
+        game.getGameController().updateClusterNumber(clusterBombs);
     }
+
     public void setGame(Game game) {
         this.game = game;
     }

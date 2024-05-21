@@ -31,11 +31,11 @@ public class Bomb extends Rectangle {
         setY(getY() + vy);
         vy += gravity;
         updateRotation();
-        if (getX() < -width || getX() > game.getGameViewController().scene.getWidth()) {
+        if (getX() < -width || getX() > game.getGameController().getWidth()) {
             game.removeBomb(this);
             return false;
         }
-        if (getY() > game.getGameViewController().scene.getHeight() - 160) {
+        if (getY() > game.getGameController().getHeight() - 160) {
             blast();
             return false;
         }
@@ -66,7 +66,7 @@ public class Bomb extends Rectangle {
         collisionWithTruck();
         collisionWithTree();
         game.removeBomb(this);
-        if (this instanceof AtomicBomb){
+        if (this instanceof AtomicBomb) {
             AtomicExplosion atomicExplosion = new AtomicExplosion(getX(), getY() - 40);
             game.addAtomicExplosion(atomicExplosion);
             return;
@@ -181,6 +181,6 @@ public class Bomb extends Rectangle {
 
     private void increaseKills(int num) {
         User.getCurrentUser().setKills(User.getCurrentUser().getKills() + num);
-        game.getGameViewController().updateKillNumber(User.getCurrentUser().getKills());
+        game.getGameController().updateKills(User.getCurrentUser().getKills());
     }
 }

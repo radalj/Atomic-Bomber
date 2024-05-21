@@ -3,6 +3,8 @@ package controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import model.*;
 import view.GameViewController;
@@ -12,20 +14,23 @@ import java.util.Random;
 public class GameController {
     private Game game;
     private GameViewController gameViewController;
-    private Timeline planeTimeline, tankTimeline;
+    private Timeline planeTimeline, respawnTimeline;
     private Random random = new Random();
+    private double width, height;
 
     public void start() {
         gameViewController = new GameViewController();
         gameViewController.start();
-        game = new Game(User.getCurrentUser().getDifficulty(), gameViewController);
+        width = gameViewController.scene.getWidth();
+        height = gameViewController.scene.getHeight();
+        game = new Game(User.getCurrentUser().getDifficulty(), this);
         User.getCurrentUser().setGame(game);
         gameViewController.setUpFreezeProgressBar(game.getFreezePercentageProperty());
 
         planeTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
         planeTimeline.setCycleCount(Timeline.INDEFINITE);
         planeTimeline.play();
-        tankTimeline = new Timeline(
+        respawnTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(4), e -> {
                     boolean tankOrTruck = random.nextBoolean();
                     if (game.getTimeLeftToMig() == 0 && game.getWave() == 3 && game.getMig() == null) {
@@ -46,8 +51,8 @@ public class GameController {
                         game.addTruck(truck);
                     }
                 }));
-        tankTimeline.setCycleCount(Timeline.INDEFINITE);
-        tankTimeline.play();
+        respawnTimeline.setCycleCount(Timeline.INDEFINITE);
+        respawnTimeline.play();
         boolean arrowKeys = ApplicationController.getArrowKeys();
 
         gameViewController.scene.setOnKeyPressed(e -> {
@@ -87,8 +92,58 @@ public class GameController {
                 User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
             }
             if (e.getCode() == KeyCode.T) {
-                game.addTank(new Tank(game, random.nextBoolean()));
+                Tank tank = new Tank(game, random.nextBoolean());
+                tank.setX(random.nextInt() % gameViewController.scene.getWidth());
+                game.addTank(tank);
             }
         });
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void addRectangle(Rectangle rectangle) {
+        gameViewController.addChild(rectangle);
+    }
+
+    public void addCircle(Circle circle) {
+        gameViewController.addChild(circle);
+    }
+
+    public void removeRectangle(Rectangle rectangle) {
+        gameViewController.removeChild(rectangle);
+    }
+
+    public void removeCircle(Circle circle) {
+        gameViewController.removeChild(circle);
+    }
+
+    public void freeze() {
+        gameViewController.showFrozenImage();
+    }
+
+    public void unFreeze() {
+        gameViewController.disableFrozenImage();
+    }
+
+    public void updateAtomicNumber(int atomic) {
+        gameViewController.updateAtomicNumber(atomic);
+    }
+
+    public void updateClusterNumber(int cluster) {
+        gameViewController.updateClusterNumber(cluster);
+    }
+
+    public void updateKills(int kills) {
+        gameViewController.updateKillNumber(kills);
+    }
+
+    public void updateWave(int wave) {
+        gameViewController.updateWave(wave);
     }
 }
