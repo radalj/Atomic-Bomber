@@ -149,7 +149,7 @@ public class User {
     public int getAccuracy() {
         if (numberOfShots == 0)
             return 0;
-        return (int) (numberOfHits / numberOfShots * 100);
+        return (numberOfHits * 100 / numberOfShots);
     }
 
     public void increaseNumberOfShots() {

@@ -4,22 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="now game ends after wave 3">
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="game ending improved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Stronghold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Stronghold.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Truck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Truck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bomb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Stronghold.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Stronghold.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Tank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Truck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Truck.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +133,7 @@
       <workItem from="1716117816986" duration="12467000" />
       <workItem from="1716140832948" duration="4389000" />
       <workItem from="1716174518194" duration="21135000" />
-      <workItem from="1716270329028" duration="10042000" />
+      <workItem from="1716270329028" duration="11346000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -318,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716277945276</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="game ending improved">
+      <option name="closed" value="true" />
+      <created>1716282084173</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1716282084173</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +362,8 @@
     <MESSAGE value="go to next Wave added" />
     <MESSAGE value="show accuracy between waves" />
     <MESSAGE value="now game ends after wave 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="now game ends after wave 3" />
+    <MESSAGE value="game ending improved" />
+    <option name="LAST_COMMIT_MESSAGE" value="game ending improved" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
