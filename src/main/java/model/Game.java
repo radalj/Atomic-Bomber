@@ -13,7 +13,9 @@ import java.util.Random;
 public class Game {
     private final GameController gameController;
     private final Random random = new Random();
-    private final int difficulty, score = 0, kills = 0;
+    private final int difficulty;
+    private final int score = 0;
+    private int kills = 0;
     private int wave = 1;
     private int timeLeftToMig = 0;
     private final Plane plane = new Plane(this);
@@ -38,7 +40,8 @@ public class Game {
     private BurningBuilding burningBuilding = null;
     private BurningStronghold burningStronghold = null;
     private Mig mig = null;
-    private int waveHits, waveShots;
+    private int waveHits = 0, waveShots = 0;
+    private int totalHits = 0, totalShots = 0;
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
     private int freezeLeft = 0;
@@ -454,6 +457,7 @@ public class Game {
                 && circles.isEmpty() && burningTanks.isEmpty() && atomicExplosions.isEmpty() && clusterExplosions.isEmpty() &&
                 burningTrucks.isEmpty() && numberOfTanks == 0 && numberOfTrucks == 0 && numberOfShooterTanks == 0;
     }
+
     public void goToNextWave() {
         if (isPauseTransitionRunning) return;
         clearEverything();
@@ -461,6 +465,10 @@ public class Game {
         PauseTransition pause = new PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
             wave++;
+            if (wave == 4) {
+                gameController.endGame(true);
+                return;
+            }
             numberOfTanks = 3 * wave;
             numberOfTrucks = 2 * wave;
             numberOfShooterTanks = 2;
@@ -474,6 +482,7 @@ public class Game {
         isPauseTransitionRunning = true;
         pause.play();
     }
+
     private void clearEverything() {
         while (!tanks.isEmpty()) {
             Tank tank = tanks.get(0);
@@ -578,14 +587,33 @@ public class Game {
         numberOfTrucks = 0;
         numberOfShooterTanks = 0;
     }
+
     public void increaseWaveHits() {
         waveHits++;
+        totalHits++;
     }
+
     public void increaseWaveShots() {
         waveShots++;
+        totalShots++;
     }
+
     public int getWaveAccuracy() {
         if (waveShots == 0) return 0;
         return waveHits * 100 / waveShots;
+    }
+
+    public int getTotalAccuracy() {
+        if (totalShots == 0) return 0;
+        return totalHits * 100 / totalShots;
+    }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public void increaseKills(int killCount) {
+        kills += killCount;
+        gameController.updateKills(kills);
     }
 }

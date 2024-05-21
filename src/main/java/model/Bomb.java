@@ -92,7 +92,7 @@ public class Bomb extends Rectangle {
             game.removeBuilding();
             BurningBuilding burningBuilding = new BurningBuilding(building.getX(), building.getY());
             game.addBurningBuilding(burningBuilding);
-            increaseKills(1);
+            increaseKills(building.getKillCount());
             game.incrementFreezePercentage();
         }
     }
@@ -108,7 +108,7 @@ public class Bomb extends Rectangle {
             game.removeStronghold();
             BurningStronghold burningStronghold = new BurningStronghold(stronghold.getX(), stronghold.getY());
             game.addBurningStronghold(burningStronghold);
-            increaseKills(2);
+            increaseKills(stronghold.getKillCount());
             game.incrementFreezePercentage();
         }
     }
@@ -126,7 +126,7 @@ public class Bomb extends Rectangle {
                 burningTank.setScaleX(tank.getScaleX());
                 game.addBurningTank(burningTank);
                 flag = true;
-                increaseKills(4);
+                increaseKills(tank.getKillCount());
                 game.incrementFreezePercentage();
                 break;
             }
@@ -148,7 +148,7 @@ public class Bomb extends Rectangle {
                 burningTruck.setScaleX(truck.getScaleX());
                 game.addBurningTruck(burningTruck);
                 flag = true;
-                increaseKills(3);
+                increaseKills(truck.getKillCount());
                 game.incrementFreezePercentage();
                 break;
             }
@@ -188,7 +188,7 @@ public class Bomb extends Rectangle {
     }
 
     private void increaseKills(int num) {
-        User.getCurrentUser().setKills(User.getCurrentUser().getKills() + num);
-        game.getGameController().updateKills(User.getCurrentUser().getKills());
+        User.getCurrentUser().increaseKills(num);
+        game.increaseKills(num);
     }
 }

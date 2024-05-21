@@ -152,4 +152,22 @@ public class GameViewController {
         betweenWavesWave = null;
         betweenWavesAccuracy = null;
     }
+
+    public void endGame(int kills, double accuracy, boolean win) {
+        GaussianBlur blur = new GaussianBlur();
+        blur.setRadius(10);
+        backgroundPane.setEffect(blur);
+
+        vBox.getChildren().clear();
+        Label endGameLabel = new Label(win ? "You Won!" : "You Lost!");
+        endGameLabel.getStyleClass().add("big-text-in-game");
+        vBox.getChildren().add(endGameLabel);
+        Label accuracyLabel = new Label("Accuracy : " + accuracy + "%");
+        accuracyLabel.getStyleClass().add("big-text-in-game");
+        vBox.getChildren().add(accuracyLabel);
+        Label killsLabel = new Label("Kills : " + kills);
+        killsLabel.getStyleClass().add("big-text-in-game");
+        vBox.getChildren().add(killsLabel);
+        overlayPane.setCenter(vBox);
+    }
 }

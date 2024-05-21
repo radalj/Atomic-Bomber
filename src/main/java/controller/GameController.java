@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Circle;
@@ -162,5 +163,16 @@ public class GameController {
 
     public void endBetweenWaves() {
         gameViewController.endBetweenWaves();
+    }
+
+    public void endGame(boolean win) {
+        gameViewController.endGame(game.getKills(), game.getTotalAccuracy(), win);
+        User.getCurrentUser().setWave(game.getWave() - 1);
+
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
+        pauseTransition.setOnFinished(e -> {
+            ApplicationController.setScene(MainMenuController.scene);
+        });
+        pauseTransition.play();
     }
 }

@@ -136,18 +136,14 @@ public class User {
         return kills;
     }
 
-    public void setKills(int kills) {
-        this.kills = kills;
+    public void increaseKills (int kills) {
+        this.kills += kills;
         this.difficultyKills += kills * difficulty;
         this.score += kills * difficulty;
     }
 
     public int getDifficultyKills() {
         return difficultyKills;
-    }
-
-    public void setDifficultyKills(int difficultKills) {
-        this.difficultyKills = difficultKills;
     }
 
     public int getAccuracy() {
