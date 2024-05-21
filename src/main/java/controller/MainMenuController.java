@@ -51,7 +51,7 @@ public class MainMenuController {
 
     public void newGame() {
         GameController gameController = new GameController();
-        gameController.start();
+        gameController.start(this);
     }
 
     public void resumeGame() {

@@ -81,9 +81,11 @@ public class RankingController {
             case 2 -> User.sortUsersByDifficultKills();
             default -> User.sortUsersByAccuracy();
         };
-        while (users.size() > 10) {
+        for (int i = 0; i < users.size(); i++)
+            users.get(i).setRank(i + 1);
+        while (users.size() > 10)
             users.removeLast();
-        }
+        rankingTable.refresh();
         return users;
     }
 

@@ -3,6 +3,7 @@ package model;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ public class User {
     private String username;
     private String password;
     private static int guestNumber = 0;
-    private int score, kills, difficultyKills, wave, numberOfShots, numberOfHits;
+    private int score, kills, difficultyKills, wave, numberOfShots, numberOfHits, rank;
     private int difficulty;
     private int radioActiveBombs, clusterBombs;
     private Game game;
@@ -74,25 +75,29 @@ public class User {
 
     public static ArrayList<User> sortUsersByScore() {
         ArrayList<User> sortedUsers = new ArrayList<>(users);
-        sortedUsers.sort(Comparator.comparingInt(User::getScore).reversed().thenComparingInt(User::getWave));
+        sortedUsers.sort(Comparator.comparingInt(User::getScore).thenComparingInt(User::getWave));
+        Collections.reverse(sortedUsers);
         return sortedUsers;
     }
 
     public static ArrayList<User> sortUsersByKills() {
         ArrayList<User> sortedUsers = new ArrayList<>(users);
-        sortedUsers.sort(Comparator.comparingInt(User::getKills).reversed().thenComparingInt(User::getWave));
+        sortedUsers.sort(Comparator.comparingInt(User::getKills).thenComparingInt(User::getWave));
+        Collections.reverse(sortedUsers);
         return sortedUsers;
     }
 
     public static ArrayList<User> sortUsersByDifficultKills() {
         ArrayList<User> sortedUsers = new ArrayList<>(users);
-        sortedUsers.sort(Comparator.comparingInt(User::getDifficultyKills).reversed().thenComparingInt(User::getWave));
+        sortedUsers.sort(Comparator.comparingInt(User::getDifficultyKills).thenComparingInt(User::getWave));
+        Collections.reverse(sortedUsers);
         return sortedUsers;
     }
 
     public static ArrayList<User> sortUsersByAccuracy() {
         ArrayList<User> sortedUsers = new ArrayList<>(users);
-        sortedUsers.sort(Comparator.comparingDouble(User::getAccuracy).reversed().thenComparingInt(User::getWave));
+        sortedUsers.sort(Comparator.comparingDouble(User::getAccuracy).thenComparingInt(User::getWave));
+        Collections.reverse(sortedUsers);
         return sortedUsers;
     }
 
@@ -191,5 +196,11 @@ public class User {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+    public int getRank() {
+        return rank;
+    }
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 }

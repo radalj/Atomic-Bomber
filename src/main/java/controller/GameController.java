@@ -17,8 +17,9 @@ public class GameController {
     private Timeline moveTimeline, respawnTimeline;
     private final Random random = new Random();
     private double width, height;
-
-    public void start() {
+    private MainMenuController mainMenuController;
+    public void start(MainMenuController mainMenuController) {
+        this.mainMenuController = mainMenuController;
         gameViewController = new GameViewController();
         gameViewController.start();
         width = gameViewController.scene.getWidth();
@@ -197,11 +198,14 @@ public class GameController {
     }
 
     public void endGame(boolean win) {
+        moveTimeline.stop();
+        respawnTimeline.stop();
+        User.getCurrentUser().setGame(null);
         gameViewController.endGame(game.getKills(), game.getTotalAccuracy(), win);
         User.getCurrentUser().setWave(game.getWave() - 1);
 
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
-        pauseTransition.setOnFinished(e -> ApplicationController.setScene(MainMenuController.scene));
+        pauseTransition.setOnFinished(e -> mainMenuController.start());
         pauseTransition.play();
     }
 }
