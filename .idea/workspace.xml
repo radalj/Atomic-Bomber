@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Accuracy Bug debugged">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="initial profile picture is now selected randomly">
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Plane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +127,7 @@
       <workItem from="1716117816986" duration="12467000" />
       <workItem from="1716140832948" duration="4389000" />
       <workItem from="1716174518194" duration="21135000" />
-      <workItem from="1716270329028" duration="11691000" />
+      <workItem from="1716270329028" duration="12050000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -320,7 +321,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716282865722</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="initial profile picture is now selected randomly">
+      <option name="closed" value="true" />
+      <created>1716283202821</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1716283202821</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +348,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="View Controllers and controllers merged" />
     <MESSAGE value="Setting menu added" />
     <MESSAGE value="Basic movement of plane added" />
     <MESSAGE value="Plane rotation completed" />
@@ -364,7 +372,8 @@
     <MESSAGE value="now game ends after wave 3" />
     <MESSAGE value="game ending improved" />
     <MESSAGE value="Accuracy Bug debugged" />
-    <option name="LAST_COMMIT_MESSAGE" value="Accuracy Bug debugged" />
+    <MESSAGE value="initial profile picture is now selected randomly" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial profile picture is now selected randomly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

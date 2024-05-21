@@ -22,20 +22,22 @@ public class Plane extends Rectangle {
         setFill(new ImagePattern(new Image(Plane.class.getResource("/images/Game/plane.png").toExternalForm())));
     }
 
-    public void move() {
+    public boolean move() {
         if (getX() + vx < -width) {
             setX(game.getGameController().getWidth() - 1);
         }
         if (getX() + vx > game.getGameController().getWidth()) {
             setX(-width + 1);
         }
-        if (getY() + vy < 0 || getY() + vy > game.getGameController().getHeight() - height - 100) {
+        if (getY() + vy < 0) {
             vy = -vy;
             updateRotation();
         }
+        if (getY() + vy > game.getGameController().getHeight() - height - 100) return false;
         setX(getX() + vx);
         setY(getY() + vy);
         checkIntersection();
+        return true;
     }
 
     private void checkIntersection() {

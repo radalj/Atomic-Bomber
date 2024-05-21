@@ -88,7 +88,10 @@ public class Game {
 
     public void update() {
         if (isPauseTransitionRunning) return;
-        plane.move();
+        if (!plane.move()) {
+            gameController.endGame(false);
+            return;
+        }
         if (waveFinished()) {
             goToNextWave();
             return;
