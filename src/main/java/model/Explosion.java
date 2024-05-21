@@ -11,6 +11,7 @@ public class Explosion extends Rectangle {
         super(x, y, 70, 70);
         setFill(new ImagePattern(new Image(Explosion.class.getResource("/images/Game/explosion.png").toExternalForm())));
     }
+
     public boolean disappear() {
         timeLeftToDisappear--;
         return timeLeftToDisappear == 0;

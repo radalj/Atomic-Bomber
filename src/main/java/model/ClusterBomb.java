@@ -3,6 +3,7 @@ package model;
 public class ClusterBomb extends Bomb {
     private int numberOfMoves = 0;
     private final int numberOfBullet = 7;
+
     public ClusterBomb(Game game, int x, int y, double vx, double vy, double width, double height) {
         super(game, x, y, vx, vy, width, height);
     }

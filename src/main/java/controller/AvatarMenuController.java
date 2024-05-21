@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,9 +33,16 @@ public class AvatarMenuController {
     public void initialize() {
         ApplicationController.playMusic();
         Image image = User.getCurrentUser().getImage();
+        String imagePath = image.getUrl();
         avatarImage.setImage(image);
         avatarChoiceBox.getItems().addAll("woman1", "woman2", "man1", "man2");
-        avatarChoiceBox.setValue("woman1");
+        switch (imagePath) {
+            case "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/woman1.jpg" -> avatarChoiceBox.setValue("woman1");
+            case "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/woman2.jpg" -> avatarChoiceBox.setValue("woman2");
+            case "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/man1.jpg" -> avatarChoiceBox.setValue("man1");
+            case "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/man2.jpg" -> avatarChoiceBox.setValue("man2");
+        }
+        //avatarChoiceBox.setValue("woman1");
         avatarChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             String path = "file:/home/radal/Atomic-Bomber/src/main/resources/images/avatars/" + newValue + ".jpg";
             Image newImage = new Image(path);
@@ -72,7 +78,7 @@ public class AvatarMenuController {
         dragEvent.consume();
     }
 
-    public void chooseFile(ActionEvent actionEvent) {
+    public void chooseFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose an avatar");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
@@ -96,9 +102,8 @@ public class AvatarMenuController {
         Dragboard dragboard = dragEvent.getDragboard();
         File file;
         if (dragboard.hasFiles()) {
-            file = dragboard.getFiles().get(0);
-            Image image = new Image(file.toURI().toString());
-            return image;
+            file = dragboard.getFiles().getFirst();
+            return new Image(file.toURI().toString());
         }
         return null;
     }

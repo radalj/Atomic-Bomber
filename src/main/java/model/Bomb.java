@@ -115,7 +115,6 @@ public class Bomb extends Rectangle {
 
     protected void collisionWithTank() {
         ArrayList<Tank> tanks = game.getTanks();
-        double x = getX();
         boolean flag = false;
         for (Tank tank : tanks) {
             if (checkIntersection(tank)) {
@@ -137,7 +136,6 @@ public class Bomb extends Rectangle {
 
     protected void collisionWithTruck() {
         ArrayList<Truck> trucks = game.getTrucks();
-        double x = getX();
         boolean flag = false;
         for (Truck truck : trucks) {
             if (checkIntersection(truck)) {
@@ -159,7 +157,6 @@ public class Bomb extends Rectangle {
 
     protected void collisionWithTree() {
         ArrayList<Tree> trees = game.getTrees();
-        double x = getX();
         boolean flag = false;
         for (Tree tree : trees) {
             if (checkIntersection(tree)) {
@@ -173,10 +170,7 @@ public class Bomb extends Rectangle {
     }
 
     protected boolean checkIntersection(Rectangle rectangle) {
-        if (this.getBoundsInParent().intersects(rectangle.getBoundsInParent())) {
-            return true;
-        }
-        return false;
+        return this.getBoundsInParent().intersects(rectangle.getBoundsInParent());
     }
 
     public void setRadius(double radius) {

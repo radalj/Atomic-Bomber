@@ -7,8 +7,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.security.spec.ECField;
-import java.util.Objects;
 
 public class ApplicationController {
     private static Stage stage;
@@ -37,6 +35,7 @@ public class ApplicationController {
         stage.setScene(scene);
         stage.show();
     }
+
     public static void playMusic() {
         if (mediaPlayer != null) {
             return;
@@ -47,9 +46,11 @@ public class ApplicationController {
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
+
     public static boolean isMusicPlaying() {
         return isMusicPlaying;
     }
+
     public static void toggleMusic() {
         if (isMusicPlaying) {
             mediaPlayer.pause();
@@ -58,6 +59,7 @@ public class ApplicationController {
         }
         isMusicPlaying = !isMusicPlaying;
     }
+
     public static void toggleGrayScale() {
         isGrayScale = !isGrayScale;
         if (isGrayScale) {
@@ -68,12 +70,15 @@ public class ApplicationController {
             stage.getScene().getRoot().setEffect(null);
         }
     }
+
     public static boolean getGrayScale() {
         return isGrayScale;
     }
+
     public static void toggleArrowKeys() {
         arrowKeys = !arrowKeys;
     }
+
     public static boolean getArrowKeys() {
         return arrowKeys;
     }

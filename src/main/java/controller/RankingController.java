@@ -50,14 +50,11 @@ public class RankingController {
         sortType.getItems().addAll("Score", "Kills", "Difficulty Kills", "Accuracy");
         sortType.setValue("Score");
         sortType.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.equals("Score")) {
-                setSortType(0);
-            } else if (newValue.equals("Kills")) {
-                setSortType(1);
-            } else if (newValue.equals("Difficulty Kills")) {
-                setSortType(2);
-            } else {
-                setSortType(3);
+            switch (newValue) {
+                case "Score" -> setSortType(0);
+                case "Kills" -> setSortType(1);
+                case "Difficulty Kills" -> setSortType(2);
+                default -> setSortType(3);
             }
             buildRanking(rankingTable);
         });
@@ -78,23 +75,14 @@ public class RankingController {
     }
 
     public ArrayList<User> findRanking() {
-        ArrayList<User> users;
-        switch (sortTypeInt) {
-            case 0:
-                users = User.sortUsersByScore();
-                break;
-            case 1:
-                users = User.sortUsersByKills();
-                break;
-            case 2:
-                users = User.sortUsersByDifficultKills();
-                break;
-            default:
-                users = User.sortUsersByAccuracy();
-                break;
-        }
+        ArrayList<User> users = switch (sortTypeInt) {
+            case 0 -> User.sortUsersByScore();
+            case 1 -> User.sortUsersByKills();
+            case 2 -> User.sortUsersByDifficultKills();
+            default -> User.sortUsersByAccuracy();
+        };
         while (users.size() > 10) {
-            users.remove(users.size() - 1);
+            users.removeLast();
         }
         return users;
     }
@@ -102,9 +90,6 @@ public class RankingController {
     public void buildRanking(TableView<User> rankingTable) {
         rankingTable.getItems().clear();
         ArrayList<User> users = findRanking();
-        for (int i = 0; i < users.size(); i++) {
-            users.get(i).setRank(i + 1);
-        }
         ObservableList<User> playerRankings = FXCollections.observableArrayList(users);
         TableColumn<User, Integer> rankColumn = new TableColumn<>("Rank");
         TableColumn<User, String> usernameColumn = new TableColumn<>("Username");

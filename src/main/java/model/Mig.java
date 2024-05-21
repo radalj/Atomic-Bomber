@@ -10,9 +10,10 @@ public class Mig extends Rectangle {
     private double vx = 0.80;
     private double radius = 110;
     private int reloadTime = 0;
-    private Circle circle;
-    private Game game;
-    public Mig (Game game, Boolean enterFromLeft) {
+    private final Circle circle;
+    private final Game game;
+
+    public Mig(Game game, Boolean enterFromLeft) {
         super(120, 30);
         setFill(new ImagePattern(new Image(Plane.class.getResource("/images/Game/mig.png").toExternalForm())));
         this.game = game;
@@ -47,6 +48,7 @@ public class Mig extends Rectangle {
             shoot();
         }
     }
+
     private void shoot() {
         double x = getX() + getWidth() / 2 + vx * 4;
         double y = getY() + getHeight() / 2;
@@ -58,10 +60,8 @@ public class Mig extends Rectangle {
         game.addTankBullet(bullet);
         reloadTime = 100;
     }
+
     private boolean isPlaneInCircle() {
         return circle.contains(game.getPlane().getX() + game.getPlane().getWidth() / 2, game.getPlane().getY() + game.getPlane().getHeight() / 2);
-    }
-    public Circle getCircle() {
-        return circle;
     }
 }

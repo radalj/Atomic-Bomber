@@ -3,10 +3,11 @@ package model;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-public class ShooterTank extends Tank{
+public class ShooterTank extends Tank {
     private double radius = 110;
-    private Circle circle;
+    private final Circle circle;
     private int reloadTime = 0;
+
     public ShooterTank(Game game, boolean enterFromLeft) {
         super(game, enterFromLeft);
         radius *= game.getDifficulty();
@@ -14,6 +15,7 @@ public class ShooterTank extends Tank{
         circle.setStroke(new Color(1, 1, 1, 0.5));
         circle.setFill(Color.TRANSPARENT);
     }
+
     @Override
     public void move() {
         if (reloadTime > 0)
@@ -29,7 +31,7 @@ public class ShooterTank extends Tank{
     private void shoot() {
         double vx = game.getPlane().getX() + game.getPlane().getWidth() / 2 - (getX() + getWidth() / 2);
         double vy = game.getPlane().getY() + game.getPlane().getHeight() / 2 - (getY() + getHeight() / 2);
-        TankBullet bullet = new TankBullet(game,getX() + getWidth() / 2, getY() + getHeight() / 2, vx, vy);
+        TankBullet bullet = new TankBullet(game, getX() + getWidth() / 2, getY() + getHeight() / 2, vx, vy);
         game.addTankBullet(bullet);
         reloadTime = 100;
     }

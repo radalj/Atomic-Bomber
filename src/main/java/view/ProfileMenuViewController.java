@@ -22,5 +22,6 @@ public class ProfileMenuViewController {
         Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
         alertStage.setAlwaysOnTop(true);
         alert.showAndWait();
-        mainStage.setAlwaysOnTop(true);    }
+        mainStage.setAlwaysOnTop(true);
+    }
 }

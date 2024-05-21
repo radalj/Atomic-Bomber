@@ -4,9 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="initial profile picture is now selected randomly">
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="plane now crashed">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AvatarMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AvatarMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProfileMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RankingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SettingsMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/AtomicExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AtomicExplosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/AtomicIcon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AtomicIcon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ClusterBomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ClusterBomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ClusterBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ClusterBullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ClusterExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ClusterExplosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ClusterIcon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ClusterIcon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Explosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Explosion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Mig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Mig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ShooterTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ShooterTank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Stronghold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Stronghold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/TankBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/TankBullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Truck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Truck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/ProfileMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/ProfileMenuViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/RegisterMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/RegisterMenuViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/FXML/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/FXML/MainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bomb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/ClusterExplosion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/ClusterExplosion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Mig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Mig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Stronghold.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Stronghold.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Tank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Tank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Truck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Truck.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,27 +90,27 @@
     <option name="showLibraryContents" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model" />
@@ -127,7 +166,7 @@
       <workItem from="1716117816986" duration="12467000" />
       <workItem from="1716140832948" duration="4389000" />
       <workItem from="1716174518194" duration="21135000" />
-      <workItem from="1716270329028" duration="12050000" />
+      <workItem from="1716270329028" duration="16171000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -329,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716283202821</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="plane now crashed">
+      <option name="closed" value="true" />
+      <created>1716283520445</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1716283520445</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +395,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Setting menu added" />
     <MESSAGE value="Basic movement of plane added" />
     <MESSAGE value="Plane rotation completed" />
     <MESSAGE value="Tank and Trucks added" />
@@ -373,7 +419,8 @@
     <MESSAGE value="game ending improved" />
     <MESSAGE value="Accuracy Bug debugged" />
     <MESSAGE value="initial profile picture is now selected randomly" />
-    <option name="LAST_COMMIT_MESSAGE" value="initial profile picture is now selected randomly" />
+    <MESSAGE value="plane now crashed" />
+    <option name="LAST_COMMIT_MESSAGE" value="plane now crashed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

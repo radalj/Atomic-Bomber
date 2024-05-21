@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 
 public class ClusterIcon extends Rectangle {
     private final double vy = 0.7;
-    private final double width = 50, height = 50;
+    private final double height = 50;
 
     public ClusterIcon(double x, double y) {
         super(50, 50);

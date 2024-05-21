@@ -1,7 +1,6 @@
 package view;
 
 import controller.ApplicationController;
-import controller.RegisterMenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +12,7 @@ import java.net.URL;
 
 public class RegisterMenuViewController extends Application {
     public static Scene scene;
-    private RegisterMenuController registerMenuController = new RegisterMenuController();
+
     public static void run(String[] args) {
         launch(args);
     }

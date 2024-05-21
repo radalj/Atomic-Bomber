@@ -18,12 +18,14 @@ public class ProfileMenuController {
     @FXML
     private TextField passwordField;
     public static Scene scene;
+    private MainMenuController mainMenuController = new MainMenuController();
 
     public void initialize() {
         ApplicationController.playMusic();
     }
 
-    public void start() {
+    public void start(MainMenuController mainMenuController) {
+        this.mainMenuController = mainMenuController;
         URL url = Main.class.getResource("/FXML/ProfileMenu.fxml");
         assert url != null;
         Pane root;
@@ -69,6 +71,7 @@ public class ProfileMenuController {
     }
 
     public void back() {
-        ApplicationController.setScene(MainMenuController.scene);
+        mainMenuController.start();
+        //ApplicationController.setScene(MainMenuController.scene);
     }
 }

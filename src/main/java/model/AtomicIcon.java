@@ -6,7 +6,7 @@ import javafx.scene.shape.Rectangle;
 
 public class AtomicIcon extends Rectangle {
     private final double vy = 0.7;
-    private final double width = 50, height = 50;
+    private final double height = 50;
 
     public AtomicIcon(double x, double y) {
         super(50, 50);

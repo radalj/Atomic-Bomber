@@ -13,7 +13,7 @@ public class User {
     private String username;
     private String password;
     private static int guestNumber = 0;
-    private int score, kills, difficultyKills, wave, rank, numberOfShots, numberOfHits;
+    private int score, kills, difficultyKills, wave, numberOfShots, numberOfHits;
     private int difficulty;
     private int radioActiveBombs, clusterBombs;
     private Game game;
@@ -96,13 +96,7 @@ public class User {
         return sortedUsers;
     }
 
-    public int getRank() {
-        return rank;
-    }
 
-    public void setRank(int i) {
-        this.rank = i;
-    }
 
     public String getUsername() {
         return username;
@@ -132,15 +126,12 @@ public class User {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
 
     public int getKills() {
         return kills;
     }
 
-    public void increaseKills (int kills) {
+    public void increaseKills(int kills) {
         this.kills += kills;
         this.difficultyKills += kills * difficulty;
         this.score += kills * difficulty;

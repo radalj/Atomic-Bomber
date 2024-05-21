@@ -18,10 +18,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class GameViewController {
-    private Pane root = new Pane();
-    private Pane backgroundPane = new Pane();
-    private BorderPane overlayPane = new BorderPane();
-    private VBox vBox = new VBox();
+    private final Pane root = new Pane();
+    private final Pane backgroundPane = new Pane();
+    private final BorderPane overlayPane = new BorderPane();
+    private final VBox vBox = new VBox();
     public Scene scene;
     private ProgressBar freezeProgressBar;
     private ImageView frozenImage;
@@ -130,6 +130,7 @@ public class GameViewController {
         fadeTransition.setToValue(0);
         fadeTransition.play();
     }
+
     public void startBetweenWaves(int wave, double accuracy) {
         GaussianBlur blur = new GaussianBlur();
         blur.setRadius(10);

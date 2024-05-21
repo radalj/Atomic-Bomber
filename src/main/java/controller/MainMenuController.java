@@ -1,21 +1,21 @@
 package controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import model.User;
 import view.Main;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class MainMenuController {
     public static Scene scene;
-    @FXML
     private ImageView avatar;
     @FXML
     private Label usernameText;
@@ -24,7 +24,6 @@ public class MainMenuController {
 
     public void initialize() {
         ApplicationController.playMusic();
-        avatar.setImage(User.getCurrentUser().getImage());
         usernameText.setText(User.getCurrentUser().getUsername());
         profileMenuController = new ProfileMenuController();
         rankingController = new RankingController();
@@ -39,6 +38,12 @@ public class MainMenuController {
         } catch (Exception e) {
             return;
         }
+        avatar = new ImageView(User.getCurrentUser().getImage());
+        avatar.setFitHeight(200);
+        avatar.setFitWidth(200);
+        avatar.setLayoutX(265);
+        avatar.setLayoutY(250);
+        root.getChildren().add(avatar);
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/CSS/Styles.css").toExternalForm());
         ApplicationController.setScene(scene);
@@ -49,14 +54,14 @@ public class MainMenuController {
         gameController.start();
     }
 
-    public void resumeGame(ActionEvent actionEvent) {
+    public void resumeGame() {
     }
 
-    public void profile(ActionEvent actionEvent) {
-        profileMenuController.start();
+    public void profile() {
+        profileMenuController.start(this);
     }
 
-    public void leaderboard(ActionEvent actionEvent) {
+    public void leaderboard() {
         rankingController.start();
     }
 
@@ -65,7 +70,12 @@ public class MainMenuController {
         settingsMenuController.start();
     }
 
-    public void exit(ActionEvent actionEvent) {
+    public void exit() {
         Platform.exit();
+    }
+    public void changeAvatar() {
+        Image image = User.getCurrentUser().getImage();
+        System.err.println(image.getUrl());
+        avatar.setImage(User.getCurrentUser().getImage());
     }
 }

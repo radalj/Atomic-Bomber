@@ -3,7 +3,6 @@ package controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
-import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -15,8 +14,8 @@ import java.util.Random;
 public class GameController {
     private Game game;
     private GameViewController gameViewController;
-    private Timeline planeTimeline, respawnTimeline;
-    private Random random = new Random();
+    private Timeline moveTimeline, respawnTimeline;
+    private final Random random = new Random();
     private double width, height;
 
     public void start() {
@@ -28,9 +27,9 @@ public class GameController {
         User.getCurrentUser().setGame(game);
         gameViewController.setUpFreezeProgressBar(game.getFreezePercentageProperty());
 
-        planeTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
-        planeTimeline.setCycleCount(Timeline.INDEFINITE);
-        planeTimeline.play();
+        moveTimeline = new Timeline(new KeyFrame(Duration.millis(10), e -> game.update()));
+        moveTimeline.setCycleCount(Timeline.INDEFINITE);
+        moveTimeline.play();
         respawnTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(4), e -> {
                     boolean tankOrTruck = random.nextBoolean();
@@ -54,57 +53,89 @@ public class GameController {
                 }));
         respawnTimeline.setCycleCount(Timeline.INDEFINITE);
         respawnTimeline.play();
+
+        getInput();
+    }
+
+    private void getInput() {
         boolean arrowKeys = ApplicationController.getArrowKeys();
 
         gameViewController.scene.setOnKeyPressed(e -> {
-            if ((e.getCode() == KeyCode.UP && arrowKeys) || (e.getCode() == KeyCode.W && !arrowKeys)) {
-                game.getPlane().changeDirUp();
-            }
-            if ((e.getCode() == KeyCode.DOWN && arrowKeys) || (e.getCode() == KeyCode.S && !arrowKeys)) {
-                game.getPlane().changeDirDown();
-            }
-            if ((e.getCode() == KeyCode.LEFT && arrowKeys) || (e.getCode() == KeyCode.A && !arrowKeys)) {
-                game.getPlane().changeDirLeft();
-            }
-            if ((e.getCode() == KeyCode.RIGHT && arrowKeys) || (e.getCode() == KeyCode.D && !arrowKeys)) {
-                game.getPlane().changeDirRight();
-            }
-            if (e.getCode() == KeyCode.SPACE) {
-                Bomb bomb = new Bomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
-                User.getCurrentUser().increaseNumberOfShots();
-                game.increaseWaveShots();
-                game.addBomb(bomb);
-            }
-            if (e.getCode() == KeyCode.R && User.getCurrentUser().getRadioActiveBombs() > 0) {
-                AtomicBomb atomicBomb = new AtomicBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
-                game.addAtomicBomb(atomicBomb);
-                User.getCurrentUser().increaseNumberOfShots();
-                game.increaseWaveShots();
-                User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() - 1);
-            }
-            if (e.getCode() == KeyCode.C && User.getCurrentUser().getClusterBombs() > 0) {
-                ClusterBomb clusterBomb = new ClusterBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
-                game.addClusterBomb(clusterBomb);
-                User.getCurrentUser().increaseNumberOfShots();
-                game.increaseWaveShots();
-                User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() - 1);
-            }
-            if (e.getCode() == KeyCode.TAB && game.getFreezePercentageProperty().get() == 1) {
-                game.freeze();
-            }
-            if (e.getCode() == KeyCode.G) {
-                User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() + 1);
-            }
-            if (e.getCode() == KeyCode.CONTROL) {
-                User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
-            }
-            if (e.getCode() == KeyCode.T) {
-                Tank tank = new Tank(game, random.nextBoolean());
-                tank.setX(random.nextInt() % gameViewController.scene.getWidth());
-                game.addTank(tank);
-            }
-            if (e.getCode() == KeyCode.P) {
-                game.goToNextWave();
+            switch (e.getCode()) {
+                case UP:
+                    if (arrowKeys)
+                        game.getPlane().changeDirUp();
+                    break;
+                case W:
+                    if (!arrowKeys)
+                        game.getPlane().changeDirUp();
+                    break;
+                case DOWN:
+                    if (arrowKeys)
+                        game.getPlane().changeDirDown();
+                    break;
+                case S:
+                    if (!arrowKeys)
+                        game.getPlane().changeDirDown();
+                    break;
+                case LEFT:
+                    if (arrowKeys)
+                        game.getPlane().changeDirLeft();
+                    break;
+                case A:
+                    if (!arrowKeys)
+                        game.getPlane().changeDirLeft();
+                    break;
+                case RIGHT:
+                    if (arrowKeys)
+                        game.getPlane().changeDirRight();
+                    break;
+                case D:
+                    if (!arrowKeys)
+                        game.getPlane().changeDirRight();
+                    break;
+                case SPACE:
+                    Bomb bomb = new Bomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
+                    User.getCurrentUser().increaseNumberOfShots();
+                    game.increaseWaveShots();
+                    game.addBomb(bomb);
+                    break;
+                case R:
+                    if (User.getCurrentUser().getRadioActiveBombs() > 0) {
+                        AtomicBomb atomicBomb = new AtomicBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
+                        game.addAtomicBomb(atomicBomb);
+                        User.getCurrentUser().increaseNumberOfShots();
+                        game.increaseWaveShots();
+                        User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() - 1);
+                    }
+                    break;
+                case C:
+                    if (User.getCurrentUser().getClusterBombs() > 0) {
+                        ClusterBomb clusterBomb = new ClusterBomb(game, (int) game.getPlane().getX() + 50, (int) (game.getPlane().getY() + 50), game.getPlane().getVx(), game.getPlane().getVy(), 40, 20);
+                        game.addClusterBomb(clusterBomb);
+                        User.getCurrentUser().increaseNumberOfShots();
+                        game.increaseWaveShots();
+                        User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() - 1);
+                    }
+                    break;
+                case TAB:
+                    if (game.getFreezePercentageProperty().get() == 1)
+                        game.freeze();
+                    break;
+                case G:
+                    User.getCurrentUser().setRadioActiveBombs(User.getCurrentUser().getRadioActiveBombs() + 1);
+                    break;
+                case CONTROL:
+                    User.getCurrentUser().setClusterBombs(User.getCurrentUser().getClusterBombs() + 1);
+                    break;
+                case T:
+                    Tank tank = new Tank(game, random.nextBoolean());
+                    tank.setX(random.nextInt() % gameViewController.scene.getWidth());
+                    game.addTank(tank);
+                    break;
+                case P:
+                    game.goToNextWave();
+                    break;
             }
         });
     }
@@ -170,9 +201,7 @@ public class GameController {
         User.getCurrentUser().setWave(game.getWave() - 1);
 
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
-        pauseTransition.setOnFinished(e -> {
-            ApplicationController.setScene(MainMenuController.scene);
-        });
+        pauseTransition.setOnFinished(e -> ApplicationController.setScene(MainMenuController.scene));
         pauseTransition.play();
     }
 }

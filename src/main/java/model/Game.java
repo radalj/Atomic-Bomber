@@ -14,25 +14,24 @@ public class Game {
     private final GameController gameController;
     private final Random random = new Random();
     private final int difficulty;
-    private final int score = 0;
     private int kills = 0;
     private int wave = 1;
     private int timeLeftToMig = 0;
     private final Plane plane = new Plane(this);
-    private ArrayList<Tank> tanks = new ArrayList<>();
-    private ArrayList<BurningTank> burningTanks = new ArrayList<>();
-    private ArrayList<Truck> trucks = new ArrayList<>();
-    private ArrayList<BurningTruck> burningTrucks = new ArrayList<>();
+    private final ArrayList<Tank> tanks = new ArrayList<>();
+    private final ArrayList<BurningTank> burningTanks = new ArrayList<>();
+    private final ArrayList<Truck> trucks = new ArrayList<>();
+    private final ArrayList<BurningTruck> burningTrucks = new ArrayList<>();
     private ArrayList<Tree> trees = new ArrayList<>();
-    private ArrayList<Bomb> bombs = new ArrayList<>();
-    private ArrayList<AtomicBomb> atomicBombs = new ArrayList<>();
-    private ArrayList<ClusterBomb> clusterBombs = new ArrayList<>();
-    private ArrayList<ClusterBullet> clusterBullets = new ArrayList<>();
-    private ArrayList<Circle> circles = new ArrayList<>();
-    private ArrayList<TankBullet> tankBullets = new ArrayList<>();
-    private ArrayList<Explosion> explosions = new ArrayList<>();
-    private ArrayList<AtomicExplosion> atomicExplosions = new ArrayList<>();
-    private ArrayList<ClusterExplosion> clusterExplosions = new ArrayList<>();
+    private final ArrayList<Bomb> bombs = new ArrayList<>();
+    private final ArrayList<AtomicBomb> atomicBombs = new ArrayList<>();
+    private final ArrayList<ClusterBomb> clusterBombs = new ArrayList<>();
+    private final ArrayList<ClusterBullet> clusterBullets = new ArrayList<>();
+    private final ArrayList<Circle> circles = new ArrayList<>();
+    private final ArrayList<TankBullet> tankBullets = new ArrayList<>();
+    private final ArrayList<Explosion> explosions = new ArrayList<>();
+    private final ArrayList<AtomicExplosion> atomicExplosions = new ArrayList<>();
+    private final ArrayList<ClusterExplosion> clusterExplosions = new ArrayList<>();
     private Building building;
     private Stronghold stronghold;
     private AtomicIcon atomicIcon = null;
@@ -43,7 +42,7 @@ public class Game {
     private int waveHits = 0, waveShots = 0;
     private int totalHits = 0, totalShots = 0;
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
-    private DoubleProperty freezePercentage;
+    private final DoubleProperty freezePercentage;
     private int freezeLeft = 0;
     private boolean isPauseTransitionRunning = false;
 
@@ -403,9 +402,6 @@ public class Game {
         gameController.removeCircle(circle);
     }
 
-    public int getScore() {
-        return score;
-    }
 
     public AtomicIcon getAtomicIcon() {
         return atomicIcon;
@@ -434,10 +430,7 @@ public class Game {
     }
 
     public void incrementFreezePercentage() {
-        if (freezePercentage.get() + 0.2 <= 1.0)
-            freezePercentage.set(freezePercentage.get() + 0.2);
-        else
-            freezePercentage.set(1.0);
+        freezePercentage.set(Math.min(freezePercentage.get() + 0.2, 1.0));
     }
 
     public void freeze() {
@@ -488,72 +481,72 @@ public class Game {
 
     private void clearEverything() {
         while (!tanks.isEmpty()) {
-            Tank tank = tanks.get(0);
+            Tank tank = tanks.getFirst();
             tanks.remove(tank);
             gameController.removeRectangle(tank);
         }
         while (!trucks.isEmpty()) {
-            Truck truck = trucks.get(0);
+            Truck truck = trucks.getFirst();
             trucks.remove(truck);
             gameController.removeRectangle(truck);
         }
         while (!trees.isEmpty()) {
-            Tree tree = trees.get(0);
+            Tree tree = trees.getFirst();
             trees.remove(tree);
             gameController.removeRectangle(tree);
         }
         while (!bombs.isEmpty()) {
-            Bomb bomb = bombs.get(0);
+            Bomb bomb = bombs.getFirst();
             bombs.remove(bomb);
             gameController.removeRectangle(bomb);
         }
         while (!atomicBombs.isEmpty()) {
-            AtomicBomb atomicBomb = atomicBombs.get(0);
+            AtomicBomb atomicBomb = atomicBombs.getFirst();
             atomicBombs.remove(atomicBomb);
             gameController.removeRectangle(atomicBomb);
         }
         while (!clusterBombs.isEmpty()) {
-            ClusterBomb clusterBomb = clusterBombs.get(0);
+            ClusterBomb clusterBomb = clusterBombs.getFirst();
             clusterBombs.remove(clusterBomb);
             gameController.removeRectangle(clusterBomb);
         }
         while (!clusterBullets.isEmpty()) {
-            ClusterBullet clusterBullet = clusterBullets.get(0);
+            ClusterBullet clusterBullet = clusterBullets.getFirst();
             clusterBullets.remove(clusterBullet);
             gameController.removeRectangle(clusterBullet);
         }
         while (!tankBullets.isEmpty()) {
-            TankBullet tankBullet = tankBullets.get(0);
+            TankBullet tankBullet = tankBullets.getFirst();
             tankBullets.remove(tankBullet);
             gameController.removeRectangle(tankBullet);
         }
         while (!circles.isEmpty()) {
-            Circle circle = circles.get(0);
+            Circle circle = circles.getFirst();
             circles.remove(circle);
             gameController.removeCircle(circle);
         }
         while (!burningTanks.isEmpty()) {
-            BurningTank burningTank = burningTanks.get(0);
+            BurningTank burningTank = burningTanks.getFirst();
             burningTanks.remove(burningTank);
             gameController.removeRectangle(burningTank);
         }
         while (!burningTrucks.isEmpty()) {
-            BurningTruck burningTruck = burningTrucks.get(0);
+            BurningTruck burningTruck = burningTrucks.getFirst();
             burningTrucks.remove(burningTruck);
             gameController.removeRectangle(burningTruck);
         }
         while (!explosions.isEmpty()) {
-            Explosion explosion = explosions.get(0);
+            Explosion explosion = explosions.getFirst();
             explosions.remove(explosion);
             gameController.removeRectangle(explosion);
         }
         while (!atomicExplosions.isEmpty()) {
-            AtomicExplosion atomicExplosion = atomicExplosions.get(0);
+            AtomicExplosion atomicExplosion = atomicExplosions.getFirst();
             atomicExplosions.remove(atomicExplosion);
             gameController.removeRectangle(atomicExplosion);
         }
         while (!clusterExplosions.isEmpty()) {
-            ClusterExplosion clusterExplosion = clusterExplosions.get(0);
+            ClusterExplosion clusterExplosion = clusterExplosions.getFirst();
             clusterExplosions.remove(clusterExplosion);
             gameController.removeRectangle(clusterExplosion);
         }

@@ -38,31 +38,26 @@ public class SettingsMenuController {
                 break;
         }
         difficultyLevel.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                switch (newValue) {
-                    case "Easy":
-                        User.getCurrentUser().setDifficulty(1);
-                        break;
-                    case "Medium":
-                        User.getCurrentUser().setDifficulty(2);
-                        break;
-                    case "Hard":
-                        User.getCurrentUser().setDifficulty(3);
-                        break;
-                }
+            switch (newValue) {
+                case "Easy":
+                    User.getCurrentUser().setDifficulty(1);
+                    break;
+                case "Medium":
+                    User.getCurrentUser().setDifficulty(2);
+                    break;
+                case "Hard":
+                    User.getCurrentUser().setDifficulty(3);
+                    break;
+            }
         });
         soundOn.setSelected(ApplicationController.isMusicPlaying());
-        soundOn.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            ApplicationController.toggleMusic();
-        });
+        soundOn.selectedProperty().addListener((observable, oldValue, newValue) -> ApplicationController.toggleMusic());
         isGrayScale.setSelected(ApplicationController.getGrayScale());
-        isGrayScale.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            ApplicationController.toggleGrayScale();
-        });
+        isGrayScale.selectedProperty().addListener((observable, oldValue, newValue) -> ApplicationController.toggleGrayScale());
         arrowKeys.setSelected(ApplicationController.getArrowKeys());
-        arrowKeys.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            ApplicationController.toggleArrowKeys();
-        });
+        arrowKeys.selectedProperty().addListener((observable, oldValue, newValue) -> ApplicationController.toggleArrowKeys());
     }
+
     public void start() {
         URL url = Main.class.getResource("/FXML/SettingsMenu.fxml");
         assert url != null;

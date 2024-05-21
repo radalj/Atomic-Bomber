@@ -5,11 +5,12 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class TankBullet extends Rectangle {
-    private double vx, vy;
+    private final double vx, vy;
     private double normalSpeed = 1.00;
     private int lifeTime = 120;
-    private Game game;
-    public TankBullet (Game game, double x, double y, double vx, double vy) {
+    private final Game game;
+
+    public TankBullet(Game game, double x, double y, double vx, double vy) {
         super(x, y, 30, 10);
         double magnitude = Math.sqrt(vx * vx + vy * vy);
         normalSpeed *= game.getDifficulty();
