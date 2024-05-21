@@ -3,43 +3,53 @@ package view;
 import controller.ApplicationController;
 import javafx.animation.FadeTransition;
 import javafx.beans.property.DoubleProperty;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class GameViewController {
-    private Pane root;
+    private Pane root = new Pane();
+    private Pane backgroundPane = new Pane();
+    private BorderPane overlayPane = new BorderPane();
+    private VBox vBox = new VBox();
     public Scene scene;
     private ProgressBar freezeProgressBar;
     private ImageView frozenImage;
     private Label killNumber, Atomics, Clusters, Wave;
+    private Label betweenWavesWave, betweenWavesAccuracy;
 
     public void start() {
-        root = new Pane();
         setPaneSize();
+        vBox.setAlignment(Pos.CENTER);
+        root.getChildren().add(backgroundPane);
+        root.getChildren().add(overlayPane);
         Wave = new Label("Wave : 1");
         Wave.getStyleClass().add("text-in-game");
         Wave.setLayoutX(550);
         Wave.setLayoutY(0);
-        root.getChildren().add(Wave);
+        backgroundPane.getChildren().add(Wave);
         killNumber = new Label("Kills : 0");
         killNumber.getStyleClass().add("text-in-game");
         killNumber.setLayoutY(30);
-        root.getChildren().add(killNumber);
+        backgroundPane.getChildren().add(killNumber);
         Atomics = new Label("Atomic Bombs : 0");
         Atomics.getStyleClass().add("text-in-game");
         Atomics.setLayoutY(60);
-        root.getChildren().add(Atomics);
+        backgroundPane.getChildren().add(Atomics);
         Clusters = new Label("Cluster Bombs : 0");
         Clusters.getStyleClass().add("text-in-game");
         Clusters.setLayoutY(90);
-        root.getChildren().add(Clusters);
+        backgroundPane.getChildren().add(Clusters);
         scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/CSS/GameStyle.css").toExternalForm());
         ApplicationController.setScene(scene);
@@ -48,13 +58,15 @@ public class GameViewController {
 
     private void setPaneSize() {
         root.setPrefSize(ApplicationController.getStage().getWidth(), ApplicationController.getStage().getHeight());
+        backgroundPane.setPrefSize(ApplicationController.getStage().getWidth(), ApplicationController.getStage().getHeight());
+        overlayPane.setPrefSize(ApplicationController.getStage().getWidth(), ApplicationController.getStage().getHeight());
     }
 
     public void setUpFreezeProgressBar(DoubleProperty freezePercentage) {
         freezeProgressBar = new ProgressBar();
         freezeProgressBar.progressProperty().bind(freezePercentage);
         freezeProgressBar.setPrefSize(200, 20);
-        root.getChildren().add(freezeProgressBar);
+        backgroundPane.getChildren().add(freezeProgressBar);
     }
 
     public void updateKillNumber(int kills) {
@@ -74,22 +86,22 @@ public class GameViewController {
     }
 
     public void addChild(Circle circle) {
-        root.getChildren().add(circle);
+        backgroundPane.getChildren().add(circle);
         refreshScene();
     }
 
     public void addChild(Rectangle rectangle) {
-        root.getChildren().add(rectangle);
+        backgroundPane.getChildren().add(rectangle);
         refreshScene();
     }
 
     public void removeChild(Circle circle) {
-        root.getChildren().remove(circle);
+        backgroundPane.getChildren().remove(circle);
         refreshScene();
     }
 
     public void removeChild(Rectangle rectangle) {
-        root.getChildren().remove(rectangle);
+        backgroundPane.getChildren().remove(rectangle);
         refreshScene();
     }
 
@@ -102,7 +114,7 @@ public class GameViewController {
         frozenImage.setFitWidth(ApplicationController.getStage().getWidth());
         frozenImage.setFitHeight(ApplicationController.getStage().getHeight());
         frozenImage.setOpacity(0);
-        root.getChildren().add(frozenImage);
+        backgroundPane.getChildren().add(frozenImage);
     }
 
     public void showFrozenImage() {
@@ -117,5 +129,27 @@ public class GameViewController {
         fadeTransition.setFromValue(0.5);
         fadeTransition.setToValue(0);
         fadeTransition.play();
+    }
+    public void startBetweenWaves(int wave, double accuracy) {
+        GaussianBlur blur = new GaussianBlur();
+        blur.setRadius(10);
+        backgroundPane.setEffect(blur);
+
+        betweenWavesWave = new Label("Wave " + wave);
+        betweenWavesWave.getStyleClass().add("big-text-in-game");
+        vBox.getChildren().add(betweenWavesWave);
+        betweenWavesAccuracy = new Label("Accuracy : " + accuracy + "%");
+        betweenWavesAccuracy.getStyleClass().add("big-text-in-game");
+        vBox.getChildren().add(betweenWavesAccuracy);
+        overlayPane.setCenter(vBox);
+    }
+
+    public void endBetweenWaves() {
+        backgroundPane.setEffect(null);
+        vBox.getChildren().remove(betweenWavesWave);
+        vBox.getChildren().remove(betweenWavesAccuracy);
+        overlayPane.setCenter(null);
+        betweenWavesWave = null;
+        betweenWavesAccuracy = null;
     }
 }

@@ -7,3 +7,8 @@
     -fx-font-weight: bold;
     -fx-text-fill: rgb(255, 255, 255, 0.5);
 }
+.big-text-in-game {
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(255, 255, 255, 0.8);
+}

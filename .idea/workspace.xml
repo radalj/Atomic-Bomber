@@ -4,18 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="Atomic explosion added">
+    <list default="true" id="87f0e1cd-c9b3-4a55-b9ea-299146a801c6" name="Changes" comment="more MVC code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Bomb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Mig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Mig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/StaticObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/StaticObjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CSS/GameStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CSS/GameStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/GameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Bomb.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Bomb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Mig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Mig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Plane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/StaticObjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/StaticObjects.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Tree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Tree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/Vehicle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/Vehicle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/GameViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/GameViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +141,7 @@
       <workItem from="1716117816986" duration="12467000" />
       <workItem from="1716140832948" duration="4389000" />
       <workItem from="1716174518194" duration="21135000" />
-      <workItem from="1716270329028" duration="2609000" />
+      <workItem from="1716270329028" duration="5944000" />
     </task>
     <task id="LOCAL-00001" summary="Ranking added">
       <option name="closed" value="true" />
@@ -290,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716212119103</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="more MVC code">
+      <option name="closed" value="true" />
+      <created>1716273099150</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716273099150</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +342,8 @@
     <MESSAGE value="Burning tank and truck added" />
     <MESSAGE value="Explosion effect and burning building and stronghold added" />
     <MESSAGE value="Atomic explosion added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atomic explosion added" />
+    <MESSAGE value="more MVC code" />
+    <option name="LAST_COMMIT_MESSAGE" value="more MVC code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -96,6 +96,9 @@ public class GameController {
                 tank.setX(random.nextInt() % gameViewController.scene.getWidth());
                 game.addTank(tank);
             }
+            if (e.getCode() == KeyCode.P) {
+                game.goToNextWave();
+            }
         });
     }
 
@@ -145,5 +148,13 @@ public class GameController {
 
     public void updateWave(int wave) {
         gameViewController.updateWave(wave);
+    }
+
+    public void startBetweenWaves() {
+        gameViewController.startBetweenWaves(game.getWave(), User.getCurrentUser().getAccuracy());
+    }
+
+    public void endBetweenWaves() {
+        gameViewController.endBetweenWaves();
     }
 }

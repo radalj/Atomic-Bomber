@@ -1,9 +1,11 @@
 package model;
 
 import controller.GameController;
+import javafx.animation.PauseTransition;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -39,6 +41,7 @@ public class Game {
     private int numberOfTanks, numberOfTrucks, numberOfShooterTanks;
     private DoubleProperty freezePercentage;
     private int freezeLeft = 0;
+    private boolean isPauseTransitionRunning = false;
 
     public Game(int difficulty, GameController gameController) {
         this.difficulty = difficulty;
@@ -82,12 +85,8 @@ public class Game {
     public void update() {
         plane.move();
         if (waveFinished()) {
-            wave++;
-            gameController.updateWave(wave);
-            numberOfTanks = 3 * wave;
-            numberOfTrucks = 2 * wave;
-            numberOfShooterTanks = 2;
-            initiateWave();
+            goToNextWave();
+            return;
         }
         for (int i = 0; i < bombs.size(); i++) {
             Bomb bomb = bombs.get(i);
@@ -443,13 +442,136 @@ public class Game {
         gameController.unFreeze();
     }
 
+    public int getTimeLeftToMig() {
+        return timeLeftToMig;
+    }
+
     public boolean waveFinished() {
         return tanks.isEmpty() && trucks.isEmpty() && atomicBombs.isEmpty() && clusterBombs.isEmpty() && clusterBullets.isEmpty()
                 && tankBullets.isEmpty() && freezeLeft == 0 && building == null && stronghold == null && atomicIcon == null && clusterIcon == null && mig == null
-                && circles.isEmpty() && burningTanks.isEmpty() && burningTrucks.isEmpty() && numberOfTanks == 0 && numberOfTrucks == 0 && numberOfShooterTanks == 0;
+                && circles.isEmpty() && burningTanks.isEmpty() && atomicExplosions.isEmpty() && clusterExplosions.isEmpty() &&
+                burningTrucks.isEmpty() && numberOfTanks == 0 && numberOfTrucks == 0 && numberOfShooterTanks == 0;
     }
-
-    public int getTimeLeftToMig() {
-        return timeLeftToMig;
+    public void goToNextWave() {
+        if (isPauseTransitionRunning) return;
+        clearEverything();
+        gameController.startBetweenWaves();
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        pause.setOnFinished(event -> {
+            wave++;
+            numberOfTanks = 3 * wave;
+            numberOfTrucks = 2 * wave;
+            numberOfShooterTanks = 2;
+            gameController.updateWave(wave);
+            initiateWave();
+            isPauseTransitionRunning = false;
+            gameController.endBetweenWaves();
+        });
+        isPauseTransitionRunning = true;
+        pause.play();
+    }
+    private void clearEverything() {
+        while (!tanks.isEmpty()) {
+            Tank tank = tanks.get(0);
+            tanks.remove(tank);
+            gameController.removeRectangle(tank);
+        }
+        while (!trucks.isEmpty()) {
+            Truck truck = trucks.get(0);
+            trucks.remove(truck);
+            gameController.removeRectangle(truck);
+        }
+        while (!trees.isEmpty()) {
+            Tree tree = trees.get(0);
+            trees.remove(tree);
+            gameController.removeRectangle(tree);
+        }
+        while (!bombs.isEmpty()) {
+            Bomb bomb = bombs.get(0);
+            bombs.remove(bomb);
+            gameController.removeRectangle(bomb);
+        }
+        while (!atomicBombs.isEmpty()) {
+            AtomicBomb atomicBomb = atomicBombs.get(0);
+            atomicBombs.remove(atomicBomb);
+            gameController.removeRectangle(atomicBomb);
+        }
+        while (!clusterBombs.isEmpty()) {
+            ClusterBomb clusterBomb = clusterBombs.get(0);
+            clusterBombs.remove(clusterBomb);
+            gameController.removeRectangle(clusterBomb);
+        }
+        while (!clusterBullets.isEmpty()) {
+            ClusterBullet clusterBullet = clusterBullets.get(0);
+            clusterBullets.remove(clusterBullet);
+            gameController.removeRectangle(clusterBullet);
+        }
+        while (!tankBullets.isEmpty()) {
+            TankBullet tankBullet = tankBullets.get(0);
+            tankBullets.remove(tankBullet);
+            gameController.removeRectangle(tankBullet);
+        }
+        while (!circles.isEmpty()) {
+            Circle circle = circles.get(0);
+            circles.remove(circle);
+            gameController.removeCircle(circle);
+        }
+        while (!burningTanks.isEmpty()) {
+            BurningTank burningTank = burningTanks.get(0);
+            burningTanks.remove(burningTank);
+            gameController.removeRectangle(burningTank);
+        }
+        while (!burningTrucks.isEmpty()) {
+            BurningTruck burningTruck = burningTrucks.get(0);
+            burningTrucks.remove(burningTruck);
+            gameController.removeRectangle(burningTruck);
+        }
+        while (!explosions.isEmpty()) {
+            Explosion explosion = explosions.get(0);
+            explosions.remove(explosion);
+            gameController.removeRectangle(explosion);
+        }
+        while (!atomicExplosions.isEmpty()) {
+            AtomicExplosion atomicExplosion = atomicExplosions.get(0);
+            atomicExplosions.remove(atomicExplosion);
+            gameController.removeRectangle(atomicExplosion);
+        }
+        while (!clusterExplosions.isEmpty()) {
+            ClusterExplosion clusterExplosion = clusterExplosions.get(0);
+            clusterExplosions.remove(clusterExplosion);
+            gameController.removeRectangle(clusterExplosion);
+        }
+        if (burningBuilding != null) {
+            gameController.removeRectangle(burningBuilding);
+            burningBuilding = null;
+        }
+        if (burningStronghold != null) {
+            gameController.removeRectangle(burningStronghold);
+            burningStronghold = null;
+        }
+        freezeLeft = 0;
+        if (building != null) {
+            gameController.removeRectangle(building);
+            building = null;
+        }
+        if (stronghold != null) {
+            gameController.removeRectangle(stronghold);
+            stronghold = null;
+        }
+        if (atomicIcon != null) {
+            gameController.removeRectangle(atomicIcon);
+            atomicIcon = null;
+        }
+        if (clusterIcon != null) {
+            gameController.removeRectangle(clusterIcon);
+            clusterIcon = null;
+        }
+        if (mig != null) {
+            gameController.removeRectangle(mig);
+            mig = null;
+        }
+        numberOfTanks = 0;
+        numberOfTrucks = 0;
+        numberOfShooterTanks = 0;
     }
 }

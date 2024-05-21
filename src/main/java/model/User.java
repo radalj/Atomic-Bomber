@@ -12,8 +12,7 @@ public class User {
     private String username;
     private String password;
     private static int guestNumber = 0;
-    private int score, kills, difficultyKills, wave, rank;
-    private double accuracy;
+    private int score, kills, difficultyKills, wave, rank, numberOfShots, numberOfHits;
     private int difficulty;
     private int radioActiveBombs, clusterBombs;
     private Game game;
@@ -26,7 +25,8 @@ public class User {
         score = 0;
         kills = 0;
         difficultyKills = 0;
-        accuracy = 0;
+        numberOfHits = 0;
+        numberOfShots = 0;
         wave = 0;
         difficulty = 1;
         radioActiveBombs = 0;
@@ -151,11 +151,17 @@ public class User {
     }
 
     public double getAccuracy() {
-        return accuracy;
+        if (numberOfShots == 0)
+            return 0;
+        return (double) numberOfHits / numberOfShots;
     }
 
-    public void setAccuracy(double accuracy) {
-        this.accuracy = accuracy;
+    public void increaseNumberOfShots() {
+        numberOfShots++;
+    }
+
+    public void increaseNumberOfHits() {
+        numberOfHits++;
     }
 
     public int getWave() {
